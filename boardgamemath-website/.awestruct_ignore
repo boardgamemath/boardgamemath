@@ -1,0 +1,5 @@
+build.sh
+Gemfile
+Gemfile.lock
+Rakefile.rb
+*.iml

@@ -1,0 +1,22 @@
+encoding: UTF-8
+lang: en
+title: BoardGameMath
+description: How to win at strategic boardgames. We investigate their mathematical systems.
+canonicalBaseUrl: https://www.boardgamemath.com
+
+googleAnalyticsId: TODO
+googleWebmasterToolsVerificationId: TODO
+disqus: boardgamemath
+disqus_generate_id: true
+
+asciidoctor:
+  :safe: safe
+  :attributes:
+    imagesdir: ''
+
+profiles:
+  development:
+    developmentMode: true
+  production:
+    developmentMode: false
+    base_url: https://www.boardgamemath.com

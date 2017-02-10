@@ -1,0 +1,100 @@
+---
+priority: 0.2
+change_frequency: monthly
+---
+!!! 5
+%html{:lang => page.lang ? page.lang : site.lang}
+  %head
+    %meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+    %title #{escape_once(site.title + " - " + page.title)}
+    %meta(name="description"){:content => page.description ? page.description : site.description}
+    %link(rel="canonical"){:href => "#{site.canonicalBaseUrl}#{page.url}"}
+    - if page.url.eql? '/'
+      %meta(name="google-site-verification"){:content => "#{site.googleWebmasterToolsVerificationId}"}
+    -# Social media: make it look good when shared
+    %meta(property="og:title"){:content => escape_once(page.title)}
+    %meta(property="og:description"){:content => page.description ? page.description : site.description}
+    %meta(property="og:url"){:content => "#{site.canonicalBaseUrl}#{page.url}"}
+    %meta(property="og:site_name"){:content => "BoardGameMath"}
+    %meta(property="og:type"){:content => page.ogType ? page.ogType : "website"}
+    %meta(property="og:image"){:content => "#{site.canonicalBaseUrl}/headerFooter/boardGameMathIcon.png"}
+    %meta(name="twitter:card"){:content => "summary"}
+    %meta(name="twitter:site"){:content => "@BoardGameMath"}
+
+    %link(rel="stylesheet"){:href => relative("/website/bootstrap/css/bootstrap.min.css")}
+    %link(rel="stylesheet"){:href => relative("/website/boardgamemathWebsite.css")}
+    -#%link(rel="stylesheet"){:href => relative("/website/font-awesome/css/font-awesome.min.css")}
+    :plain
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    %link{:rel => "shortcut icon", :href => relative("/favicon.ico")}
+
+  %body(data-spy="scroll" data-target=".bs-docs-sidebar")
+    %header.navbar.navbar-default.navbar-fixed-top(role="navigation")
+      .container
+        .navbar-header
+          -# When the screen width is too little, these 3 icon-bar spans are needed to show the collapsed navbar
+          %a.button.navbar-toggle(data-toggle="collapse" data-target="#baseNavigation")
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand(style="padding: 10px;"){:href => relative("/")}
+            %img(alt="BoardGameMath logo"){:src => relative("/headerFooter/boardGameMathLogo200px.png")}
+        .collapse.navbar-collapse#baseNavigation
+          %ul.nav.navbar-nav
+            %li<
+              %a{:href => relative("/")} Home
+            %li.dropdown
+              %a.dropdown-toggle(data-toggle="dropdown" href="#")<
+                = precede 'Board games ' do
+                  %b.caret>
+              %ul.dropdown-menu
+                %li<
+                  %a{:href => relative("/boardgames/tzolkin.html")} Tzolk'in
+                %li<
+                  %a{:href => relative("/boardgames/axisandallies1940.html")} Axis and Allies 1940
+            %li.dropdown
+              %a.dropdown-toggle(data-toggle="dropdown" href="#")<
+                = precede 'Community ' do
+                  %b.caret>
+              %ul.dropdown-menu
+                %li<
+                  %a{:href => relative("/community/socialMedia.html")} Social media
+          %ul.nav.navbar-nav.navbar-right
+            %li<
+              %a(href="https://www.facebook.com/BoardGameMath" target="_blank" title="News stream via Facebook")<
+                %img{:src => relative("/headerFooter/facebookLogo.png"), :alt => "Fb"} &nbsp;Facebook
+
+    .body-without-header-footer
+      .container(style="padding-top: 20px;")
+        ~ content
+
+    %footer
+      .container
+        .row
+          .col-md-6
+            :markdown
+              &copy; Copyright 2006-#{Time.now.strftime( '%Y' )}, BoardGameMath or third-party contributors
+          .col-md-6
+            %p
+              %a(href="#{relative("/website/websiteInfo.html")}") Website info
+
+    -#-# Google Tag Manager (which includes Google Analytics) script part 2/2, if javascript is enabled
+    -#:plain
+    -#  <script type="text/javascript">
+    -#    dataLayer = [{'channel' : '#{site.googleTagManagerChannel}', 'additional_tracking_code' : '#{site.googleAnalyticsId}'}];
+    -#    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    -#    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    -#    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    -#    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    -#    })(window,document,'script','dataLayer','#{site.googleTagManagerId}');
+    -#  </script>
+    %script{:src => relative("/website/jquery/jquery.min.js")}
+    %script{:src => relative("/website/bootstrap/js/bootstrap.min.js")}
+    %script{:src => relative("/website/boardgamemathWebsite.js")}

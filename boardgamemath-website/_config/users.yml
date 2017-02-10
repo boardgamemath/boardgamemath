@@ -1,0 +1,11 @@
+# To add a user in the GitHub user interface, click on the Edit button at the top right which will submit a pull request.
+#
+# Available properties per user
+#  userId: Should be the same as githubUsername
+#  fullName: First name and last name (in that order)
+#  gravatarHashId: Used to show your avatar image. Change your avatar any time at https://www.gravatar.com/
+#                  To find the gravatar hash id, use: "echo -n youremail@gmail.com | md5sum"
+
+- userId: ge0ffrey
+  fullName: Geoffrey
+  gravatarHashId: 27147a6679a4bfb6461ff1c0ae10473e

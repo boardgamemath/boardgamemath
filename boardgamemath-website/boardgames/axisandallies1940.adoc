@@ -1,0 +1,6 @@
+= How to win Allies and Axis 1940
+:awestruct-boardGameName: Allies and Axis 1940
+:awestruct-layout: boardGameBase
+:showtitle:
+
+TODO

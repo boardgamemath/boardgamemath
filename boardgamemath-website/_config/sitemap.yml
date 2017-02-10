@@ -1,0 +1,5 @@
+excluded_extensions: ['.svg', '.map', '.eot', '.ttf', '.woff']
+excluded_files: [
+  # Keep in sync with robots.txt
+  '/website/javascriptLibraries.txt',
+]

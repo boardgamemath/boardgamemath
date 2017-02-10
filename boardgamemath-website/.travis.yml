@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+- 2.3.1
+branches:
+  only:
+  - master
+script: rake travis

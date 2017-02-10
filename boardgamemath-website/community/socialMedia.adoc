@@ -1,0 +1,11 @@
+= Social media
+:awestruct-description: Follow us on Facebook.
+:awestruct-layout: normalBase
+:showtitle:
+
+== BoardGameMath stream
+
+This stream contains a post for every new article.
+
+[unstyled]
+* image:../headerFooter/facebookLogo.png[Fb] https://www.facebook.com/BoardGameMath[BoardGameMath on Facebook]

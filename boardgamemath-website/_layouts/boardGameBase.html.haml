@@ -1,0 +1,12 @@
+---
+layout: normalBase
+---
+- page.ogType = "article"
+- page.title = "How to win #{page.boardGameName}"
+- page.description = "Breakdown of #{page.boardGameName}'s game mechanics to help you become more succesfull."
+- page.disqus_identifier = page.url
+~ content
+.comments
+  %a(name = 'comments')
+  %h2 Comments
+  = page.disqus_comments
