@@ -1,11 +1,9 @@
 .panel.panel-default
-  .panel-heading Latest articles
+  .panel-heading How to win...
   .panel-body
-    -#%ul.list-unstyled
-    -#  - for post in site.posts[0,7]
-    -#    %li(style="margin-bottom: 10px;")
-    -#      .title
-    -#        %a{:href => relative(post.url, page.outputPage)}
-    -#          = post.title
-    -#      .small
-    -#        = post.date.strftime('%a %-d %B %Y')
+    %ul.list-unstyled
+      - for game in site.games
+        %li(style="margin-bottom: 10px;")
+          .title
+            %a{:href => relative("/boardgames/#{game.gameId}.html", page.outputPage)}<
+              #{game.name}

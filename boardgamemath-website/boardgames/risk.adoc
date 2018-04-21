@@ -1,0 +1,5 @@
+= How to win Risk
+:awestruct-layout: boardGameBase
+:showtitle:
+
+TODO
