@@ -1,0 +1,12 @@
+= How to win Gloomhaven
+:awestruct-boardGameName: Gloomhaven
+:awestruct-layout: boardGameBase
+:showtitle:
+
+TODO
+
+== Initiative
+
+TODO
+
+link:gloomhavenInitiativeGraph.html[Graph]

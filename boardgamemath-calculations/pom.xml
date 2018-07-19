@@ -8,6 +8,15 @@
   <artifactId>boardgamemath-calculations</artifactId>
   <version>0.1.0-SNAPSHOT</version>
 
+  <name>BoardGameMath calculations</name>
+
+  <properties>
+    <!--<version.org.jfree.jcommon>1.0.23</version.org.jfree.jcommon>-->
+    <!--<version.org.jfree.jfreechart>1.0.19</version.org.jfree.jfreechart>-->
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -15,6 +24,18 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+  <!--<dependencies>-->
+    <!--<dependency>-->
+      <!--<groupId>org.jfree</groupId>-->
+      <!--<artifactId>jcommon</artifactId>-->
+      <!--<version>${version.org.jfree.jcommon}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.jfree</groupId>-->
+      <!--<artifactId>jfreechart</artifactId>-->
+      <!--<version>${version.org.jfree.jfreechart}</version>-->
+    <!--</dependency>-->
+  <!--</dependencies>-->
   <build>
     <pluginManagement>
       <plugins>

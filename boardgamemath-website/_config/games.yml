@@ -14,3 +14,7 @@
 - gameId: tzolkin
   name: "Tzolk'in"
   boardGameGeekUrl: https://boardgamegeek.com/boardgame/126163/tzolk-mayan-calendar
+
+- gameId: gloomhaven
+  name: "Gloomhaven"
+  boardGameGeekUrl: https://boardgamegeek.com/boardgame/174430/gloomhaven
