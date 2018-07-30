@@ -11,6 +11,9 @@
     .shortRestLine {
         fill: gold;
     }
+    .shortRestText {
+        fill: gold;
+    }
     .longRestLine {
         fill: silver;
     }
@@ -30,16 +33,50 @@
         display: none;
     }
 </style>
+<section style="display:block;">
+    Character: <select onchange="changeCharacter(this)"></select>
+</section>
 <svg class="chart"></svg>
-<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript">
 
-    handLimit = 10;
-    rounds = new Array(32);
+    var MAX_ROUNDS = 40;
+    var MAX_HAND_LIMIT = 12;
+    var characters;
+    var selectedCharacter;
+    var rounds;
 
+    initCharacters();
     initRounds();
-    updateRounds();
     initChart();
+    updateRounds();
+
+    function Character(name, handLimit) {
+        this.name = name;
+        this.handLimit = handLimit;
+    }
+
+    function initCharacters() {
+        characters = [
+            new Character("Brute", 10),
+            new Character("Cragheart", 11),
+            new Character("Mindthief", 10),
+            new Character("Scoundrel", 9),
+            new Character("Spellweaver", 8),
+            new Character("Tinkerer", 12)
+        ];
+        selectedCharacter = characters[0];
+        d3.select("select").selectAll("option").data(characters)
+                .enter().append("option").attr("value",function(character){ return character;})
+                .text(function(character){
+                    return character.name + " (" + character.handLimit + " cards)";
+                });
+    }
+
+    function changeCharacter(t) {
+        selectedCharacter = characters[t.selectedIndex];
+        updateRounds();
+    }
 
     function Round(number) {
         this.number = number;
@@ -53,13 +90,14 @@
     }
 
     function initRounds() {
+        rounds = new Array(MAX_ROUNDS);
         for (var i = 0; i < rounds.length; i++) {
-            rounds[i] = new Round(i);
+            rounds[i] = new Round(i + 1);
         }
     }
 
     function updateRounds() {
-        var handCardSize = handLimit;
+        var handCardSize = selectedCharacter.handLimit;
         var discardCardSize = 0;
         for (var i = 0; i < rounds.length; i++) {
             var round = rounds[i];
@@ -84,114 +122,136 @@
             if (round.longRest) { // Long rest
                 handCardSize += discardCardSize - 1;
                 discardCardSize = 0;
-            } else { // Normal play
+            } else if (handCardSize >= 2) { // Normal play
                 handCardSize -= 2;
                 discardCardSize += 2;
             }
         }
+        updateChart();
     }
 
     function initChart() {
-        var margin = {top: 20, right: 30, bottom: 30, left: 40},
-                width = 960 - margin.left - margin.right,
-                height = 500 - margin.top - margin.bottom;
+        margin = {top: 20, right: 30, bottom: 40, left: 40};
+        width = 960 - margin.left - margin.right;
+        height = 300 - margin.top - margin.bottom;
 
-        var xRange = d3.scale.ordinal()
-                .rangeRoundBands([0, width], .1);
-
-        var yRange = d3.scale.linear()
-                .range([height, 0]);
-
-        var xAxis = d3.svg.axis()
-                .scale(xRange)
-                .orient("bottom");
-
-        var yAxis = d3.svg.axis()
-                .scale(yRange)
-                .orient("left");
-
-        var chart = d3.select(".chart")
+        chart = d3.select(".chart")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
-
-        xRange.domain(rounds.map(function (d) {
-            return d.number;
-        }));
-        yRange.domain([0, d3.max(rounds, function (d) {
-            return d.handCardSize;
-        })]);
-
+        xRange = d3.scaleBand()
+                .domain(d3.range(1, MAX_ROUNDS + 1))
+                .range([0, width])
+                .padding(0.1);
         chart.append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + height + ")")
-                .call(xAxis);
+                .call(d3.axisBottom().scale(xRange));
+        chart.append("text")
+                .attr("transform",
+                        "translate(" + (width / 2) + " ," + (height + margin.top + 20) + ")")
+                .style("text-anchor", "middle")
+                .text("Rounds");
 
+        yRange = d3.scaleLinear()
+                .domain([0, MAX_HAND_LIMIT])
+                .range([height, 0]);
         chart.append("g")
                 .attr("class", "y axis")
-                .call(yAxis);
+                .call(d3.axisLeft().scale(yRange));
+        chart.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 0 - margin.left)
+                .attr("x",0 - (height / 2))
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text("Hand / Discarded cards");
 
-        chart.selectAll(".handCardBar")
+        var roundBar = chart.selectAll(".roundBar")
                 .data(rounds)
-                .enter().append("rect")
+                .enter().append("g")
+                .attr("class", "roundBar");
+
+        handCardBar = roundBar.append("rect")
                 .attr("class", "handCardBar")
-                .attr("x", function (d) {
-                    return xRange(d.number);
+                .attr("x", function (round) {
+                    return xRange(round.number);
                 })
-                .attr("width", xRange.rangeBand())
-                .attr("y", function (d) {
-                    return yRange(d.handCardSize);
-                })
-                .attr("height", function (d) {
-                    return height - yRange(d.handCardSize);
-                });
-        chart.selectAll(".discardCardBar")
-                .data(rounds)
-                .enter().append("rect")
+                .attr("width", xRange.bandwidth());
+        discardCardBar = roundBar.append("rect")
                 .attr("class", "discardCardBar")
-                .attr("x", function (d) {
-                    return xRange(d.number);
+                .attr("x", function (round) {
+                    return xRange(round.number);
                 })
-                .attr("width", xRange.rangeBand())
-                .attr("y", function (d) {
-                    return yRange(d.discardCardSize + d.handCardSize);
-                })
-                .attr("height", function (d) {
-                    return height - yRange(d.discardCardSize);
-                });
-        chart.selectAll(".shortRestLine")
-                .data(rounds)
-                .enter().append("rect")
-                .filter(function (d) { return d.shortRest})
+                .attr("width", xRange.bandwidth());
+        shortRestLine = roundBar.append("rect")
                 .attr("class", "shortRestLine")
-                .attr("x", function (d) {
-                    return xRange(d.number);
+                .attr("x", function (round) {
+                    return xRange(round.number) - 2;
                 })
-                .attr("width", 5)
-                .attr("y", function (d) {
-                    return yRange(d.discardCardSize + d.handCardSize);
+                .attr("width", 4);
+        shortRestText = roundBar.append("text")
+                // .attr("transform", "rotate(-90)")
+                .attr("class", "shortRestText")
+                .attr("x", function (round) {
+                    return xRange(round.number);
                 })
-                .attr("height", function (d) {
-                    return height - yRange(d.discardCardSize + d.handCardSize);
-                });
-        chart.selectAll(".longRestLine")
-                .data(rounds)
-                .enter().append("rect")
-                .filter(function (d) { return d.longRest})
+                .attr("dy", "1em")
+                .style("text-anchor", "left")
+                .text("Short rest");
+        longRestLine = roundBar.append("rect")
                 .attr("class", "longRestLine")
-                .attr("x", function (d) {
-                    return xRange(d.number);
+                .attr("x", function (round) {
+                    return xRange(round.number);
                 })
-                .attr("width", xRange.rangeBand())
-                .attr("y", function (d) {
-                    return yRange(d.discardCardSize + d.handCardSize);
+                .attr("width", xRange.bandwidth());
+    }
+
+    function updateChart() {
+        handCardBar
+                .attr("y", function (round) {
+                    return yRange(round.handCardSize);
                 })
-                .attr("height", function (d) {
-                    return height - yRange(d.discardCardSize + d.handCardSize);
+                .attr("height", function (round) {
+                    return height - yRange(round.handCardSize);
                 });
+        discardCardBar
+                .attr("y", function (round) {
+                    return yRange(round.discardCardSize + round.handCardSize);
+                })
+                .attr("height", function (round) {
+                    return height - yRange(round.discardCardSize);
+                });
+        shortRestLine
+                .attr("visibility", function (round) {
+                    return round.shortRest ? "visible" : "hidden";
+                })
+                .attr("y", function (round) {
+                    return yRange(round.discardCardSize + round.handCardSize);
+                })
+                .attr("height", function (round) {
+                    return height - yRange(round.discardCardSize + round.handCardSize);
+                });
+        shortRestText
+                .attr("visibility", function (round) {
+                    return round.shortRest ? "visible" : "hidden";
+                })
+                .attr("y", function (round) {
+                    return yRange(round.discardCardSize + round.handCardSize + 1);
+                });
+        longRestLine
+                .attr("visibility", function (round) {
+                    return round.longRest ? "visible" : "hidden";
+                })
+                .attr("y", function (round) {
+                    return yRange(round.discardCardSize + round.handCardSize);
+                })
+                .attr("height", function (round) {
+                    return height - yRange(round.discardCardSize + round.handCardSize);
+                });
+
     }
 
 </script>
