@@ -205,7 +205,7 @@
         revivingEtherLine = roundBar.append("rect")
                 .attr("class", "revivingEtherLine")
                 .attr("x", function (round) {
-                    return xRange(round.number + 1) - 2;
+                    return xRange(round.number) + xRange.bandwidth() - 2;
                 })
                 .attr("width", 4);
         revivingEtherText = roundBar.append("text")
