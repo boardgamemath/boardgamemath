@@ -20,8 +20,15 @@
     .shortRestText {
         fill: gold;
     }
-    .longRestLine {
+    .longRestBar {
         fill: silver;
+    }
+    .barButton {
+        cursor: pointer;
+        fill: lawngreen;
+    }
+    .barButton.enabled {
+        fill: green;
     }
 
     .axis text {
@@ -46,7 +53,7 @@
 <script src="../../website/d3/d3.min.js"></script>
 <script type="text/javascript">
 
-    var MAX_ROUNDS = 40;
+    var MAX_ROUNDS = 36;
     var MAX_HAND_LIMIT = 12;
     var characters;
     var selectedCharacter;
@@ -147,40 +154,43 @@
     }
 
     function initChart() {
+        outerSize = {width: 960, height: 360};
         margin = {top: 20, right: 30, bottom: 40, left: 40};
-        width = 960 - margin.left - margin.right;
-        height = 300 - margin.top - margin.bottom;
+        barButtonCount = 3;
+        barButtonSize = {width: 20, height: 20};
+        innerSize = {width: outerSize.width - margin.left - margin.right,
+            height: outerSize.height - margin.top - margin.bottom - (barButtonCount * barButtonSize.height)};
 
         chart = d3.select(".chart")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
+                .attr("width", outerSize.width)
+                .attr("height", outerSize.height)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         xRange = d3.scaleBand()
                 .domain(d3.range(1, MAX_ROUNDS + 1))
-                .range([0, width])
+                .range([0, innerSize.width])
                 .padding(0.1);
         chart.append("g")
                 .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
+                .attr("transform", "translate(0," + innerSize.height + ")")
                 .call(d3.axisBottom().scale(xRange));
         chart.append("text")
                 .attr("transform",
-                        "translate(" + (width / 2) + " ," + (height + margin.top + 20) + ")")
+                        "translate(" + (innerSize.width / 2) + " ," + (innerSize.height + margin.top + 20) + ")")
                 .style("text-anchor", "middle")
-                .text("Rounds");
+                .text("Round");
 
         yRange = d3.scaleLinear()
                 .domain([0, MAX_HAND_LIMIT])
-                .range([height, 0]);
+                .range([innerSize.height, 0]);
         chart.append("g")
                 .attr("class", "y axis")
                 .call(d3.axisLeft().scale(yRange));
         chart.append("text")
                 .attr("transform", "rotate(-90)")
                 .attr("y", 0 - margin.left)
-                .attr("x",0 - (height / 2))
+                .attr("x",0 - (innerSize.height / 2))
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
                 .text("Hand / Discarded cards");
@@ -230,12 +240,28 @@
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
                 .text("short rest");
-        longRestLine = roundBar.append("rect")
-                .attr("class", "longRestLine")
+        longRestBar = roundBar.append("rect")
+                .attr("class", "longRestBar")
                 .attr("x", function (round) {
                     return xRange(round.number);
                 })
                 .attr("width", xRange.bandwidth());
+        longRestButton = roundBar.append("rect")
+                .attr("class", "barButton")
+                .attr("x", function (round) {
+                    return xRange(round.number);
+                })
+                .attr("width", xRange.bandwidth())
+                .attr("y", function (round) {
+                    return outerSize.height - (barButtonCount * barButtonSize.height);
+                })
+                .attr("height", function (round) {
+                    return barButtonSize.height;
+                })
+                .on("click", function(round) {
+                    round.longRest = !round.longRest;
+                    updateRounds();
+                });
     }
 
     function updateChart() {
@@ -244,14 +270,14 @@
                     return yRange(round.handCardSize);
                 })
                 .attr("height", function (round) {
-                    return height - yRange(round.handCardSize);
+                    return innerSize.height - yRange(round.handCardSize);
                 });
         discardCardBar
                 .attr("y", function (round) {
                     return yRange(round.discardCardSize + round.handCardSize);
                 })
                 .attr("height", function (round) {
-                    return height - yRange(round.discardCardSize);
+                    return innerSize.height - yRange(round.discardCardSize);
                 });
         revivingEtherLine
                 .attr("visibility", function (round) {
@@ -261,7 +287,7 @@
                     return yRange(selectedCharacter.handLimit);
                 })
                 .attr("height", function (round) {
-                    return height - yRange(selectedCharacter.handLimit);
+                    return innerSize.height - yRange(selectedCharacter.handLimit);
                 });
         revivingEtherText
                 .attr("visibility", function (round) {
@@ -278,7 +304,7 @@
                     return yRange(round.discardCardSize + round.handCardSize + 1);
                 })
                 .attr("height", function (round) {
-                    return height - yRange(round.discardCardSize + round.handCardSize + 1);
+                    return innerSize.height - yRange(round.discardCardSize + round.handCardSize + 1);
                 });
         shortRestText
                 .attr("visibility", function (round) {
@@ -287,16 +313,18 @@
                 .attr("y", function (round) {
                     return yRange(round.discardCardSize + round.handCardSize + 2);
                 });
-        longRestLine
+        longRestBar
                 .attr("visibility", function (round) {
                     return round.longRest ? "visible" : "hidden";
                 })
                 .attr("y", function (round) {
-                    return yRange(round.discardCardSize + round.handCardSize + 1);
+                    return yRange(round.discardCardSize + round.handCardSize);
                 })
                 .attr("height", function (round) {
-                    return height - yRange(round.discardCardSize + round.handCardSize);
+                    return innerSize.height - yRange(round.discardCardSize + round.handCardSize);
                 });
+        longRestButton
+                .classed("enabled", function (round) {return round.longRest});
 
     }
 
