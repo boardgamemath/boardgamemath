@@ -8,33 +8,26 @@
     .discardCardBar {
         fill: skyblue;
     }
-    .revivingEtherLine {
+    .revivingEther {
         fill: purple;
     }
-    .revivingEtherText {
-        fill: purple;
-    }
-    .shortRestLine {
+    .shortRest {
         fill: gold;
     }
-    .shortRestText {
-        fill: gold;
-    }
-    .longRestBar {
+    .longRest {
         fill: silver;
     }
     .barButton {
         cursor: pointer;
-        fill: lawngreen;
+        filter: grayscale(100%);
     }
     .barButton.enabled {
-        fill: green;
+        filter: none;
     }
 
     .axis text {
         font: 10px sans-serif;
     }
-
     .axis path,
     .axis line {
         fill: none;
@@ -213,13 +206,13 @@
                 })
                 .attr("width", xRange.bandwidth());
         revivingEtherLine = roundBar.append("rect")
-                .attr("class", "revivingEtherLine")
+                .attr("class", "revivingEther")
                 .attr("x", function (round) {
                     return xRange(round.number) + xRange.bandwidth() - 2;
                 })
                 .attr("width", 4);
         revivingEtherText = roundBar.append("text")
-                .attr("class", "revivingEtherText")
+                .attr("class", "revivingEther")
                 .attr("x", function (round) {
                     return xRange(round.number + 1);
                 })
@@ -227,13 +220,13 @@
                 .style("text-anchor", "middle")
                 .text("reviving ether");
         shortRestLine = roundBar.append("rect")
-                .attr("class", "shortRestLine")
+                .attr("class", "shortRest")
                 .attr("x", function (round) {
                     return xRange(round.number) - 2;
                 })
                 .attr("width", 4);
         shortRestText = roundBar.append("text")
-                .attr("class", "shortRestText")
+                .attr("class", "shortRest")
                 .attr("x", function (round) {
                     return xRange(round.number);
                 })
@@ -241,12 +234,22 @@
                 .style("text-anchor", "middle")
                 .text("short rest");
         longRestBar = roundBar.append("rect")
-                .attr("class", "longRestBar")
+                .attr("class", "longRest")
                 .attr("x", function (round) {
                     return xRange(round.number);
                 })
                 .attr("width", xRange.bandwidth());
-        longRestButton = roundBar.append("rect")
+        longRestText = roundBar.append("text")
+                .attr("class", "longRest")
+                .attr("x", function (round) {
+                    return xRange(round.number) + (xRange.bandwidth() / 2);
+                })
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text("long rest");
+        longRestButton = roundBar
+                .append("image")
+                .attr("xlink:href","longRestGloomhaven.svg")
                 .attr("class", "barButton")
                 .attr("x", function (round) {
                     return xRange(round.number);
@@ -260,6 +263,24 @@
                 })
                 .on("click", function(round) {
                     round.longRest = !round.longRest;
+                    updateRounds();
+                });
+        loseCard1Button = roundBar
+                .append("image")
+                .attr("xlink:href","lostCardGloomhaven.svg")
+                .attr("class", "barButton")
+                .attr("x", function (round) {
+                    return xRange(round.number);
+                })
+                .attr("width", xRange.bandwidth())
+                .attr("y", function (round) {
+                    return outerSize.height - ((barButtonCount - 1) * barButtonSize.height);
+                })
+                .attr("height", function (round) {
+                    return barButtonSize.height;
+                })
+                .on("click", function(round) {
+                    round.loseCard1 = !round.loseCard1;
                     updateRounds();
                 });
     }
@@ -323,8 +344,17 @@
                 .attr("height", function (round) {
                     return innerSize.height - yRange(round.discardCardSize + round.handCardSize);
                 });
+        longRestText
+                .attr("visibility", function (round) {
+                    return round.longRest ? "visible" : "hidden";
+                })
+                .attr("y", function (round) {
+                    return yRange(round.discardCardSize + round.handCardSize + 1);
+                });
         longRestButton
                 .classed("enabled", function (round) {return round.longRest});
+        loseCard1Button
+                .classed("enabled", function (round) {return round.loseCard1});
 
     }
 
