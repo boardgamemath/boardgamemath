@@ -90,11 +90,12 @@
         this.handCardSize = number;
         this.discardCardSize = 0;
 
-        this.loseCard1 = false;
-        this.loseCard2 = false;
         this.revivingEther = false;
         this.shortRest = false;
         this.longRest = false;
+        this.playLostCardCount = 0;
+        this.bleedHandCardCount = 0;
+        this.bleedDiscardPairCount = 0;
     }
 
     function initRounds() {
@@ -110,14 +111,26 @@
         var revivingEtherAvailable = selectedCharacter.revivingEtherAvailable;
         for (var i = 0; i < rounds.length; i++) {
             var round = rounds[i];
+            if (round.bleedHandCardCount > handCardSize) {
+                round.bleedHandCardCount = handCardSize;
+            }
+            handCardSize -= round.bleedHandCardCount;
+            if (round.bleedDiscardPairCount * 2 > discardCardSize) {
+                round.bleedDiscardPairCount = Math.floor(discardCardSize / 2);
+            }
+            discardCardSize -= round.bleedDiscardPairCount;
             if (handCardSize < 2) {
                 if (discardCardSize < 2 || (discardCardSize === 2 && handCardSize === 0)) { // Exhausted
                     handCardSize = 0;
                     discardCardSize = 0;
                     round.shortRest = false;
                     round.longRest = false;
+                    round.playLostCardCount = 0;
+                    round.bleedHandCardCount = 0;
+                    round.bleedDiscardPairCount = 0;
                 } else if (round.longRest) { // Long rest announced
                     round.shortRest = false;
+                    round.playLostCardCount = 0;
                 } else { // Automatic short rest
                     handCardSize += discardCardSize - 1;
                     discardCardSize = 0;
@@ -134,7 +147,7 @@
                 discardCardSize = 0;
             } else if (handCardSize >= 2) { // Normal play
                 handCardSize -= 2;
-                discardCardSize += 2;
+                discardCardSize += 2 - round.playLostCardCount;
                 if (revivingEtherAvailable
                         && (discardCardSize < 2 || (discardCardSize === 2 && handCardSize === 0))) {
                     round.revivingEther = true;
@@ -170,7 +183,7 @@
                 .call(d3.axisBottom().scale(xRange));
         chart.append("text")
                 .attr("transform",
-                        "translate(" + (innerSize.width / 2) + " ," + (innerSize.height + margin.top + 20) + ")")
+                        "translate(" + (innerSize.width / 2) + " ," + (innerSize.height + margin.top + 15) + ")")
                 .style("text-anchor", "middle")
                 .text("Round");
 
@@ -256,7 +269,7 @@
                 })
                 .attr("width", xRange.bandwidth())
                 .attr("y", function (round) {
-                    return outerSize.height - (barButtonCount * barButtonSize.height);
+                    return innerSize.height + margin.bottom;
                 })
                 .attr("height", function (round) {
                     return barButtonSize.height;
@@ -265,7 +278,7 @@
                     round.longRest = !round.longRest;
                     updateRounds();
                 });
-        loseCard1Button = roundBar
+        playLostCard1Button = roundBar
                 .append("image")
                 .attr("xlink:href","lostCardGloomhaven.svg")
                 .attr("class", "barButton")
@@ -274,13 +287,39 @@
                 })
                 .attr("width", xRange.bandwidth())
                 .attr("y", function (round) {
-                    return outerSize.height - ((barButtonCount - 1) * barButtonSize.height);
+                    return innerSize.height + margin.bottom + barButtonSize.height;
                 })
                 .attr("height", function (round) {
                     return barButtonSize.height;
                 })
                 .on("click", function(round) {
-                    round.loseCard1 = !round.loseCard1;
+                    if (round.playLostCardCount < 1) {
+                        round.playLostCardCount++;
+                    } else {
+                        round.playLostCardCount--;
+                    }
+                    updateRounds();
+                });
+        playLostCard2Button = roundBar
+                .append("image")
+                .attr("xlink:href","lostCardGloomhaven.svg")
+                .attr("class", "barButton")
+                .attr("x", function (round) {
+                    return xRange(round.number);
+                })
+                .attr("width", xRange.bandwidth())
+                .attr("y", function (round) {
+                    return innerSize.height + margin.bottom + (2 * barButtonSize.height);
+                })
+                .attr("height", function (round) {
+                    return barButtonSize.height;
+                })
+                .on("click", function(round) {
+                    if (round.playLostCardCount < 2) {
+                        round.playLostCardCount++;
+                    } else {
+                        round.playLostCardCount--;
+                    }
                     updateRounds();
                 });
     }
@@ -353,8 +392,10 @@
                 });
         longRestButton
                 .classed("enabled", function (round) {return round.longRest});
-        loseCard1Button
-                .classed("enabled", function (round) {return round.loseCard1});
+        playLostCard1Button
+                .classed("enabled", function (round) {return round.playLostCardCount >= 1});
+        playLostCard2Button
+                .classed("enabled", function (round) {return round.playLostCardCount >= 2});
 
     }
 
