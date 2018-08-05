@@ -19,10 +19,11 @@
     }
     .barButton {
         cursor: pointer;
-        filter: grayscale(100%);
     }
-    .barButton.enabled {
-        filter: none;
+    .barButtonGrayScaleHack {
+        cursor: pointer;
+        fill: white;
+        fill-opacity : 0.7;
     }
 
     .axis text {
@@ -260,39 +261,21 @@
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
                 .text("long rest");
-        longRestButton = roundBar
-                .append("image")
-                .attr("xlink:href","longRestGloomhaven.svg")
-                .attr("class", "barButton")
-                .attr("x", function (round) {
+        longRestButton = createButton(roundBar, "longRestGloomhaven.svg",
+                function (round) {
                     return xRange(round.number);
-                })
-                .attr("width", xRange.bandwidth())
-                .attr("y", function (round) {
+                }, function (round) {
                     return innerSize.height + margin.bottom;
-                })
-                .attr("height", function (round) {
-                    return barButtonSize.height;
-                })
-                .on("click", function(round) {
+                }, function(round) {
                     round.longRest = !round.longRest;
                     updateRounds();
                 });
-        playLostCard1Button = roundBar
-                .append("image")
-                .attr("xlink:href","lostCardGloomhaven.svg")
-                .attr("class", "barButton")
-                .attr("x", function (round) {
+        playLostCard1Button = createButton(roundBar, "lostCardGloomhaven.svg",
+                function (round) {
                     return xRange(round.number);
-                })
-                .attr("width", xRange.bandwidth())
-                .attr("y", function (round) {
+                }, function (round) {
                     return innerSize.height + margin.bottom + barButtonSize.height;
-                })
-                .attr("height", function (round) {
-                    return barButtonSize.height;
-                })
-                .on("click", function(round) {
+                }, function(round) {
                     if (round.playLostCardCount < 1) {
                         round.playLostCardCount++;
                     } else {
@@ -300,21 +283,12 @@
                     }
                     updateRounds();
                 });
-        playLostCard2Button = roundBar
-                .append("image")
-                .attr("xlink:href","lostCardGloomhaven.svg")
-                .attr("class", "barButton")
-                .attr("x", function (round) {
+        playLostCard2Button = createButton(roundBar, "lostCardGloomhaven.svg",
+                function (round) {
                     return xRange(round.number);
-                })
-                .attr("width", xRange.bandwidth())
-                .attr("y", function (round) {
+                }, function (round) {
                     return innerSize.height + margin.bottom + (2 * barButtonSize.height);
-                })
-                .attr("height", function (round) {
-                    return barButtonSize.height;
-                })
-                .on("click", function(round) {
+                }, function(round) {
                     if (round.playLostCardCount < 2) {
                         round.playLostCardCount++;
                     } else {
@@ -323,6 +297,26 @@
                     updateRounds();
                 });
     }
+
+    function createButton(roundBar, svgFile, xFunction, yFunction, clickFunction) {
+        roundBar.append("image")
+                .attr("xlink:href",svgFile)
+                .attr("class", "barButton")
+                .attr("x", xFunction)
+                .attr("width", xRange.bandwidth())
+                .attr("y", yFunction)
+                .attr("height", barButtonSize.height)
+                .on("click", clickFunction);
+        return roundBar
+                .append("rect")
+                .attr("class", "barButtonGrayScaleHack")
+                .attr("x", xFunction)
+                .attr("width", xRange.bandwidth())
+                .attr("y", yFunction)
+                .attr("height", barButtonSize.height)
+                .on("click", clickFunction);
+    }
+
 
     function updateChart() {
         handCardBar
@@ -391,11 +385,17 @@
                     return yRange(round.discardCardSize + round.handCardSize + 1);
                 });
         longRestButton
-                .classed("enabled", function (round) {return round.longRest});
+                .attr("visibility", function (round) {
+                    return round.longRest ? "hidden" : "visible";
+                });
         playLostCard1Button
-                .classed("enabled", function (round) {return round.playLostCardCount >= 1});
+                .attr("visibility", function (round) {
+                    return round.playLostCardCount >= 1 ? "hidden" : "visible";
+                });
         playLostCard2Button
-                .classed("enabled", function (round) {return round.playLostCardCount >= 2});
+                .attr("visibility", function (round) {
+                    return round.playLostCardCount >= 2 ? "hidden" : "visible";
+                });
 
     }
 
