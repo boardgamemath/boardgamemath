@@ -21,3 +21,5 @@ boardgamemath-website/_tmp
 boardgamemath-website/.awestruct
 boardgamemath-website/.sass-cache
 boardgamemath-website/Gemfile.lock
+boardgamemath-website/Gemfile.lock
+boardgamemath-website/*.iml
