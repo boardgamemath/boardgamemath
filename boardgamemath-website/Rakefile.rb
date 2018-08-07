@@ -25,7 +25,17 @@ end
 desc "Build the site and publish"
 task :publish => [:check, :clean, :build] do
   system("echo Publishing...")
-  system "bundle exec awestruct -P production -g --deploy"
+  system("cd ../local/")
+  system("rm -Rf publishTmp")
+  system("mkdir publishTmp")
+  system("cd publishTmp")
+  system("cp -r ../../.git .")
+  system("git checkout gh-pages")
+  system("cp -Rf ../../boardgamemath-website/_site/* .")
+  system("git add .")
+  system("git commit -m\"Automatic publish\"")
+  system("git push origin gh-pages")
+  system("cd ../../boardgamemath-website")
 end
 
 desc "Travis continuous integration task"
