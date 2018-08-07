@@ -25,9 +25,7 @@ end
 desc "Build the site and publish"
 task :publish => [:check, :clean, :build] do
   system("echo Publishing...")
-  deploy_url = "TODO"
-  success = system("rsync -Pqr --protocol=28 --delete-after _site/* #{deploy_url}")
-  fail unless success
+  system "bundle exec awestruct -P production -g --deploy"
 end
 
 desc "Travis continuous integration task"

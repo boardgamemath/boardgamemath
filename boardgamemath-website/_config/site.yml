@@ -19,4 +19,9 @@ profiles:
     developmentMode: true
   production:
     developmentMode: false
-    base_url: https://www.boardgamemath.com
+    base_url: https://boardgamemath.github.io/boardgamemath
+    deploy:
+      host: github_pages
+      branch: gh-pages
+
+#    base_url: https://www.boardgamemath.com
