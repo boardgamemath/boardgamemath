@@ -3,10 +3,12 @@
 :awestruct-layout: boardGameBase
 :showtitle:
 
-TODO
+== Don't get exhausted
 
-== Initiative
+link:gloomhavenStaminaCalculator.html[Gloomhaven stamina exhaustion calculator]
 
-TODO
+Guide Coming soon...
 
-link:gloomhavenInitiativeGraph.html[Graph]
+== Pick your perks well
+
+Calculator and guide coming soon...
