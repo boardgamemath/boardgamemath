@@ -5,6 +5,16 @@ change_frequency: monthly
 !!! 5
 %html{:lang => page.lang ? page.lang : site.lang}
   %head
+    -# Google Analytics for kie team: Global site tag (gtag.js)
+    :plain
+      <script async src="https://www.googletagmanager.com/gtag/js?id=#{site.googleAnalyticsId}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '#{site.googleAnalyticsId}');
+      </script>
     %meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
     %meta(name="viewport" content="width=device-width, initial-scale=1")
     %title #{escape_once(site.title + " - " + page.title)}
@@ -56,9 +66,7 @@ change_frequency: monthly
                   %b.caret>
               %ul.dropdown-menu
                 %li<
-                  %a{:href => relative("/boardgames/tzolkin.html")} Tzolk'in
-                %li<
-                  %a{:href => relative("/boardgames/axisandallies1940.html")} Axis and Allies 1940
+                  %a{:href => relative("/boardgames/gloomhaven/index.html")} Gloomhaven
           %ul.nav.navbar-nav.navbar-right
             %li<
               %a(href="https://www.facebook.com/BoardGameMath" target="_blank" title="News stream via Facebook")<
