@@ -3,17 +3,17 @@
 #  name: Full name of the game
 #  boardGameGeekLink: First name and last name (in that order)
 
-- gameId: axisAndAllies1940
-  name: "Allies and Axis 1940"
-  boardGameGeekUrl: https://boardgamegeek.com/boardgame/61692/axis-allies-europe-1940
+#- gameId: axisAndAllies1940
+#  name: "Allies and Axis 1940"
+#  boardGameGeekUrl: https://boardgamegeek.com/boardgame/61692/axis-allies-europe-1940
 
-- gameId: risk
-  name: "Risk"
-  boardGameGeekUrl: https://boardgamegeek.com/boardgame/181/risk
+#- gameId: risk
+#  name: "Risk"
+#  boardGameGeekUrl: https://boardgamegeek.com/boardgame/181/risk
 
-- gameId: tzolkin
-  name: "Tzolk'in"
-  boardGameGeekUrl: https://boardgamegeek.com/boardgame/126163/tzolk-mayan-calendar
+#- gameId: tzolkin
+#  name: "Tzolk'in"
+#  boardGameGeekUrl: https://boardgamegeek.com/boardgame/126163/tzolk-mayan-calendar
 
 - gameId: gloomhaven
   name: "Gloomhaven"

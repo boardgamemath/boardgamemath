@@ -1,0 +1,16 @@
+---
+title: Gloomhaven stamina exhaustion calculator
+description: Calculate how many turns until your Gloomhaven character runs out of cards to avoid premature exhaustion.
+layout: boardGameBase
+priority: 1.0
+---
+
+.h1 Gloomhaven stamina exhaustion calculator
+
+%link(rel="stylesheet"){:href => "gloomhavenStaminaCalculator.css"}
+%section(style="display:block;")
+  Character:
+  %select(onchange="changeCharacter(this)")
+%svg.chart
+%script{:src => relative("/website/d3/d3.min.js")}
+%script{:src => "gloomhavenStaminaCalculator.js"}
