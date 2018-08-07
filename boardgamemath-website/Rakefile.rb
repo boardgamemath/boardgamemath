@@ -25,17 +25,15 @@ end
 desc "Build the site and publish"
 task :publish => [:check, :clean, :build] do
   system("echo Publishing...")
-  system("cd ../local/")
-  system("rm -Rf publishTmp")
-  system("mkdir publishTmp")
-  system("cd publishTmp")
-  system("cp -r ../../.git .")
-  system("git checkout gh-pages")
-  system("cp -Rf ../../boardgamemath-website/_site/* .")
-  system("git add .")
-  system("git commit -m\"Automatic publish\"")
-  system("git push origin gh-pages")
-  system("cd ../../boardgamemath-website")
+  system("rm -Rf ../local/publishTmp")
+  system("git fetch origin")
+  system("mkdir ../local/publishTmp")
+  system("cp -r ../.git ../local/publishTmp/.")
+  system("cd ../local/publishTmp; git checkout gh-pages; git rebase origin/gh-pages")
+  system("cp -Rf _site/* ../local/publishTmp/.")
+  system("cd ../local/publishTmp; git add .")
+  system("cd ../local/publishTmp; git commit -m\"Automatic publish\"")
+  system("cd ../local/publishTmp; git push origin gh-pages")
 end
 
 desc "Travis continuous integration task"
