@@ -1,5 +1,7 @@
 = How to win Risk
+:awestruct-game_id: risk
 :awestruct-layout: boardGameBase
-:showtitle:
 
-TODO
+How to win? Roll well!
+
+Just kidding, guide coming soon...

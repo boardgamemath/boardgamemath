@@ -3,7 +3,8 @@
   .panel-body
     %ul.list-unstyled
       - for game in site.games
-        %li(style="margin-bottom: 10px;")
-          .title
-            %a{:href => relative("/boardgames/#{game.gameId}/index.html", page.outputPage)}<
-              #{game.name}
+        - if game.visible
+          %li(style="margin-bottom: 10px;")
+            .title
+              %a{:href => relative("/boardgames/#{game.gameId}/index.html", page.outputPage)}<
+                #{game.name}

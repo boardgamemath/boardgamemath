@@ -1,0 +1,27 @@
+---
+layout: normalBase
+---
+- page.ogType = "article"
+- page.disqus_identifier = page.url
+
+%h1
+  = page.title
+
+~ content
+
+%h2 License
+
+%ul
+  %li
+    Feel free to reuse screenshots of this calculator in any of your content,
+    with a link to this webpage nearby.
+  %li
+    For the brave, the source code of this calculator is on
+    %a{:href => site.githubUrl}<
+      GitHub
+    under the open source AGPL license.
+
+.comments
+  %a(name = 'comments')
+  %h2 Comments
+  = page.disqus_comments

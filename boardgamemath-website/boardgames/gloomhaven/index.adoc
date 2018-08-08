@@ -1,13 +1,21 @@
 = How to win Gloomhaven
-:awestruct-boardGameName: Gloomhaven
+:awestruct-game_id: gloomhaven
 :awestruct-layout: boardGameBase
-:showtitle:
 
-== Don't get exhausted
+== Don't become exhausted
 
-link:gloomhavenStaminaCalculator.html[Gloomhaven stamina exhaustion calculator]
+The most common way to lose a game of Gloomhaven is to run out of cards and become exhausted.
+Health is less of a problem than stamina,
+because you can always avoid damage by throwing away cards.
 
-Guide Coming soon...
+Let's take a look at the impact of your actions on your stamina and exhaustion:
+
+* link:gloomhavenStaminaGuide.html[Read the guide]
+* link:gloomhavenStaminaCalculator.html[Try the calculator]
+
+== Know your initiative
+
+Guide coming soon...
 
 == Pick your perks well
 

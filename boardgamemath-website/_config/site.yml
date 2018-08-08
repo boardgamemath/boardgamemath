@@ -8,6 +8,7 @@ googleAnalyticsId: UA-123593562-1
 googleWebmasterToolsVerificationId: TODO
 disqus: boardgamemath
 disqus_generate_id: true
+githubUrl: https://github.com/boardgamemath/boardgamemath
 
 asciidoctor:
   :safe: safe
@@ -19,9 +20,7 @@ profiles:
     developmentMode: true
   production:
     developmentMode: false
-    base_url: https://boardgamemath.github.io/boardgamemath
+    base_url: http://www.boardgamemath.com
     deploy:
       host: github_pages
       branch: gh-pages
-
-#    base_url: https://www.boardgamemath.com

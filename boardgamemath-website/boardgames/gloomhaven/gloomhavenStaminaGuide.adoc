@@ -1,0 +1,53 @@
+= Gloomhaven stamina and exhaustion guide
+:awestruct-description: Learn how to avoid becoming exhausted with your Gloomhaven character.
+:awestruct-game_id: gloomhaven
+:awestruct-layout: boardGameBase
+
+By using link:gloomhavenStaminaCalculator.html[our stamina calculator],
+we 've come to the following conclusions:
+
+== Playing lost cards early is very expensive
+
+TODO none, early and late screenshot brute
+
+Exception: High stamina characters such as Tinkerer
+
+TODO early screenshot tinkerer
+
+== Bleeding cards early is even more expensive
+
+Early on, giving up a card to avoid damage (that doesn't kill you)
+is almost never worth it:
+
+TODO screenshot
+
+Losing a pair of discard cars is even worse.
+*Be especially careful in the last round(s) before your first rest*,
+when have no hand cards left.
+If you need to bleed a pair of discard cards to stay alive, it can ruin you.
+
+TODO screenshot
+
+The Spellweaver is less impacted by early bleeding, because of her reviving ether.
+
+TODO screenshot
+
+If your team can't avoid bleeding cards early in the scenario,
+let the Tinkerer or Spellweaver take the pain.
+
+== High stamina characters (Tinkerer, ...) play lost cards more often
+
+TODO not all characters are equal
+
+== Low stamina characters (Scoundrel, ...) take long rests more often
+
+Even if the rest of the team doesn't.
+
+TODO not all characters are equal
+
+Renewable items are more useful to the Scoundrel and other low stamina characters,
+because they are more likely to do a long rest.
+
+== Try it yourself
+
+link:gloomhavenStaminaCalculator.html[Try our interactive stamina calculator.]

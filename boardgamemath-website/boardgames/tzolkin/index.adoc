@@ -1,6 +1,5 @@
 = How to win Tzolk'in
-:awestruct-boardGameName: Tzolk'in
+:awestruct-game_id: tzolkin
 :awestruct-layout: boardGameBase
-:showtitle:
 
-TODO
+Coming soon...

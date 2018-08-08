@@ -1,10 +1,23 @@
 ---
 layout: normalBase
 ---
+- game = site.games.find {|e| !e.gameId.nil? and page.game_id.eql? e.gameId }
 - page.ogType = "article"
-- page.title = "How to win #{page.boardGameName}"
-- page.description = "Breakdown of #{page.boardGameName}'s game mechanics to help you become more succesfull."
+- page.description = "Breakdown of #{game.name}'s game mechanics to help you become more succesfull."
 - page.disqus_identifier = page.url
+
+%h1.title(style="border-bottom: 1px solid #eee;")
+  = page.title
+
+%div
+  - if !game.boardGameGeekUrl.empty?
+    .pull-right
+      %a{:href => game.boardGameGeekUrl}<
+        BoardGameGeek
+  - if !game.howToPlayVideoUrl.empty?
+    %a(style="text-align: right;"){:href => game.howToPlayVideoUrl}<
+      How to play video
+
 ~ content
 .comments
   %a(name = 'comments')
