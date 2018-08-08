@@ -70,7 +70,7 @@ function updateRounds() {
         if (round.bleedDiscardPairCount * 2 > discardCardSize) {
             round.bleedDiscardPairCount = Math.floor(discardCardSize / 2);
         }
-        discardCardSize -= round.bleedDiscardPairCount;
+        discardCardSize -= (round.bleedDiscardPairCount * 2);
         if (handCardSize < 2) {
             if (discardCardSize < 2 || (discardCardSize === 2 && handCardSize === 0)) { // Exhausted
                 handCardSize = 0;
@@ -100,7 +100,7 @@ function updateRounds() {
         } else if (handCardSize >= 2) { // Normal play
             handCardSize -= 2;
             discardCardSize += 2 - round.playLostCardCount;
-            if (revivingEtherAvailable
+            if (revivingEtherAvailable && handCardSize < 2
                     && (discardCardSize < 2 || (discardCardSize === 2 && handCardSize === 0))) {
                 round.revivingEther = true;
                 handCardSize += (selectedCharacter.handLimit - handCardSize - discardCardSize) - 1;
@@ -112,9 +112,9 @@ function updateRounds() {
 }
 
 function initChart() {
-    outerSize = {width: 960, height: 360};
+    outerSize = {width: 960, height: 500};
     margin = {top: 20, right: 30, bottom: 40, left: 40};
-    barButtonCount = 3;
+    barButtonCount = 7;
     barButtonSize = {width: 20, height: 20};
     innerSize = {width: outerSize.width - margin.left - margin.right,
         height: outerSize.height - margin.top - margin.bottom - (barButtonCount * barButtonSize.height)};
@@ -213,6 +213,7 @@ function initChart() {
             .style("text-anchor", "middle")
             .text("long rest");
     longRestButton = createButton(roundBar, "longRestGloomhaven.svg",
+            "Take a long rest in my turn",
             function (round) {
                 return xRange(round.number);
             }, function (round) {
@@ -222,6 +223,7 @@ function initChart() {
                 updateRounds();
             });
     playLostCard1Button = createButton(roundBar, "lostCardGloomhaven.svg",
+            "Play a lost card in my turn",
             function (round) {
                 return xRange(round.number);
             }, function (round) {
@@ -235,6 +237,7 @@ function initChart() {
                 updateRounds();
             });
     playLostCard2Button = createButton(roundBar, "lostCardGloomhaven.svg",
+            "Play a lost card in my turn",
             function (round) {
                 return xRange(round.number);
             }, function (round) {
@@ -247,9 +250,65 @@ function initChart() {
                 }
                 updateRounds();
             });
+    bleedHandCard1Button = createButton(roundBar, "bleedHandCardGloomhaven.svg",
+            "Bleed a hand card (before my turn)",
+            function (round) {
+                return xRange(round.number);
+            }, function (round) {
+                return innerSize.height + margin.bottom + (3 * barButtonSize.height);
+            }, function(round) {
+                if (round.bleedHandCardCount < 1) {
+                    round.bleedHandCardCount++;
+                } else {
+                    round.bleedHandCardCount--;
+                }
+                updateRounds();
+            });
+    bleedHandCard2Button = createButton(roundBar, "bleedHandCardGloomhaven.svg",
+            "Bleed a hand card (before my turn)",
+            function (round) {
+                return xRange(round.number);
+            }, function (round) {
+                return innerSize.height + margin.bottom + (4 * barButtonSize.height);
+            }, function(round) {
+                if (round.bleedHandCardCount < 2) {
+                    round.bleedHandCardCount++;
+                } else {
+                    round.bleedHandCardCount--;
+                }
+                updateRounds();
+            });
+    bleedDiscardPair1Button = createButton(roundBar, "bleedDiscardPairGloomhaven.svg",
+            "Bleed 2 discard cards (before my turn)",
+            function (round) {
+                return xRange(round.number);
+            }, function (round) {
+                return innerSize.height + margin.bottom + (5 * barButtonSize.height);
+            }, function(round) {
+                if (round.bleedDiscardPairCount < 1) {
+                    round.bleedDiscardPairCount++;
+                } else {
+                    round.bleedDiscardPairCount--;
+                }
+                updateRounds();
+            });
+    bleedDiscardPair2Button = createButton(roundBar, "bleedDiscardPairGloomhaven.svg",
+            "Bleed 2 discard cards (before my turn)",
+            function (round) {
+                return xRange(round.number);
+            }, function (round) {
+                return innerSize.height + margin.bottom + (6 * barButtonSize.height);
+            }, function(round) {
+                if (round.bleedDiscardPairCount < 2) {
+                    round.bleedDiscardPairCount++;
+                } else {
+                    round.bleedDiscardPairCount--;
+                }
+                updateRounds();
+            });
 }
 
-function createButton(roundBar, svgFile, xFunction, yFunction, clickFunction) {
+function createButton(roundBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
     roundBar.append("image")
             .attr("xlink:href",svgFile)
             .attr("class", "barButton")
@@ -257,8 +316,9 @@ function createButton(roundBar, svgFile, xFunction, yFunction, clickFunction) {
             .attr("width", xRange.bandwidth())
             .attr("y", yFunction)
             .attr("height", barButtonSize.height)
-            .on("click", clickFunction);
-    return roundBar
+            .on("click", clickFunction)
+            .append("title").text(toolTip);
+    var button = roundBar
             .append("rect")
             .attr("class", "barButtonGrayScaleHack")
             .attr("x", xFunction)
@@ -266,6 +326,8 @@ function createButton(roundBar, svgFile, xFunction, yFunction, clickFunction) {
             .attr("y", yFunction)
             .attr("height", barButtonSize.height)
             .on("click", clickFunction);
+    button.append("title").text(toolTip);
+    return button;
 }
 
 
@@ -346,6 +408,22 @@ function updateChart() {
     playLostCard2Button
             .attr("visibility", function (round) {
                 return round.playLostCardCount >= 2 ? "hidden" : "visible";
+            });
+    bleedHandCard1Button
+            .attr("visibility", function (round) {
+                return round.bleedHandCardCount >= 1 ? "hidden" : "visible";
+            });
+    bleedHandCard2Button
+            .attr("visibility", function (round) {
+                return round.bleedHandCardCount >= 2 ? "hidden" : "visible";
+            });
+    bleedDiscardPair1Button
+            .attr("visibility", function (round) {
+                return round.bleedDiscardPairCount >= 1 ? "hidden" : "visible";
+            });
+    bleedDiscardPair2Button
+            .attr("visibility", function (round) {
+                return round.bleedDiscardPairCount >= 2 ? "hidden" : "visible";
             });
 
 }

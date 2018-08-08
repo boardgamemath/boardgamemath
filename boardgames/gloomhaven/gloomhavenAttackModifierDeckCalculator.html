@@ -12,12 +12,12 @@
 
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>BoardGameMath - How to win Risk</title>
-<meta content="Breakdown of Risk&#39;s game mechanics to help you become more succesfull." name="description">
-<link href="https://www.boardgamemath.com/boardgames/risk/" rel="canonical">
-<meta content="How to win Risk" property="og:title">
-<meta content="Breakdown of Risk&#39;s game mechanics to help you become more succesfull." property="og:description">
-<meta content="https://www.boardgamemath.com/boardgames/risk/" property="og:url">
+<title>BoardGameMath - Gloomhaven attack modifier deck builder and perk calculator</title>
+<meta content="Pick the perks well to build the best attack modifier deck for your Gloomhaven character" name="description">
+<link href="https://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenAttackModifierDeckCalculator.html" rel="canonical">
+<meta content="Gloomhaven attack modifier deck builder and perk calculator" property="og:title">
+<meta content="Pick the perks well to build the best attack modifier deck for your Gloomhaven character" property="og:description">
+<meta content="https://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenAttackModifierDeckCalculator.html" property="og:url">
 <meta content="BoardGameMath" property="og:site_name">
 <meta content="article" property="og:type">
 <meta content="https://www.boardgamemath.com/headerFooter/boardGameMathIcon.png" property="og:image">
@@ -53,7 +53,7 @@
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Board games <b class="caret"></b></a>
 <ul class="dropdown-menu">
-<li><a href="../gloomhaven/index.html">Gloomhaven</a></li>
+<li><a href="index.html">Gloomhaven</a></li>
 </ul>
 </li>
 </ul>
@@ -67,20 +67,31 @@
 <div class="container" style="padding-top: 20px;">
 <div class="row">
 <div class="col-md-9">
-<h1 class="title" style="border-bottom: 1px solid #eee;">
-How to win Risk
+<h1>
+Gloomhaven attack modifier deck builder and perk calculator
 </h1>
-<div>
-<div class="pull-right">
-<a href="https://boardgamegeek.com/boardgame/181/risk">BoardGameGeek</a>
-</div>
-</div>
-<div class="paragraph">
-<p>How to win? Roll well!</p>
-</div>
-<div class="paragraph">
-<p>Just kidding, guide coming soon&#8230;&#8203;</p>
-</div>
+<link href="gloomhavenAttackModifierDeckCalculator.css" rel="stylesheet">
+<section style="display:block;">
+<button onchange="resetDeck()">
+Reset deck
+</button>
+</section>
+<svg class="chart"></svg>
+<script src="../../website/d3/d3.min.js"></script>
+<script src="gloomhavenAttackModifierDeckCalculator.js"></script>
+
+<h2>License</h2>
+<ul>
+<li>
+Feel free to reuse screenshots of this calculator in any of your content,
+with a link to this webpage nearby.
+</li>
+<li>
+For the brave, the source code of this calculator is on
+<a href="https://github.com/boardgamemath/boardgamemath">GitHub</a>
+under the open source AGPL license.
+</li>
+</ul>
 <div class="comments">
 <a name="comments"></a>
 <h2>Comments</h2>
@@ -88,9 +99,9 @@ How to win Risk
             <div id="disqus_thread"></div>
             <script type="text/javascript">
             var disqus_shortname = 'boardgamemath';
-            var disqus_url = "http://www.boardgamemath.com/boardgames/risk/";
+            var disqus_url = "http://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenAttackModifierDeckCalculator.html";
             var disqus_developer = null;
-            var disqus_identifier = "/boardgames/risk/";
+            var disqus_identifier = "/boardgames/gloomhaven/gloomhavenAttackModifierDeckCalculator.html";
             (function() {
               var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
               dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -109,7 +120,7 @@ How to win Risk
 <ul class="list-unstyled">
 <li style="margin-bottom: 10px;">
 <div class="title">
-<a href="../gloomhaven/index.html">Gloomhaven</a>
+<a href="index.html">Gloomhaven</a>
 </div>
 </li>
 </ul>

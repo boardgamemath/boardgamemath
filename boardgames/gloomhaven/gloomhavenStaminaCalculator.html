@@ -12,11 +12,11 @@
 
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>BoardGameMath - How to win </title>
-<meta content="Breakdown of &#39;s game mechanics to help you become more succesfull." name="description">
+<title>BoardGameMath - Gloomhaven stamina exhaustion calculator</title>
+<meta content="Calculate how many turns until your Gloomhaven character runs out of cards to avoid premature exhaustion." name="description">
 <link href="https://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenStaminaCalculator.html" rel="canonical">
-<meta content="How to win " property="og:title">
-<meta content="Breakdown of &#39;s game mechanics to help you become more succesfull." property="og:description">
+<meta content="Gloomhaven stamina exhaustion calculator" property="og:title">
+<meta content="Calculate how many turns until your Gloomhaven character runs out of cards to avoid premature exhaustion." property="og:description">
 <meta content="https://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenStaminaCalculator.html" property="og:url">
 <meta content="BoardGameMath" property="og:site_name">
 <meta content="article" property="og:type">
@@ -67,16 +67,53 @@
 <div class="container" style="padding-top: 20px;">
 <div class="row">
 <div class="col-md-9">
-<div class="h1">Gloomhaven stamina exhaustion calculator</div>
+<h1>
+Gloomhaven stamina exhaustion calculator
+</h1>
 <link href="gloomhavenStaminaCalculator.css" rel="stylesheet">
 <section style="display:block;">
 Character:
 <select onchange="changeCharacter(this)"></select>
 </section>
 <svg class="chart"></svg>
+<div class="sect1">
+<h2 id="_guide">Guide</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="gloomhavenStaminaGuide.html">Take a look at our stamina guide.</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_known_issues">Known issues</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Playing the Spellweaver&#8217;s reviving ether card should force playing at least one lost card.</p>
+</li>
+<li>
+<p>For a Spellweaver&#8217;s optimal stamina, play the reviving ether card with another lost card.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <script src="../../website/d3/d3.min.js"></script>
 <script src="gloomhavenStaminaCalculator.js"></script>
 
+<h2>License</h2>
+<ul>
+<li>
+Feel free to reuse screenshots of this calculator in any of your content,
+with a link to this webpage nearby.
+</li>
+<li>
+For the brave, the source code of this calculator is on
+<a href="https://github.com/boardgamemath/boardgamemath">GitHub</a>
+under the open source AGPL license.
+</li>
+</ul>
 <div class="comments">
 <a name="comments"></a>
 <h2>Comments</h2>
@@ -84,7 +121,7 @@ Character:
             <div id="disqus_thread"></div>
             <script type="text/javascript">
             var disqus_shortname = 'boardgamemath';
-            var disqus_url = "https://boardgamemath.github.io/boardgamemath/boardgames/gloomhaven/gloomhavenStaminaCalculator.html";
+            var disqus_url = "http://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenStaminaCalculator.html";
             var disqus_developer = null;
             var disqus_identifier = "/boardgames/gloomhaven/gloomhavenStaminaCalculator.html";
             (function() {
