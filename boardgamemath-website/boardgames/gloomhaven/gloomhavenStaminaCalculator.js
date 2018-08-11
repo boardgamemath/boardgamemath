@@ -34,6 +34,7 @@ function initCharacters() {
 
 function changeCharacter(t) {
     selectedCharacter = characters[t.selectedIndex];
+    resetRounds();
     updateRounds();
 }
 
@@ -54,6 +55,16 @@ function initRounds() {
     rounds = new Array(MAX_ROUNDS);
     for (var i = 0; i < rounds.length; i++) {
         rounds[i] = new Round(i + 1);
+    }
+}
+
+function resetRounds() {
+    for (var i = 0; i < rounds.length; i++) {
+        var round = rounds[i];
+        round.longRest = false;
+        round.playLostCardCount = 0;
+        round.bleedHandCardCount = 0;
+        round.bleedDiscardPairCount = 0;
     }
 }
 
