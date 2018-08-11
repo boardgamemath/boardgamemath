@@ -103,6 +103,10 @@ function updateRounds() {
             if (revivingEtherAvailable && handCardSize < 2
                     && (discardCardSize < 2 || (discardCardSize === 2 && handCardSize === 0))) {
                 round.revivingEther = true;
+                if (round.playLostCardCount == 0) {
+                    round.playLostCardCount = discardCardSize;
+                    discardCardSize = 0;
+                }
                 handCardSize += (selectedCharacter.handLimit - handCardSize - discardCardSize) - 1;
                 revivingEtherAvailable = false;
             }
