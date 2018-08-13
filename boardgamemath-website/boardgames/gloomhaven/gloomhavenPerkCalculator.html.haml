@@ -1,16 +1,25 @@
 ---
-gameId: gloomhaven
-title: Gloomhaven attack modifier deck builder and perk calculator
+game_id: gloomhaven
+title: Gloomhaven perk calculator
 description: Pick the perks well to build the best attack modifier deck for your Gloomhaven character
 layout: boardGameCalculatorBase
 priority: 1.0
 ---
 
-%link(rel="stylesheet" href="gloomhavenAttackModifierDeckCalculator.css")
+%link(rel="stylesheet" href="gloomhavenPerkCalculator.css")
 %section(style="display:block;")
   %button(onclick="resetDeck()")
     Reset deck
 %svg.chart
 
+%h2
+  Known issues
+
+%ul
+  %li
+    No support yet for rolling modifier cards
+  %li
+    No support yet for other effect cards
+
 %script{:src => relative("/website/d3/d3.min.js")}
-%script{:src => "gloomhavenAttackModifierDeckCalculator.js"}
+%script{:src => "gloomhavenPerkCalculator.js"}

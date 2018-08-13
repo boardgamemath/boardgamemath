@@ -10,8 +10,8 @@ because you can always avoid damage by throwing away cards.
 
 Let's take a look at the impact of your actions on your stamina and exhaustion:
 
-* link:gloomhavenStaminaGuide.html[Read the guide]
-* link:gloomhavenStaminaCalculator.html[Try the calculator]
+* link:gloomhavenStaminaGuide.html[Read the stamina guide]
+* link:gloomhavenStaminaCalculator.html[Try the stamina calculator]
 
 == Know your initiative
 
@@ -19,4 +19,6 @@ Guide coming soon...
 
 == Pick your perks well
 
-Guide and calculator coming soon...
+Guide coming soon...
+
+* link:gloomhavenPerkCalculator.html[Try the perk calculator]

@@ -1,0 +1,13 @@
+- if !page.outputPage.game_id.nil?
+  - game = site.games.find {|e| !e.gameId.nil? and page.outputPage.game_id.eql? e.gameId }
+  .panel.panel-default
+    .panel-heading
+      %a{:href => relative("/boardgames/#{game.gameId}/index.html", page.outputPage)}<
+        #{game.name}
+    .panel-body
+      %ul.list-unstyled
+        - for subPage in game.subPages
+          %li(style="margin-bottom: 10px;")
+            .title
+              %a{:href => relative("/boardgames/#{game.gameId}/#{subPage.urlPath}", page.outputPage)}<
+                #{subPage.title}

@@ -9,6 +9,11 @@
   boardGameGeekUrl: https://boardgamegeek.com/boardgame/174430/gloomhaven
   howToPlayVideoUrl: https://www.youtube.com/watch?v=pSWMvXT6jCw
   visible: true
+  subPages:
+    - title: Stamina calculator
+      urlPath: gloomhavenStaminaCalculator.html
+    - title: Perk calculator
+      urlPath: gloomhavenPerkCalculator.html
 
 - gameId: axisAndAllies1940
   name: "Allies and Axis 1940"
