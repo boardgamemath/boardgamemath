@@ -133,7 +133,7 @@ function initCardsChart() {
             .style("text-anchor", "middle")
             .text("?");
     cardCountDown = createButton(cardBar, "../../website/custom/downChevron.svg",
-            "Add a card",
+            "Remove a card",
             function (card) {
                 return xRange(card.name);
             }, function (card) {
