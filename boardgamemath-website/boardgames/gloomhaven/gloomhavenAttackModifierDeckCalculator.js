@@ -94,12 +94,37 @@ function initChart() {
             .enter().append("g")
             .attr("class", "cardBar");
 
-    probabilityBar = cardBar.append("rect")
-            .attr("class", "probabilityBar")
+    drawProbabilityBar = cardBar.append("rect")
+            .attr("class", "drawProbability")
             .attr("x", function (card) {
                 return xRange(card.cardIndex);
             })
             .attr("width", xRange.bandwidth());
+    drawProbabilityText = cardBar.append("text")
+            .attr("class", "drawProbability")
+            .attr("x", function (card) {
+                return xRange(card.cardIndex) + xRange.bandwidth() / 2;
+            })
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("%");
+}
+
+function updateChart() {
+    drawProbabilityBar
+            .attr("y", function (card) {
+                return yRange(card.probability);
+            })
+            .attr("height", function (card) {
+                return innerSize.height - yRange(card.probability);
+            });
+    drawProbabilityText
+            .attr("y", function (card) {
+                return yRange(card.probability + 0.1);
+            })
+            .text(function (card) {
+                return Math.round(card.probability * 100.0) + "%";
+            });
 }
 
 function createButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
@@ -122,15 +147,4 @@ function createButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunc
             .on("click", clickFunction);
     button.append("title").text(toolTip);
     return button;
-}
-
-
-function updateChart() {
-    probabilityBar
-            .attr("y", function (card) {
-                return yRange(card.probability);
-            })
-            .attr("height", function (card) {
-                return innerSize.height - yRange(card.probability);
-            });
 }

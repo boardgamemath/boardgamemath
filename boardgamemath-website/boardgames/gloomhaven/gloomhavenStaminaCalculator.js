@@ -323,28 +323,6 @@ function initChart() {
             });
 }
 
-function createButton(roundBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
-    roundBar.append("image")
-            .attr("xlink:href",svgFile)
-            .attr("class", "barButton")
-            .attr("x", xFunction)
-            .attr("width", xRange.bandwidth())
-            .attr("y", yFunction)
-            .attr("height", barButtonSize.height)
-            .on("click", clickFunction)
-            .append("title").text(toolTip);
-    var button = roundBar
-            .append("rect")
-            .attr("class", "barButtonGrayScaleHack")
-            .attr("x", xFunction)
-            .attr("width", xRange.bandwidth())
-            .attr("y", yFunction)
-            .attr("height", barButtonSize.height)
-            .on("click", clickFunction);
-    button.append("title").text(toolTip);
-    return button;
-}
-
 
 function updateChart() {
     handCardBar
@@ -441,4 +419,26 @@ function updateChart() {
                 return round.bleedDiscardPairCount >= 2 ? "hidden" : "visible";
             });
 
+}
+
+function createButton(roundBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
+    roundBar.append("image")
+            .attr("xlink:href",svgFile)
+            .attr("class", "barButton")
+            .attr("x", xFunction)
+            .attr("width", xRange.bandwidth())
+            .attr("y", yFunction)
+            .attr("height", barButtonSize.height)
+            .on("click", clickFunction)
+            .append("title").text(toolTip);
+    var button = roundBar
+            .append("rect")
+            .attr("class", "barButtonGrayScaleHack")
+            .attr("x", xFunction)
+            .attr("width", xRange.bandwidth())
+            .attr("y", yFunction)
+            .attr("height", barButtonSize.height)
+            .on("click", clickFunction);
+    button.append("title").text(toolTip);
+    return button;
 }
