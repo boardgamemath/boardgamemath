@@ -4,8 +4,7 @@ initCards();
 initChart();
 updateProbabilities();
 
-function Card(cardIndex, name, additionModifier, multiplierModifier, initialCount) {
-    this.cardIndex = cardIndex;
+function Card(name, additionModifier, multiplierModifier, initialCount) {
     this.name = name;
     this.additionModifier = additionModifier;
     this.multiplierModifier = multiplierModifier;
@@ -16,13 +15,13 @@ function Card(cardIndex, name, additionModifier, multiplierModifier, initialCoun
 
 function initCards() {
     cards = [
-        new Card(0, "Miss", 0, 0, 1),
-        new Card(1, "-2", -2, 1, 1),
-        new Card(2, "-1", -1, 1, 4),
-        new Card(3, "0", 0, 1, 5),
-        new Card(4, "+1", 1, 1, 4),
-        new Card(5, "+2", 2, 1, 1),
-        new Card(6, "Double", 0, 2, 1)
+        new Card("Miss", 0, 0, 1),
+        new Card("-2", -2, 1, 1),
+        new Card("-1", -1, 1, 4),
+        new Card("0", 0, 1, 5),
+        new Card("+1", 1, 1, 4),
+        new Card("+2", 2, 1, 1),
+        new Card("Double", 0, 2, 1)
     ];
 }
 
@@ -62,7 +61,8 @@ function initChart() {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     xRange = d3.scaleBand()
-            .domain(d3.range(0, cards.length))
+            // .domain(d3.range(0, cards.length))
+            .domain(cards.map(function(card) { return card.name; }))
             .range([0, innerSize.width])
             .padding(0.1);
     chart.append("g")
@@ -97,13 +97,13 @@ function initChart() {
     drawProbabilityBar = cardBar.append("rect")
             .attr("class", "drawProbability")
             .attr("x", function (card) {
-                return xRange(card.cardIndex);
+                return xRange(card.name);
             })
             .attr("width", xRange.bandwidth());
     drawProbabilityText = cardBar.append("text")
             .attr("class", "drawProbability")
             .attr("x", function (card) {
-                return xRange(card.cardIndex) + xRange.bandwidth() / 2;
+                return xRange(card.name) + xRange.bandwidth() / 2;
             })
             .attr("dy", "1em")
             .style("text-anchor", "middle")
@@ -111,7 +111,7 @@ function initChart() {
     cardCountUp = createButton(cardBar, "../../website/custom/upChevron.svg",
             "Add a card",
             function (card) {
-                return xRange(card.cardIndex);
+                return xRange(card.name);
             }, function (card) {
                 return innerSize.height + margin.bottom;
             }, function(card) {
@@ -121,7 +121,7 @@ function initChart() {
     cardCountText = cardBar.append("text")
             .attr("class", "barButton")
             .attr("x", function (card) {
-                return xRange(card.cardIndex) + xRange.bandwidth() / 2;
+                return xRange(card.name) + xRange.bandwidth() / 2;
             })
             .attr("y", function (card) {
                 return innerSize.height + margin.bottom + barButtonSize.height;
@@ -132,7 +132,7 @@ function initChart() {
     cardCountDown = createButton(cardBar, "../../website/custom/downChevron.svg",
             "Add a card",
             function (card) {
-                return xRange(card.cardIndex);
+                return xRange(card.name);
             }, function (card) {
                 return innerSize.height + margin.bottom + (2 * barButtonSize.height);
             }, function(card) {
