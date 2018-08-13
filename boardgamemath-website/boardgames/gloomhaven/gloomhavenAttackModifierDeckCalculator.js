@@ -108,6 +108,39 @@ function initChart() {
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("%");
+    cardCountUp = createButton(cardBar, "../../website/custom/upChevron.svg",
+            "Add a card",
+            function (card) {
+                return xRange(card.cardIndex);
+            }, function (card) {
+                return innerSize.height + margin.bottom;
+            }, function(card) {
+                card.count++;
+                updateProbabilities();
+            });
+    cardCountText = cardBar.append("text")
+            .attr("class", "barButton")
+            .attr("x", function (card) {
+                return xRange(card.cardIndex) + xRange.bandwidth() / 2;
+            })
+            .attr("y", function (card) {
+                return innerSize.height + margin.bottom + barButtonSize.height;
+            })
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("?");
+    cardCountDown = createButton(cardBar, "../../website/custom/downChevron.svg",
+            "Add a card",
+            function (card) {
+                return xRange(card.cardIndex);
+            }, function (card) {
+                return innerSize.height + margin.bottom + (2 * barButtonSize.height);
+            }, function(card) {
+                if (card.count > 0) {
+                    card.count--;
+                    updateProbabilities();
+                }
+            });
 }
 
 function updateChart() {
@@ -125,11 +158,15 @@ function updateChart() {
             .text(function (card) {
                 return Math.round(card.probability * 100.0) + "%";
             });
+    cardCountText
+            .text(function (card) {
+                return card.count.toString();
+            });
 }
 
-function createButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
+function createBooleanButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
     cardBar.append("image")
-            .attr("xlink:href",svgFile)
+            .attr("xlink:href", svgFile)
             .attr("class", "barButton")
             .attr("x", xFunction)
             .attr("width", xRange.bandwidth())
@@ -146,5 +183,18 @@ function createButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunc
             .attr("height", barButtonSize.height)
             .on("click", clickFunction);
     button.append("title").text(toolTip);
+    return button;
+}
+
+function createButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
+    var button = cardBar.append("image")
+            .attr("xlink:href", svgFile)
+            .attr("class", "barButton")
+            .attr("x", xFunction)
+            .attr("width", xRange.bandwidth())
+            .attr("y", yFunction)
+            .attr("height", barButtonSize.height)
+            .on("click", clickFunction)
+            .append("title").text(toolTip);
     return button;
 }

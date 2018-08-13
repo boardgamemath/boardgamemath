@@ -227,7 +227,7 @@ function initChart() {
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("long rest");
-    longRestButton = createButton(roundBar, "longRestGloomhaven.svg",
+    longRestButton = createBooleanButton(roundBar, "longRestGloomhaven.svg",
             "Take a long rest in my turn",
             function (round) {
                 return xRange(round.number);
@@ -237,7 +237,7 @@ function initChart() {
                 round.longRest = !round.longRest;
                 updateRounds();
             });
-    playLostCard1Button = createButton(roundBar, "lostCardGloomhaven.svg",
+    playLostCard1Button = createBooleanButton(roundBar, "lostCardGloomhaven.svg",
             "Play a lost card in my turn",
             function (round) {
                 return xRange(round.number);
@@ -251,7 +251,7 @@ function initChart() {
                 }
                 updateRounds();
             });
-    playLostCard2Button = createButton(roundBar, "lostCardGloomhaven.svg",
+    playLostCard2Button = createBooleanButton(roundBar, "lostCardGloomhaven.svg",
             "Play a lost card in my turn",
             function (round) {
                 return xRange(round.number);
@@ -265,7 +265,7 @@ function initChart() {
                 }
                 updateRounds();
             });
-    bleedHandCard1Button = createButton(roundBar, "bleedHandCardGloomhaven.svg",
+    bleedHandCard1Button = createBooleanButton(roundBar, "bleedHandCardGloomhaven.svg",
             "Bleed a hand card (before my turn)",
             function (round) {
                 return xRange(round.number);
@@ -279,7 +279,7 @@ function initChart() {
                 }
                 updateRounds();
             });
-    bleedHandCard2Button = createButton(roundBar, "bleedHandCardGloomhaven.svg",
+    bleedHandCard2Button = createBooleanButton(roundBar, "bleedHandCardGloomhaven.svg",
             "Bleed a hand card (before my turn)",
             function (round) {
                 return xRange(round.number);
@@ -293,7 +293,7 @@ function initChart() {
                 }
                 updateRounds();
             });
-    bleedDiscardPair1Button = createButton(roundBar, "bleedDiscardPairGloomhaven.svg",
+    bleedDiscardPair1Button = createBooleanButton(roundBar, "bleedDiscardPairGloomhaven.svg",
             "Bleed 2 discard cards (before my turn)",
             function (round) {
                 return xRange(round.number);
@@ -307,7 +307,7 @@ function initChart() {
                 }
                 updateRounds();
             });
-    bleedDiscardPair2Button = createButton(roundBar, "bleedDiscardPairGloomhaven.svg",
+    bleedDiscardPair2Button = createBooleanButton(roundBar, "bleedDiscardPairGloomhaven.svg",
             "Bleed 2 discard cards (before my turn)",
             function (round) {
                 return xRange(round.number);
@@ -421,9 +421,9 @@ function updateChart() {
 
 }
 
-function createButton(roundBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
+function createBooleanButton(roundBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
     roundBar.append("image")
-            .attr("xlink:href",svgFile)
+            .attr("xlink:href", svgFile)
             .attr("class", "barButton")
             .attr("x", xFunction)
             .attr("width", xRange.bandwidth())
