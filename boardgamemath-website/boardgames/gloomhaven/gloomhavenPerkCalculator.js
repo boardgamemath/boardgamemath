@@ -20,9 +20,9 @@ function initCards() {
     cards = [
         new Card("Miss", 0, 0, 1),
         new Card("-2", -2, 1, 1),
-        new Card("-1", -1, 1, 4),
-        new Card("0", 0, 1, 5),
-        new Card("+1", 1, 1, 4),
+        new Card("-1", -1, 1, 5),
+        new Card("0", 0, 1, 6),
+        new Card("+1", 1, 1, 5),
         new Card("+2", 2, 1, 1),
         new Card("Double", 0, 2, 1)
     ];
