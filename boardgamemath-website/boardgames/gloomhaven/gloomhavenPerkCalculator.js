@@ -52,7 +52,7 @@ function updateProbabilities() {
 
 function initCardsChart() {
     outerSize = {width: 400, height: 300};
-    margin = {top: 20, right: 30, bottom: 40, left: 40};
+    margin = {top: 20, right: 30, bottom: 40, left: 50};
     barButtonCount = 3;
     barButtonSize = {width: 20, height: 20};
     innerSize = {width: outerSize.width - margin.left - margin.right,
@@ -217,7 +217,7 @@ function updateAttacks() {
 
 function initAttacksChart() {
     attacksOutersize = {width: 400, height: 300};
-    attacksMargin = {top: 20, right: 30, bottom: 40, left: 40};
+    attacksMargin = {top: 20, right: 30, bottom: 40, left: 50};
     attacksInnerSize = {width: attacksOutersize.width - attacksMargin.left - attacksMargin.right,
         height: attacksOutersize.height - attacksMargin.top - attacksMargin.bottom};
 
