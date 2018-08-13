@@ -1,0 +1,28 @@
+.drawProbability {
+    fill: steelblue;
+}
+.averageDamage {
+    fill: steelblue;
+}
+.barButton {
+    cursor: pointer;
+}
+.barButtonGrayScaleHack {
+    cursor: pointer;
+    fill: white;
+    fill-opacity : 0.7;
+}
+
+.axis text {
+    font: 14px sans-serif;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
+}

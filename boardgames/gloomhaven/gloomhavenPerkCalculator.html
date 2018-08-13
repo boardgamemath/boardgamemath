@@ -12,12 +12,12 @@
 
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>BoardGameMath - Gloomhaven stamina exhaustion calculator</title>
-<meta content="Calculate how many turns until your Gloomhaven character runs out of cards to avoid premature exhaustion." name="description">
-<link href="https://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenStaminaCalculator.html" rel="canonical">
-<meta content="Gloomhaven stamina exhaustion calculator" property="og:title">
-<meta content="Calculate how many turns until your Gloomhaven character runs out of cards to avoid premature exhaustion." property="og:description">
-<meta content="https://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenStaminaCalculator.html" property="og:url">
+<title>BoardGameMath - Gloomhaven perk calculator</title>
+<meta content="Pick the perks well to build the best attack modifier deck for your Gloomhaven character" name="description">
+<link href="https://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenPerkCalculator.html" rel="canonical">
+<meta content="Gloomhaven perk calculator" property="og:title">
+<meta content="Pick the perks well to build the best attack modifier deck for your Gloomhaven character" property="og:description">
+<meta content="https://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenPerkCalculator.html" property="og:url">
 <meta content="BoardGameMath" property="og:site_name">
 <meta content="article" property="og:type">
 <meta content="https://www.boardgamemath.com/headerFooter/boardGameMathIcon.png" property="og:image">
@@ -68,24 +68,29 @@
 <div class="row">
 <div class="col-md-9">
 <h1>
-Gloomhaven stamina exhaustion calculator
+Gloomhaven perk calculator
 </h1>
-<link href="gloomhavenStaminaCalculator.css" rel="stylesheet">
+<link href="gloomhavenPerkCalculator.css" rel="stylesheet">
 <section style="display:block;">
-Character:
-<select onchange="changeCharacter(this)"></select>
+<button onclick="resetDeck()">
+Reset deck
+</button>
 </section>
-<svg class="chart"></svg>
-<div class="sect1">
-<h2 id="_guide">Guide</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="gloomhavenStaminaGuide.html">Take a look at our stamina guide.</a></p>
-</div>
-</div>
-</div>
+<svg class="cardsChart"></svg>
+<svg class="attacksChart"></svg>
+<h2>
+Known issues
+</h2>
+<ul>
+<li>
+No support yet for rolling modifier cards
+</li>
+<li>
+No support yet for other effect cards
+</li>
+</ul>
 <script src="../../website/d3/d3.min.js"></script>
-<script src="gloomhavenStaminaCalculator.js"></script>
+<script src="gloomhavenPerkCalculator.js"></script>
 
 <h2>Reuse</h2>
 <ul>
@@ -106,9 +111,9 @@ under the open source AGPL license.
             <div id="disqus_thread"></div>
             <script type="text/javascript">
             var disqus_shortname = 'boardgamemath';
-            var disqus_url = "http://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenStaminaCalculator.html";
+            var disqus_url = "http://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenPerkCalculator.html";
             var disqus_developer = null;
-            var disqus_identifier = "/boardgames/gloomhaven/gloomhavenStaminaCalculator.html";
+            var disqus_identifier = "/boardgames/gloomhaven/gloomhavenPerkCalculator.html";
             (function() {
               var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
               dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
