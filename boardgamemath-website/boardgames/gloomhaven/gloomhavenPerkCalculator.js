@@ -1,7 +1,10 @@
 var cards;
+var attacks;
 
 initCards();
-initChart();
+initAttacks();
+initCardsChart();
+initAttacksChart();
 updateProbabilities();
 
 function Card(name, additionModifier, multiplierModifier, initialCount) {
@@ -43,10 +46,11 @@ function updateProbabilities() {
         var card = cards[i];
         card.probability = card.count / countTotal;
     }
-    updateChart();
+    updateCardsChart();
+    updateAttacks();
 }
 
-function initChart() {
+function initCardsChart() {
     outerSize = {width: 400, height: 300};
     margin = {top: 20, right: 30, bottom: 40, left: 40};
     barButtonCount = 3;
@@ -54,22 +58,21 @@ function initChart() {
     innerSize = {width: outerSize.width - margin.left - margin.right,
         height: outerSize.height - margin.top - margin.bottom - (barButtonCount * barButtonSize.height)};
 
-    chart = d3.select(".chart")
+    cardsChart = d3.select(".cardsChart")
             .attr("width", outerSize.width)
             .attr("height", outerSize.height)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     xRange = d3.scaleBand()
-            // .domain(d3.range(0, cards.length))
             .domain(cards.map(function(card) { return card.name; }))
             .range([0, innerSize.width])
             .padding(0.1);
-    chart.append("g")
+    cardsChart.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + innerSize.height + ")")
             .call(d3.axisBottom().scale(xRange));
-    chart.append("text")
+    cardsChart.append("text")
             .attr("transform",
                     "translate(" + (innerSize.width / 2) + " ," + (innerSize.height + margin.top + 15) + ")")
             .style("text-anchor", "middle")
@@ -78,10 +81,10 @@ function initChart() {
     yRange = d3.scaleLinear()
             .domain([0, 1])
             .range([innerSize.height, 0]);
-    chart.append("g")
+    cardsChart.append("g")
             .attr("class", "y axis")
             .call(d3.axisLeft().scale(yRange));
-    chart.append("text")
+    cardsChart.append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
             .attr("x",0 - (innerSize.height / 2))
@@ -89,7 +92,7 @@ function initChart() {
             .style("text-anchor", "middle")
             .text("Probability");
 
-    var cardBar = chart.selectAll(".cardBar")
+    var cardBar = cardsChart.selectAll(".cardBar")
             .data(cards)
             .enter().append("g")
             .attr("class", "cardBar");
@@ -143,7 +146,7 @@ function initChart() {
             });
 }
 
-function updateChart() {
+function updateCardsChart() {
     drawProbabilityBar
             .attr("y", function (card) {
                 return yRange(card.probability);
@@ -153,7 +156,7 @@ function updateChart() {
             });
     drawProbabilityText
             .attr("y", function (card) {
-                return yRange(card.probability + 0.1);
+                return yRange(card.probability) - 20;
             })
             .text(function (card) {
                 return Math.round(card.probability * 100.0) + "%";
@@ -162,28 +165,6 @@ function updateChart() {
             .text(function (card) {
                 return card.count.toString();
             });
-}
-
-function createBooleanButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
-    cardBar.append("image")
-            .attr("xlink:href", svgFile)
-            .attr("class", "barButton")
-            .attr("x", xFunction)
-            .attr("width", xRange.bandwidth())
-            .attr("y", yFunction)
-            .attr("height", barButtonSize.height)
-            .on("click", clickFunction)
-            .append("title").text(toolTip);
-    var button = cardBar
-            .append("rect")
-            .attr("class", "barButtonGrayScaleHack")
-            .attr("x", xFunction)
-            .attr("width", xRange.bandwidth())
-            .attr("y", yFunction)
-            .attr("height", barButtonSize.height)
-            .on("click", clickFunction);
-    button.append("title").text(toolTip);
-    return button;
 }
 
 function createButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {
@@ -197,4 +178,117 @@ function createButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunc
             .on("click", clickFunction)
             .append("title").text(toolTip);
     return button;
+}
+
+function Attack(baseDamage) {
+    this.baseDamage = baseDamage;
+    this.averageDamage = baseDamage;
+}
+
+function initAttacks() {
+    attacks = [
+        new Attack(1),
+        new Attack(2),
+        new Attack(3),
+        new Attack(4),
+        new Attack(5),
+        new Attack(6),
+        new Attack(7),
+        new Attack(8),
+        new Attack(9)
+    ];
+}
+
+function updateAttacks() {
+    for (var i = 0; i < attacks.length; i++) {
+        var attack = attacks[i];
+        attack.averageDamage = 0.0;
+        for (var j = 0; j < cards.length; j++) {
+            var card = cards[j];
+            var damage = (attack.baseDamage + card.additionModifier) * card.multiplierModifier;
+            if (damage < 0) {
+                damage = 0;
+            }
+            attack.averageDamage += damage * card.probability;
+        }
+    }
+    updateAttacksChart();
+}
+
+function initAttacksChart() {
+    attacksOutersize = {width: 400, height: 300};
+    attacksMargin = {top: 20, right: 30, bottom: 40, left: 40};
+    attacksInnerSize = {width: attacksOutersize.width - attacksMargin.left - attacksMargin.right,
+        height: attacksOutersize.height - attacksMargin.top - attacksMargin.bottom};
+
+    attacksChart = d3.select(".attacksChart")
+            .attr("width", attacksOutersize.width)
+            .attr("height", attacksOutersize.height)
+            .append("g")
+            .attr("transform", "translate(" + attacksMargin.left + "," + attacksMargin.top + ")");
+
+    attacksX = d3.scaleBand()
+            .domain(attacks.map(function(attack) { return attack.baseDamage; }))
+            .range([0, attacksInnerSize.width])
+            .padding(0.1);
+    attacksChart.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + attacksInnerSize.height + ")")
+            .call(d3.axisBottom().scale(attacksX));
+    attacksChart.append("text")
+            .attr("transform",
+                    "translate(" + (attacksInnerSize.width / 2) + " ," + (attacksInnerSize.height + attacksMargin.top + 15) + ")")
+            .style("text-anchor", "middle")
+            .text("Base damage");
+
+    attacksY = d3.scaleLinear()
+            .domain([0, 20])
+            .range([attacksInnerSize.height, 0]);
+    attacksChart.append("g")
+            .attr("class", "y axis")
+            .call(d3.axisLeft().scale(attacksY));
+    attacksChart.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - attacksMargin.left)
+            .attr("x",0 - (attacksInnerSize.height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Average damage");
+
+    var attackBar = attacksChart.selectAll(".attackBar")
+            .data(attacks)
+            .enter().append("g")
+            .attr("class", "attackBar");
+
+    averageDamageBar = attackBar.append("rect")
+            .attr("class", "averageDamage")
+            .attr("x", function (attack) {
+                return attacksX(attack.baseDamage);
+            })
+            .attr("width", attacksX.bandwidth());
+    averageDamageText = attackBar.append("text")
+            .attr("class", "averageDamage")
+            .attr("x", function (attack) {
+                return attacksX(attack.baseDamage) + attacksX.bandwidth() / 2;
+            })
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("%");
+}
+
+function updateAttacksChart() {
+    averageDamageBar
+            .attr("y", function (attack) {
+                return attacksY(attack.averageDamage);
+            })
+            .attr("height", function (attack) {
+                return attacksInnerSize.height - attacksY(attack.averageDamage);
+            });
+    averageDamageText
+            .attr("y", function (attack) {
+                return attacksY(attack.averageDamage) - 20;
+            })
+            .text(function (attack) {
+                return attack.averageDamage.toFixed(2);
+            });
 }

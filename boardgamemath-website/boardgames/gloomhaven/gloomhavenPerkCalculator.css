@@ -1,6 +1,9 @@
 .drawProbability {
     fill: steelblue;
 }
+.averageDamage {
+    fill: steelblue;
+}
 .barButton {
     cursor: pointer;
 }
