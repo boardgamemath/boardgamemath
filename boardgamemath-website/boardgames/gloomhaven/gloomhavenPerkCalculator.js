@@ -24,6 +24,8 @@ function initCards() {
         new Card("0", 0, 1, 6),
         new Card("+1", 1, 1, 5),
         new Card("+2", 2, 1, 1),
+        new Card("+3", 3, 1, 0),
+        new Card("+4", 4, 1, 0),
         new Card("Double", 0, 2, 1)
     ];
 }
