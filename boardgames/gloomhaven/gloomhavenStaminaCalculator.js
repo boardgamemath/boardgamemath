@@ -86,7 +86,7 @@ function updateRounds() {
             round.bleedDiscardPairCount = 0;
             continue;
         }
-        if (round.longRest && round.discardCardSize < 1) {
+        if (round.longRest && discardCardSize < 1) {
             // Illegal to do a long rest
             round.longRest = false;
         }
