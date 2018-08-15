@@ -3,6 +3,7 @@ var MAX_HAND_LIMIT = 12;
 var characters;
 var selectedCharacter;
 var rounds;
+var roundCount;
 
 initCharacters();
 initRounds();
@@ -69,6 +70,7 @@ function resetRounds() {
 }
 
 function updateRounds() {
+    roundCount = "";
     var handCardSize = selectedCharacter.handLimit;
     var discardCardSize = 0;
     var revivingEtherAvailable = selectedCharacter.revivingEtherAvailable;
@@ -100,6 +102,7 @@ function updateRounds() {
             if (discardCardSize < 2 || (discardCardSize === 2 && handCardSize === 0)) {
                 // Exhausted by inability to play 2 cards at start of round (not turn!)
                 exhausted = true;
+                roundCount = i.toString();
                 round.handCardSize = 0;
                 round.discardCardSize = 0;
                 round.revivingEther = false;
@@ -149,6 +152,9 @@ function updateRounds() {
                 revivingEtherAvailable = false;
             }
         }
+    }
+    if (!exhausted) {
+        roundCount = "?"
     }
     updateChart();
 }
@@ -348,6 +354,11 @@ function initChart() {
                 }
                 updateRounds();
             });
+    roundCountText = chart.append("text")
+            .attr("class", "roundCount")
+            .attr("transform",
+                    "translate(" + (innerSize.width / 2) + " ,10)")
+            .style("text-anchor", "middle");
 }
 
 
@@ -445,7 +456,7 @@ function updateChart() {
             .attr("visibility", function (round) {
                 return round.bleedDiscardPairCount >= 2 ? "hidden" : "visible";
             });
-
+    roundCountText.text(roundCount + " rounds before exhaustion");
 }
 
 function createBooleanButton(roundBar, svgFile, toolTip, xFunction, yFunction, clickFunction) {

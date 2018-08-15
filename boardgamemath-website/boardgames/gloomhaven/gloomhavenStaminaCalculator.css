@@ -13,6 +13,10 @@
 .longRest {
     fill: silver;
 }
+.roundCount {
+    font: 18px sans-serif;
+    fill: darkorange;
+}
 .barButton {
     cursor: pointer;
 }
