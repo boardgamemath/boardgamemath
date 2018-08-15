@@ -18,9 +18,25 @@ priority: 1.0
 
   Coming soon...
 
+  == Calculation details
+
+  === Rolling modifiers
+
+  * The probability of a non-rolling card is not affected by the rolling cards, because we keep drawing if we draw one of those.
+  ** Therefore the sum of the probabilities of all cards does not equal 100%.
+  ** But the sum of the probabilities of all non-rolling cards does equal 100%.
+  * The probability of a rolling card is shown as the probability _sum_ a single attack,
+  because that's what matters for our average damage output.
+  ** Because it's a sum, the probability of a rolling card can go above 100% in theory
+  *** Even though we might not draw any. But we might draw multiple too.
+  *** For example, in an (impossible) deck of 2 non-rolling cards and 4 rolling cards,
+  the rolling cards have a probability sum of 133%,
+  because each rolling card has a probability of 33% (because other rolling cards cause another draw, so we ignore the others for a single draw)
+  and there 4 such rolling cards, so their sum is 133%.
+
   == Known issues
 
-  * No support yet for rolling modifier cards
+  * No indication yet of damage reliability (Average damage suffers from _the flaw of averages_).
   * No support yet for other effect cards
   * No support yet for advantage and disadvantage
 
