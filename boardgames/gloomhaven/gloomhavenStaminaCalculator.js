@@ -72,49 +72,76 @@ function updateRounds() {
     var handCardSize = selectedCharacter.handLimit;
     var discardCardSize = 0;
     var revivingEtherAvailable = selectedCharacter.revivingEtherAvailable;
+    var exhausted = false;
     for (var i = 0; i < rounds.length; i++) {
         var round = rounds[i];
-        if (round.bleedHandCardCount > handCardSize) {
-            round.bleedHandCardCount = handCardSize;
+        if (exhausted) {
+            round.handCardSize = 0;
+            round.discardCardSize = 0;
+            round.revivingEther = false;
+            round.shortRest = false;
+            round.longRest = false;
+            round.playLostCardCount = 0;
+            round.bleedHandCardCount = 0;
+            round.bleedDiscardPairCount = 0;
+            continue;
+        }
+        if (round.longRest && round.discardCardSize < 1) {
+            // Illegal to do a long rest
+            round.longRest = false;
+        }
+        var playCardSize;
+        if (round.longRest) {
+            round.shortRest = false;
+            // No opportunity to play lost cards
+            round.playLostCardCount = 0;
+            playCardSize = 0;
+        } else if (handCardSize < 2) {
+            if (discardCardSize < 2 || (discardCardSize === 2 && handCardSize === 0)) {
+                // Exhausted by inability to play 2 cards at start of round (not turn!)
+                exhausted = true;
+                round.handCardSize = 0;
+                round.discardCardSize = 0;
+                round.revivingEther = false;
+                round.shortRest = false;
+                round.longRest = false;
+                round.playLostCardCount = 0;
+                round.bleedHandCardCount = 0;
+                round.bleedDiscardPairCount = 0;
+                continue;
+            } else {
+                // Automatic short rest
+                handCardSize += discardCardSize - 1;
+                discardCardSize = 0;
+                round.shortRest = true;
+                playCardSize = 2;
+            }
+        } else {
+            round.shortRest = false;
+            playCardSize = 2;
+        }
+        // Cards played at the beginning of the round can't be bled
+        if (round.bleedHandCardCount > (handCardSize - playCardSize)) {
+            round.bleedHandCardCount = (handCardSize - playCardSize);
         }
         handCardSize -= round.bleedHandCardCount;
         if (round.bleedDiscardPairCount * 2 > discardCardSize) {
             round.bleedDiscardPairCount = Math.floor(discardCardSize / 2);
         }
         discardCardSize -= (round.bleedDiscardPairCount * 2);
-        if (handCardSize < 2) {
-            if (discardCardSize < 2 || (discardCardSize === 2 && handCardSize === 0)) { // Exhausted
-                handCardSize = 0;
-                discardCardSize = 0;
-                round.shortRest = false;
-                round.longRest = false;
-                round.playLostCardCount = 0;
-                round.bleedHandCardCount = 0;
-                round.bleedDiscardPairCount = 0;
-            } else if (round.longRest) { // Long rest announced
-                round.shortRest = false;
-                round.playLostCardCount = 0;
-            } else { // Automatic short rest
-                handCardSize += discardCardSize - 1;
-                discardCardSize = 0;
-                round.shortRest = true;
-            }
-        } else {
-            round.shortRest = false;
-        }
         round.handCardSize = handCardSize;
         round.discardCardSize = discardCardSize;
         round.revivingEther = false;
         if (round.longRest) { // Long rest
             handCardSize += discardCardSize - 1;
             discardCardSize = 0;
-        } else if (handCardSize >= 2) { // Normal play
-            handCardSize -= 2;
-            discardCardSize += 2 - round.playLostCardCount;
+        } else { // Normal play
+            handCardSize -= playCardSize;
+            discardCardSize += playCardSize - round.playLostCardCount;
             if (revivingEtherAvailable && handCardSize < 2
                     && (discardCardSize < 2 || (discardCardSize === 2 && handCardSize === 0))) {
                 round.revivingEther = true;
-                if (round.playLostCardCount == 0) {
+                if (round.playLostCardCount === 0) {
                     round.playLostCardCount = discardCardSize;
                     discardCardSize = 0;
                 }
