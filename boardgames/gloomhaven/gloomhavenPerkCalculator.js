@@ -1,4 +1,5 @@
 var cards;
+var nonRollingCountTotal;
 var attacks;
 
 initCards();
@@ -7,10 +8,11 @@ initCardsChart();
 initAttacksChart();
 updateProbabilities();
 
-function Card(name, additionModifier, multiplierModifier, initialCount) {
+function Card(name, additionModifier, multiplierModifier, rolling, initialCount) {
     this.name = name;
     this.additionModifier = additionModifier;
     this.multiplierModifier = multiplierModifier;
+    this.rolling = rolling;
     this.initialCount = initialCount;
     this.count = initialCount;
     this.probability = 0.0;
@@ -18,15 +20,17 @@ function Card(name, additionModifier, multiplierModifier, initialCount) {
 
 function initCards() {
     cards = [
-        new Card("Miss", 0, 0, 1),
-        new Card("-2", -2, 1, 1),
-        new Card("-1", -1, 1, 5),
-        new Card("0", 0, 1, 6),
-        new Card("+1", 1, 1, 5),
-        new Card("+2", 2, 1, 1),
-        new Card("+3", 3, 1, 0),
-        new Card("+4", 4, 1, 0),
-        new Card("Double", 0, 2, 1)
+        new Card("×0", 0, 0, false, 1),
+        new Card("-2", -2, 1, false, 1),
+        new Card("-1", -1, 1, false, 5),
+        new Card("0", 0, 1, false, 6),
+        new Card("+1", 1, 1, false, 5),
+        new Card("+2", 2, 1, false, 1),
+        new Card("+3", 3, 1, false, 0),
+        new Card("+4", 4, 1, false, 0),
+        new Card("×2", 0, 2, false, 1),
+        new Card("r+1", 1, 0, true, 0),
+        new Card("r+2", 2, 0, true, 0)
     ];
 }
 
@@ -39,14 +43,30 @@ function resetDeck() {
 }
 
 function updateProbabilities() {
-    var countTotal = 0;
+    nonRollingCountTotal = 0;
     for (var i = 0; i < cards.length; i++) {
         var card = cards[i];
-        countTotal += card.count;
+        if (!card.rolling) {
+            nonRollingCountTotal += card.count;
+        }
     }
     for (var i = 0; i < cards.length; i++) {
         var card = cards[i];
-        card.probability = card.count / countTotal;
+        if (!card.rolling) {
+            // When drawing a rolling, keep drawing until we draw a non-rolling
+            card.probability = card.count / nonRollingCountTotal;
+        } else {
+            // For every single rolling card, when drawing another rolling card of the same type, keep drawing.
+            // So each single card has probability: 1 / (nonRollingCountTotal + 1)
+            // So together their influence is that probability multiplied by count
+            // Other proof, by example: given 4 rolling +1 cards and 10 non-rolling cards.
+            // Probability 1th card: 4/14
+            // Probability 2th card: 4/14 * 3/13
+            // Probability 3th card: 4/14 * 3/13 * 2/12
+            // Probability 4th card: 4/14 * 3/13 * 2/12 * 1/11
+            // Sum probability: 4/11 which is count / (nonRollingCountTotal + 1)
+            card.probability = card.count / (nonRollingCountTotal + 1);
+        }
     }
     updateCardsChart();
     updateAttacks();
@@ -92,7 +112,7 @@ function initCardsChart() {
             .attr("x",0 - (innerSize.height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Probability");
+            .text("Probability (sum per attack)");
 
     var cardBar = cardsChart.selectAll(".cardBar")
             .data(cards)
@@ -120,7 +140,9 @@ function initCardsChart() {
             }, function (card) {
                 return innerSize.height + margin.bottom;
             }, function(card) {
-                card.count++;
+                if (card.count < 20) {
+                    card.count++;
+                }
                 updateProbabilities();
             });
     cardCountText = cardBar.append("text")
@@ -189,6 +211,7 @@ function Attack(baseDamage) {
 
 function initAttacks() {
     attacks = [
+        new Attack(0),
         new Attack(1),
         new Attack(2),
         new Attack(3),
@@ -207,11 +230,15 @@ function updateAttacks() {
         attack.averageDamage = 0.0;
         for (var j = 0; j < cards.length; j++) {
             var card = cards[j];
-            var damage = (attack.baseDamage + card.additionModifier) * card.multiplierModifier;
-            if (damage < 0) {
-                damage = 0;
+            if (card.rolling) {
+                attack.averageDamage += card.additionModifier * card.probability;
+            } else {
+                var damage = (attack.baseDamage + card.additionModifier) * card.multiplierModifier;
+                if (damage < 0) {
+                    damage = 0;
+                }
+                attack.averageDamage += damage * card.probability;
             }
-            attack.averageDamage += damage * card.probability;
         }
     }
     updateAttacksChart();

@@ -87,12 +87,76 @@ Reset deck
 </div>
 </div>
 <div class="sect1">
+<h2 id="_calculation_details">Calculation details</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rolling_modifiers">Rolling modifiers</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The probability of a non-rolling card is not affected by the rolling cards, because we keep drawing if we draw one of those.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Therefore the sum of the probabilities of all cards does not equal <code>100%</code>.</p>
+</li>
+<li>
+<p>But the sum of the probabilities of all non-rolling cards does equal <code>100%</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The probability of a rolling card is shown as the probability <em>sum</em> a single attack,
+because that&#8217;s what matters for our average damage output.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Because it&#8217;s a sum, the probability of a rolling card can go above <code>100%</code> in theory, even though we might not draw any.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is to take account the benefit for when we draw multiple rolling modifiers in the same attack.</p>
+</li>
+<li>
+<p>For example, in an (impossible) deck of <code>2</code> non-rolling cards and <code>4</code> rolling cards, the probability sum is <code>133%</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The probability of a single rolling card can ignore the other rolling cards (because they cause another draw),
+so we can relax the deck to that 1 rolling card under investigation and the 2 non-rolling cards,
+which makes the probability of a single rolling card <code>1/3 = 33%</code>.</p>
+</li>
+<li>
+<p>Because we have <code>4</code> rolling cards, the probability sum is <code>4 * 33% = 133%</code>.</p>
+</li>
+<li>
+<p>This doesn&#8217;t mean we&#8217;re guaranteed to draw a rolling card, even though it&#8217;s above <code>100%</code>.</p>
+</li>
+<li>
+<p>It does mean that <em>on average</em>, we&#8217;ll benefit <code>133%</code> from the +1 rolling attack modifier on those <code>4</code> cards.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_known_issues">Known issues</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>No support yet for rolling modifier cards</p>
+<p>No indication yet of damage reliability (Average damage suffers from <em>the flaw of averages</em>).</p>
 </li>
 <li>
 <p>No support yet for other effect cards</p>
