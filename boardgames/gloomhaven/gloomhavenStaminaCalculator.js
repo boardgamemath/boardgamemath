@@ -388,34 +388,34 @@ function updateChart() {
                 return round.shortRest ? "visible" : "hidden";
             })
             .attr("y", function (round) {
-                return yRange(round.discardCardSize + round.handCardSize + 1);
+                return yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2) + 1);
             })
             .attr("height", function (round) {
-                return innerSize.height - yRange(round.discardCardSize + round.handCardSize + 1);
+                return innerSize.height - yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2) + 1);
             });
     shortRestText
             .attr("visibility", function (round) {
                 return round.shortRest ? "visible" : "hidden";
             })
             .attr("y", function (round) {
-                return yRange(round.discardCardSize + round.handCardSize + 2);
+                return yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2) + 2);
             });
     longRestBar
             .attr("visibility", function (round) {
                 return round.longRest ? "visible" : "hidden";
             })
             .attr("y", function (round) {
-                return yRange(round.discardCardSize + round.handCardSize);
+                return yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2));
             })
             .attr("height", function (round) {
-                return innerSize.height - yRange(round.discardCardSize + round.handCardSize);
+                return innerSize.height - yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2));
             });
     longRestText
             .attr("visibility", function (round) {
                 return round.longRest ? "visible" : "hidden";
             })
             .attr("y", function (round) {
-                return yRange(round.discardCardSize + round.handCardSize + 1);
+                return yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2) + 1);
             });
     longRestButton
             .attr("visibility", function (round) {
