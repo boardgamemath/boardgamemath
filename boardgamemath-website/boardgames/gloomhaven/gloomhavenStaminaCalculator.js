@@ -160,7 +160,7 @@ function updateRounds() {
 }
 
 function initChart() {
-    outerSize = {width: 960, height: 500};
+    outerSize = {width: 800, height: 400};
     margin = {top: 20, right: 30, bottom: 40, left: 40};
     barButtonCount = 7;
     barButtonSize = {width: 20, height: 20};
@@ -229,9 +229,17 @@ function initChart() {
             .attr("x", function (round) {
                 return xRange(round.number + 1);
             })
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("reviving ether");
+            .style("text-anchor", "middle");
+    revivingEtherText.append("tspan")
+            .attr("dy", -20)
+            .attr("x", function (round) {
+                return xRange(round.number + 1);
+            }).text("reviving");
+    revivingEtherText.append("tspan")
+            .attr("dy", 15)
+            .attr("x", function (round) {
+                return xRange(round.number + 1);
+            }).text("ether");
     shortRestLine = roundBar.append("rect")
             .attr("class", "shortRest")
             .attr("x", function (round) {
@@ -243,9 +251,17 @@ function initChart() {
             .attr("x", function (round) {
                 return xRange(round.number);
             })
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("short rest");
+            .style("text-anchor", "middle");
+    shortRestText.append("tspan")
+            .attr("dy", -20)
+            .attr("x", function (round) {
+                return xRange(round.number);
+            }).text("short");
+    shortRestText.append("tspan")
+            .attr("dy", 15)
+            .attr("x", function (round) {
+                return xRange(round.number);
+            }).text("rest");
     longRestBar = roundBar.append("rect")
             .attr("class", "longRest")
             .attr("x", function (round) {
@@ -257,9 +273,17 @@ function initChart() {
             .attr("x", function (round) {
                 return xRange(round.number) + (xRange.bandwidth() / 2);
             })
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("long rest");
+            .style("text-anchor", "middle");
+    longRestText.append("tspan")
+            .attr("dy", -20)
+            .attr("x", function (round) {
+                return xRange(round.number) + (xRange.bandwidth() / 2);
+            }).text("long");
+    longRestText.append("tspan")
+            .attr("dy", 15)
+            .attr("x", function (round) {
+                return xRange(round.number) + (xRange.bandwidth() / 2);
+            }).text("rest");
     longRestButton = createBooleanButton(roundBar, "longRestGloomhaven.svg",
             "Take a long rest in my turn",
             function (round) {
@@ -392,7 +416,7 @@ function updateChart() {
                 return round.revivingEther ? "visible" : "hidden";
             })
             .attr("y", function (round) {
-                return yRange(selectedCharacter.handLimit + 1);
+                return yRange(selectedCharacter.handLimit);
             });
     shortRestLine
             .attr("visibility", function (round) {
@@ -409,7 +433,7 @@ function updateChart() {
                 return round.shortRest ? "visible" : "hidden";
             })
             .attr("y", function (round) {
-                return yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2) + 2);
+                return yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2) + 1);
             });
     longRestBar
             .attr("visibility", function (round) {
@@ -426,7 +450,7 @@ function updateChart() {
                 return round.longRest ? "visible" : "hidden";
             })
             .attr("y", function (round) {
-                return yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2) + 1);
+                return yRange(round.discardCardSize + round.handCardSize + round.bleedHandCardCount + (round.bleedDiscardPairCount * 2));
             });
     longRestButton
             .attr("visibility", function (round) {
