@@ -8,7 +8,24 @@ we 've come to the following conclusions:
 
 == Playing lost cards early is very expensive
 
-TODO none, early and late screenshot brute
+A 10-cards character, such as a _Brute_, can theoretically play 25 rounds
+without taking a long rest:
+
+image::staminaBase.png[Stamina base]
+
+However, if he plays a lost card before his first rest (short or long),
+he effectively loses 4 rounds:
+
+image::staminaPlayLostCardEarly.png[Play lost card early]
+
+On the other hand, if he plays that lost card near the end of the scenario,
+he only loses 1 round (or less):
+
+image::staminaPlayLostCardLate.png[Play lost card late]
+
+So avoid burn any cards before your first 2-3 rests.
+
+TODO
 
 Exception: High stamina characters such as Tinkerer
 
