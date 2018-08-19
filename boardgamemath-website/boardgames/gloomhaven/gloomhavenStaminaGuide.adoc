@@ -3,33 +3,103 @@
 :awestruct-game_id: gloomhaven
 :awestruct-layout: boardGameBase
 
-By using link:gloomhavenStaminaCalculator.html[our stamina calculator],
-we 've come to the following conclusions:
+The most common way to lose a game of Gloomhaven is to run out of cards and become exhausted.
+Health is less of a problem than stamina,
+because you can always avoid damage by throwing away cards.
 
-== Playing lost cards early is very expensive
-
-A 10-cards character, such as a _Brute_, can theoretically play 25 rounds
-without taking a long rest:
+Let's take a look at the maximum number of rounds you can play before going exhausted.
+For example, link:gloomhavenStaminaCalculator.html[the stamina calculator]
+shows that a Brute can play a maximum of 25 active rounds:
 
 image::staminaBase.png[Stamina base]
 
-However, if he plays a lost card before his first rest (short or long),
-he effectively loses 4 rounds:
+*Your stamina changes a lot, depending on your character,
+how many long rests you take
+and especially _when_ you play lost cards (or when you bleed any).*
+
+To avoid premature exhaustion, know these rules:
+
+== Characters differ greatly in stamina
+
+Your character's number of starting cards directly influence how fast you'll become exhausted.
+For example, without playing lost cards nor taking long rests,
+*a Tinkerer becomes exhausted after 36 rounds, but a Scoundrel already after 20 rounds.*
+
+|===
+|Character |Card limit |Max active rounds |Visualization
+
+|Scoundrel |9 |20 a|image::staminaBaseScoundrel.png[link="staminaBaseScoundrel.png" role="thumbnail"]
+|Brute, Mindthief |10 |25 a|image::staminaBase.png[link="staminaBase.png" role="thumbnail"]
+|Cragheart |11 |30 a|image::staminaBaseCragheart.png[link="staminaBaseCragheart.png" role="thumbnail"]
+|Tinkerer |12 |36 a|image::staminaBaseTinkerer.png[link="staminaBaseTinkerer.png" role="thumbnail"]
+|Spellweaver |8 |28 a|image::staminaBaseSpellweaver.png[link="staminaBaseSpellweaver.png" role="thumbnail"]
+|===
+
+The Spellweaver is a special case: with her _Reviving Ether_ card she can pick up all her lost cards once.
+If her timing is right, she can last 28 rounds, longer than half of the starting classes.
+
+Even though these character differences have some consequences (which I'll explain later),
+normally a scenario takes 10-15 rounds,
+so even the Scoundrel's low stamina of 20 active rounds is plenty,
+if you play her cards right...
+
+== Playing lost cards early is very expensive
+
+What's the stamina cost for playing a lost card?
+
+Well, it depends on the timing.
+To illustrate, let's presume you're playing a Brute or a Mindthief:
+
+image::staminaBase.png[Stamina base]
+
+If you play a lost card before your first rest,
+you effectively loses 4 rounds in the scenario:
 
 image::staminaPlayLostCardEarly.png[Play lost card early]
 
-On the other hand, if he plays that lost card near the end of the scenario,
-he only loses 1 round (or less):
+On the other hand, if you play the same lost card near the end of the scenario,
+you only lose 1 round (or less):
 
 image::staminaPlayLostCardLate.png[Play lost card late]
 
-So avoid burn any cards before your first 2-3 rests.
+Each lost card you play early on in the scenario costs you a lot of stamina.
+The stamina cost reduces by 1 for:
 
-TODO
+* every even rest for characters that start with an even number of cards.
+* every odd rest for characters that start with an odd number of cards.
 
-Exception: High stamina characters such as Tinkerer
+Round cost of playing the first lost card:
 
-TODO early screenshot tinkerer
+|===
+.2+|Character 8+|Lost card before Xth rest, costs Y rounds
+|1th |2th |3th |4th |5th |6th |7th |8th
+
+|Scoundrel |4 2+|3 2+|2 2+|1 |0
+|Brute/Mindthief 2+|4 2+|3 2+|2 2+|1
+|Cragheart |5 2+|4 2+|3 2+|2 |1
+|Tinkerer 2+|5 2+|4 2+|3 2+|2
+|Spellweaver 2+|3 2+|2 2+|1 2+|0
+|===
+
+So if you're a Scoundrel or a Cragheart,
+you might wait until after the 1th or 3th rest to play a lost card.
+On the other hand, if you're a Brute, Mindthief, Tinkerer or Spellweaver,
+there's no point in waiting until after the 1th rest to play a lost card.
+
+Again, the Spellweaver is a bit special.
+In her case, that higher than normal cost, occurs twice:
+at the start of the scenario and after you play _Reviving Ether_.
+And the cost is only 3 rounds.
+Furthermore, there is a moment when playing a lost card actually increases your stamina:
+it's best to combine her _Reviving Ether_ with another lost card, that is played first,
+so that other card ends up back in your hand, instead of on the discard pile.
+
+So avoid playing your lost cards before the first few rests,
+especially if you're a low-stamina character.
+On the other hand, if you're a Tinkerer and play 2 lost cards before the first rest,
+you still have more stamina left than a Brute, Mindthief and a Scoundrel that didn't play any:
+
+image::staminaTinkererPlay2LostCardsEarly.png[Tinkerer play 2 lost cards early]
 
 == Bleeding cards early is even more expensive
 
@@ -45,12 +115,21 @@ If you need to bleed a pair of discard cards to stay alive, it can ruin you.
 
 TODO screenshot
 
-The Spellweaver is less impacted by early bleeding, because of her reviving ether.
+The Spellweaver is less impacted by early bleeding, because of her Reviving Ether.
 
 TODO screenshot
 
 If your team can't avoid bleeding cards early in the scenario,
 let the Tinkerer or Spellweaver take the pain.
+
+== A minor stamina potion increases stamina by 1 round
+
+A minor stamina potion allows you to pickup 2 _discarded_ cards once per scenario.
+It doesn't return any lost cards, so it's no excuse to play a lost card or bleed early,
+because those actions cost you 4+ rounds.
+
+It effectively gives you one extra round.
+The real advantage is that you can pick up your best 2 cards and play them an extra time.
 
 == High stamina characters (Tinkerer, ...) play lost cards more often
 
