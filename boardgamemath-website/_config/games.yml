@@ -10,6 +10,8 @@
   howToPlayVideoUrl: https://www.youtube.com/watch?v=pSWMvXT6jCw
   visible: true
   subPages:
+    - title: Stamina guide
+      urlPath: gloomhavenStaminaGuide.html
     - title: Stamina calculator
       urlPath: gloomhavenStaminaCalculator.html
     - title: Perk calculator

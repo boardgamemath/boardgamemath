@@ -9,16 +9,33 @@ layout: normalBase
 %h1.title(style="border-bottom: 1px solid #eee;")
   = page.title
 
-%div
-  - if !game.boardGameGeekUrl.empty?
-    .pull-right
+.row(style="margin-bottom: 10px")
+  .col-md-3.text-center
+    - if !game.howToPlayVideoUrl.empty?
+      %a(style="text-align: right;"){:href => game.howToPlayVideoUrl}<
+        How to play video
+  .col-md-3.text-center
+    - if !game.boardGameGeekUrl.empty?
       %a{:href => game.boardGameGeekUrl}<
         BoardGameGeek
-  - if !game.howToPlayVideoUrl.empty?
-    %a(style="text-align: right;"){:href => game.howToPlayVideoUrl}<
-      How to play video
+  .col-md-3.text-center
+    %a.twitter-share-button{:href => "https://twitter.com/intent/tweet"}<
+      Tweet
+  .col-md-3.text-center
+    %iframe(src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.boardgamemath.com#{page.url}&layout=button&size=small&mobile_iframe=true&width=58&height=20&appId" width="58" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
 
 ~ content
+
+.row(style="border-top: 1px solid #eee; padding-top: 5px; margin-bottom: 10px")
+  .col-md-6.text-center
+    %a.twitter-share-button{:href => "https://twitter.com/intent/tweet"}<
+      Tweet
+  .col-md-6.text-center
+    %iframe(src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.boardgamemath.com#{page.url}&layout=button&size=small&mobile_iframe=true&width=58&height=20&appId" width="58" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media")
+
+:plain
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 .comments
   %a(name = 'comments')
   %h2 Comments

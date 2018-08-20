@@ -13,11 +13,11 @@ shows that a Brute can play a maximum of 25 active rounds:
 
 image::staminaBase.png[Stamina base]
 
-*Your stamina changes a lot, depending on your character,
+As I 'll show, *your stamina depends a lot on your character,
 how many long rests you take
 and especially _when_ you play lost cards (or when you bleed any).*
 
-To avoid premature exhaustion, know these rules:
+Let's see how we can avoid premature exhaustion:
 
 == Characters differ greatly in stamina
 
@@ -38,8 +38,17 @@ For example, without playing lost cards nor taking long rests,
 The Spellweaver is a special case: with her _Reviving Ether_ card she can pick up all her lost cards once.
 If her timing is right, she can last 28 rounds, longer than half of the starting classes.
 
-Even though these character differences have some consequences (which I'll explain later),
-normally a scenario takes 10-15 rounds,
+These character differences have some consequences:
+
+* High stamina characters (Tinkerer, ...) play lost cards more often
+** A Tinkerer that plays 2 lost card before the first rest still has more stamina than a Brute.
+* Low stamina characters (Scoundrel, ...) use long rests more often
+** For example, a Scoundrel can play those 25 rounds of a Brute or MindThief if she takes 5 long rests:
++
+image::staminaLongRestScoundrel.png[Stamina base]
+** Long rests refresh spent items, so spent items are more useful to a Scoundrel than to a Tinkerer.
+
+Normally a scenario takes 10-15 rounds,
 so even the Scoundrel's low stamina of 20 active rounds is plenty,
 if you play her cards right...
 
@@ -63,7 +72,7 @@ you only lose 1 round (or less):
 image::staminaPlayLostCardLate.png[Play lost card late]
 
 Each lost card you play early on in the scenario costs you a lot of stamina.
-The stamina cost reduces by 1 for:
+The stamina cost of the first lost card reduces by 1 round for:
 
 * every even rest for characters that start with an even number of cards.
 * every odd rest for characters that start with an odd number of cards.
@@ -94,55 +103,56 @@ Furthermore, there is a moment when playing a lost card actually increases your 
 it's best to combine her _Reviving Ether_ with another lost card, that is played first,
 so that other card ends up back in your hand, instead of on the discard pile.
 
-So avoid playing your lost cards before the first few rests,
+So *avoid playing your lost cards before the first few rests*,
 especially if you're a low-stamina character.
 On the other hand, if you're a Tinkerer and play 2 lost cards before the first rest,
-you still have more stamina left than a Brute, Mindthief and a Scoundrel that didn't play any:
+you still have more stamina left than a Brute, Mindthief or a Scoundrel that didn't play any:
 
 image::staminaTinkererPlay2LostCardsEarly.png[Tinkerer play 2 lost cards early]
 
 == Bleeding cards early is even more expensive
 
-Early on, giving up a card to avoid damage (that doesn't kill you)
-is almost never worth it:
+To avoid damage from a monster attack, you can choose to lose 1 hand card instead.
+Losing a hard card actually costs more rounds than playing a lost card.
+For example, a Brute loses 4 rounds if you play a lost card before the first rest.
+But if you bleed a hand card before the first rest, you loose 5 rounds:
 
-TODO screenshot
+image::staminaBleedHandCardEarly.png[Bleed hand card early]
 
-Losing a pair of discard cars is even worse.
-*Be especially careful in the last round(s) before your first rest*,
-when have no hand cards left.
-If you need to bleed a pair of discard cards to stay alive, it can ruin you.
+That's awful lot. *If you can survive a heavy attack in the early game,
+take the damage, instead of losing a hand card.*
+You an use the rounds that you don't lose to ignore attack damage 3-4 times more in the late game instead.
 
-TODO screenshot
+Instead of losing 1 hand card, you can also choose to loose 2 discard cards to nullify an incoming attack.
+That's even worse. For example, if our Brute needs to avoid an attack and has no hand cards left,
+he'll loose 8 rounds by bleeding a pair of discard cards:
 
-The Spellweaver is less impacted by early bleeding, because of her Reviving Ether.
+image::staminaBleedDiscardPairEarly.png[Bleed a pair of discard cards early]
 
-TODO screenshot
+Remember that the 2 cards you're playing in a round cannot be used to mitigate damage!
+They're considered to be locked in.
+*So be especially careful of taking too much damage in the last round(s) before your first rest*,
+when you have no hand cards left: you might need to forfeit 2 discard cards and a lot of stamina to survive,
+per attack.
+One attack can cripple you. Two attacks can devastate you.
 
-If your team can't avoid bleeding cards early in the scenario,
-let the Tinkerer or Spellweaver take the pain.
+If the Tinkerer bleeds 2 pairs of discard cards (so 4 cards),
+she loses 18 rounds and has a maximum of 18 rounds, which is still acceptable.
+Ironically, the Spellweaver in the same situation only loses 10 rounds
+and because her Reviving Ether works like a reset button,
+she also has a maximum of 18 rounds left:
+
+image::staminaBleedDiscardPairEarlySpellweaver.png[Bleed a pair of discard cards early Spellweaver]
 
 == A minor stamina potion increases stamina by 1 round
 
-A minor stamina potion allows you to pickup 2 _discarded_ cards once per scenario.
+A minor stamina potion allows you to pick up 2 _discarded_ cards once per scenario.
+That effectively gives you only one extra round.
 It doesn't return any lost cards, so it's no excuse to play a lost card or bleed early,
-because those actions cost you 4+ rounds.
+because those actions cost you far more rounds (usually 4 or 5).
 
-It effectively gives you one extra round.
-The real advantage is that you can pick up your best 2 cards and play them an extra time.
-
-== High stamina characters (Tinkerer, ...) play lost cards more often
-
-TODO not all characters are equal
-
-== Low stamina characters (Scoundrel, ...) take long rests more often
-
-Even if the rest of the team doesn't.
-
-TODO not all characters are equal
-
-Renewable items are more useful to the Scoundrel and other low stamina characters,
-because they are more likely to do a long rest.
+The real advantage of this item is that you can pick up your _best_ 2 cards
+and play them an extra time.
 
 == Try it yourself
 
