@@ -155,6 +155,21 @@ because those actions cost you far more rounds (usually 4 or 5).
 The real advantage of this stamina potion is that you can pick up your _best_ 2 cards
 and play them an extra time.
 
+== The cost of premature rests doesn't change over time
+
+If you have 0 or 1 hand cards left at the end of a round,
+it's time to take a short or long rest.
+But what if you rest to get your discarded cards back earlier?
+
+The stamina cost in rounds is always the number of hand cards divided by 2 rounded down.
+This calculation is the same early in the scenario as near the end (although you'll have less hand cards on average near the end).
+
+For example, if you have 6 or 7 hand cards left at the end of a round, a rest will reduce your stamina by 3 rounds.
+Remember that a Brute loses 4 rounds for playing a single lost card.
+So even if you rest with half your deck in hand before the first rest,
+you'll still lose less rounds than playing one lost card!
+
 == Try it yourself
 
-link:gloomhavenStaminaCalculator.html[Try our interactive stamina calculator.]
+I hope you enjoyed this guide. If you want to do your own experiments,
+link:gloomhavenStaminaCalculator.html[try our interactive stamina calculator.]
