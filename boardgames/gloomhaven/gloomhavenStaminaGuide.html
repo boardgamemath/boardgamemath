@@ -79,26 +79,31 @@
 <h1 class="title" style="border-bottom: 1px solid #eee;">
 Gloomhaven stamina and exhaustion guide
 </h1>
-<div>
-<div class="pull-right">
+<div class="row" style="margin-bottom: 10px">
+<div class="col-md-3 text-center">
+<a href="https://www.youtube.com/watch?v=pSWMvXT6jCw" style="text-align: right;">How to play video</a>
+</div>
+<div class="col-md-3 text-center">
 <a href="https://boardgamegeek.com/boardgame/174430/gloomhaven">BoardGameGeek</a>
 </div>
-<a href="https://www.youtube.com/watch?v=pSWMvXT6jCw" style="text-align: right;">How to play video</a>
+<div class="col-md-3 text-center">
+<a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a>
+</div>
+<div class="col-md-3 text-center">
+<iframe allow="encrypted-media" allowTransparency="true" frameborder="0" height="20" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.boardgamemath.com/boardgames/gloomhaven/gloomhavenStaminaGuide.html&amp;layout=button&amp;size=small&amp;mobile_iframe=true&amp;width=58&amp;height=20&amp;appId" style="border:none;overflow:hidden" width="58"></iframe>
+</div>
 </div>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By using <a href="gloomhavenStaminaCalculator.html">our stamina calculator</a>,
-we 've come to the following conclusions:</p>
+<p>The most common way to lose a game of Gloomhaven is to run out of cards and become exhausted.
+Health is less of a problem than stamina,
+because you can always avoid damage by throwing away cards.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_playing_lost_cards_early_is_very_expensive">Playing lost cards early is very expensive</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>A 10-cards character, such as a <em>Brute</em>, can theoretically play 25 rounds
-without taking a long rest:</p>
+<p>Let&#8217;s take a look at the maximum number of rounds you can play before going exhausted.
+For example, <a href="gloomhavenStaminaCalculator.html">the stamina calculator</a>
+shows that a Brute can play a maximum of 25 active rounds:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -106,8 +111,155 @@ without taking a long rest:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>However, if he plays a lost card before his first rest (short or long),
-he effectively loses 4 rounds:</p>
+<p>As I 'll show, <strong>your stamina depends a lot on your character,
+how many long rests you take
+and especially <em>when</em> you play lost cards (or when you bleed any).</strong></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s see how we can avoid premature exhaustion:</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_characters_differ_greatly_in_stamina">Characters differ greatly in stamina</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Your character&#8217;s number of starting cards directly influence how fast you&#8217;ll become exhausted.
+For example, without playing lost cards nor taking long rests,
+<strong>a Tinkerer becomes exhausted after 36 rounds, but a Scoundrel already after 20 rounds.</strong></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Character</th>
+<th class="tableblock halign-left valign-top">Card limit</th>
+<th class="tableblock halign-left valign-top">Max active rounds</th>
+<th class="tableblock halign-left valign-top">Visualization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scoundrel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock thumbnail">
+<div class="content">
+<a class="image" href="staminaBaseScoundrel.png"><img src="staminaBaseScoundrel.png" alt="staminaBaseScoundrel"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brute, Mindthief</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock thumbnail">
+<div class="content">
+<a class="image" href="staminaBase.png"><img src="staminaBase.png" alt="staminaBase"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cragheart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock thumbnail">
+<div class="content">
+<a class="image" href="staminaBaseCragheart.png"><img src="staminaBaseCragheart.png" alt="staminaBaseCragheart"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tinkerer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock thumbnail">
+<div class="content">
+<a class="image" href="staminaBaseTinkerer.png"><img src="staminaBaseTinkerer.png" alt="staminaBaseTinkerer"></a>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spellweaver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock thumbnail">
+<div class="content">
+<a class="image" href="staminaBaseSpellweaver.png"><img src="staminaBaseSpellweaver.png" alt="staminaBaseSpellweaver"></a>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The Spellweaver is a special case: with her <em>Reviving Ether</em> card she can pick up all her lost cards once.
+If her timing is right, she can last 28 rounds, longer than half of the starting classes.</p>
+</div>
+<div class="paragraph">
+<p>These character differences have some consequences:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>High stamina characters (Tinkerer, &#8230;&#8203;) play lost cards more often</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A Tinkerer that plays 2 lost card before the first rest still has more stamina than a Brute.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Low stamina characters (Scoundrel, &#8230;&#8203;) use long rests more often</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example, a Scoundrel can play those 25 rounds of a Brute or MindThief if she takes 5 long rests:</p>
+<div class="imageblock">
+<div class="content">
+<img src="staminaLongRestScoundrel.png" alt="Stamina base">
+</div>
+</div>
+</li>
+<li>
+<p>Long rests refresh spent items, so spent items are more useful to a Scoundrel than to a Tinkerer.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Normally a scenario takes 10-15 rounds,
+so even the Scoundrel&#8217;s low stamina of 20 active rounds is plenty,
+if you play her cards right&#8230;&#8203;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_playing_lost_cards_early_is_very_expensive">Playing lost cards early is very expensive</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>What&#8217;s the stamina cost for playing a lost card?</p>
+</div>
+<div class="paragraph">
+<p>Well, it depends on the timing.
+To illustrate, let&#8217;s presume you&#8217;re playing a Brute or a Mindthief:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="staminaBase.png" alt="Stamina base">
+</div>
+</div>
+<div class="paragraph">
+<p>If you play a lost card before your first rest,
+you effectively loses 4 rounds in the scenario:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -115,8 +267,8 @@ he effectively loses 4 rounds:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>On the other hand, if he plays that lost card near the end of the scenario,
-he only loses 1 round (or less):</p>
+<p>On the other hand, if you play the same lost card near the end of the scenario,
+you only lose 1 round (or less):</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -124,16 +276,113 @@ he only loses 1 round (or less):</p>
 </div>
 </div>
 <div class="paragraph">
-<p>So avoid burn any cards before your first 2-3 rests.</p>
+<p>Each lost card you play early on in the scenario costs you a lot of stamina.
+The stamina cost of the first lost card reduces by 1 round for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>every even rest for characters that start with an even number of cards.</p>
+</li>
+<li>
+<p>every odd rest for characters that start with an odd number of cards.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>TODO</p>
+<p>Round cost of playing the first lost card:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Character</p></td>
+<td class="tableblock halign-left valign-top" colspan="8"><p class="tableblock">Lost card before Xth rest, costs Y rounds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1th</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2th</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3th</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4th</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5th</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6th</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7th</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8th</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scoundrel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Brute/Mindthief</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cragheart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tinkerer</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spellweaver</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>So if you&#8217;re a Scoundrel or a Cragheart,
+you might wait until after the 1th or 3th rest to play a lost card.
+On the other hand, if you&#8217;re a Brute, Mindthief, Tinkerer or Spellweaver,
+there&#8217;s no point in waiting until after the 1th rest to play a lost card.</p>
 </div>
 <div class="paragraph">
-<p>Exception: High stamina characters such as Tinkerer</p>
+<p>Again, the Spellweaver is a bit special.
+In her case, that higher than normal cost, occurs twice:
+at the start of the scenario and after you play <em>Reviving Ether</em>.
+And the cost is only 3 rounds.
+Furthermore, there is a moment when playing a lost card actually increases your stamina:
+it&#8217;s best to combine her <em>Reviving Ether</em> with another lost card, that is played first,
+so that other card ends up back in your hand, instead of on the discard pile.</p>
 </div>
 <div class="paragraph">
-<p>TODO early screenshot tinkerer</p>
+<p>So <strong>avoid playing your lost cards before the first few rests</strong>,
+especially if you&#8217;re a low-stamina character.
+On the other hand, if you&#8217;re a Tinkerer and play 2 lost cards before the first rest,
+you still have more stamina left than a Brute, Mindthief or a Scoundrel that didn&#8217;t play any:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="staminaTinkererPlay2LostCardsEarly.png" alt="Tinkerer play 2 lost cards early">
+</div>
 </div>
 </div>
 </div>
@@ -141,53 +390,65 @@ he only loses 1 round (or less):</p>
 <h2 id="_bleeding_cards_early_is_even_more_expensive">Bleeding cards early is even more expensive</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Early on, giving up a card to avoid damage (that doesn&#8217;t kill you)
-is almost never worth it:</p>
+<p>To avoid damage from a monster attack, you can choose to lose 1 hand card instead.
+Losing a hard card actually costs more rounds than playing a lost card.
+For example, a Brute loses 4 rounds if you play a lost card before the first rest.
+But if you bleed a hand card before the first rest, you loose 5 rounds:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="staminaBleedHandCardEarly.png" alt="Bleed hand card early">
+</div>
 </div>
 <div class="paragraph">
-<p>TODO screenshot</p>
+<p>That&#8217;s awful lot. <strong>If you can survive a heavy attack in the early game,
+take the damage, instead of losing a hand card.</strong>
+You an use the rounds that you don&#8217;t lose to ignore attack damage 3-4 times more in the late game instead.</p>
 </div>
 <div class="paragraph">
-<p>Losing a pair of discard cars is even worse.
-<strong>Be especially careful in the last round(s) before your first rest</strong>,
-when have no hand cards left.
-If you need to bleed a pair of discard cards to stay alive, it can ruin you.</p>
+<p>Instead of losing 1 hand card, you can also choose to loose 2 discard cards to nullify an incoming attack.
+That&#8217;s even worse. For example, if our Brute needs to avoid an attack and has no hand cards left,
+he&#8217;ll loose 8 rounds by bleeding a pair of discard cards:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="staminaBleedDiscardPairEarly.png" alt="Bleed a pair of discard cards early">
+</div>
 </div>
 <div class="paragraph">
-<p>TODO screenshot</p>
+<p>Remember that the 2 cards you&#8217;re playing in a round cannot be used to mitigate damage!
+They&#8217;re considered to be locked in.
+<strong>So be especially careful of taking too much damage in the last round(s) before your first rest</strong>,
+when you have no hand cards left: you might need to forfeit 2 discard cards and a lot of stamina to survive,
+per attack.
+One attack can cripple you. Two attacks can devastate you.</p>
 </div>
 <div class="paragraph">
-<p>The Spellweaver is less impacted by early bleeding, because of her reviving ether.</p>
+<p>If the Tinkerer bleeds 2 pairs of discard cards (so 4 cards),
+she loses 18 rounds and has a maximum of 18 rounds, which is still acceptable.
+Ironically, the Spellweaver in the same situation only loses 10 rounds
+and because her Reviving Ether works like a reset button,
+she also has a maximum of 18 rounds left:</p>
 </div>
-<div class="paragraph">
-<p>TODO screenshot</p>
+<div class="imageblock">
+<div class="content">
+<img src="staminaBleedDiscardPairEarlySpellweaver.png" alt="Bleed a pair of discard cards early Spellweaver">
 </div>
-<div class="paragraph">
-<p>If your team can&#8217;t avoid bleeding cards early in the scenario,
-let the Tinkerer or Spellweaver take the pain.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_high_stamina_characters_tinkerer_play_lost_cards_more_often">High stamina characters (Tinkerer, &#8230;&#8203;) play lost cards more often</h2>
+<h2 id="_a_minor_stamina_potion_increases_stamina_by_1_round">A minor stamina potion increases stamina by 1 round</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TODO not all characters are equal</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_low_stamina_characters_scoundrel_take_long_rests_more_often">Low stamina characters (Scoundrel, &#8230;&#8203;) take long rests more often</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Even if the rest of the team doesn&#8217;t.</p>
+<p>A minor stamina potion allows you to pick up 2 <em>discarded</em> cards once per scenario.
+That effectively gives you only one extra round.
+It doesn&#8217;t return any lost cards, so it&#8217;s no excuse to play a lost card or bleed early,
+because those actions cost you far more rounds (usually 4 or 5).</p>
 </div>
 <div class="paragraph">
-<p>TODO not all characters are equal</p>
-</div>
-<div class="paragraph">
-<p>Renewable items are more useful to the Scoundrel and other low stamina characters,
-because they are more likely to do a long rest.</p>
+<p>The real advantage of this item is that you can pick up your <em>best</em> 2 cards
+and play them an extra time.</p>
 </div>
 </div>
 </div>
@@ -199,6 +460,15 @@ because they are more likely to do a long rest.</p>
 </div>
 </div>
 </div>
+<div class="row" style="border-top: 1px solid #eee; padding-top: 5px; margin-bottom: 10px">
+<div class="col-md-6 text-center">
+<a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a>
+</div>
+<div class="col-md-6 text-center">
+<iframe allow="encrypted-media" allowTransparency="true" frameborder="0" height="20" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.boardgamemath.com/boardgames/gloomhaven/gloomhavenStaminaGuide.html&amp;layout=button&amp;size=small&amp;mobile_iframe=true&amp;width=58&amp;height=20&amp;appId" style="border:none;overflow:hidden" width="58"></iframe>
+</div>
+</div>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <div class="comments">
 <a name="comments"></a>
 <h2>Comments</h2>
@@ -240,6 +510,11 @@ because they are more likely to do a long rest.</p>
 </div>
 <div class="panel-body">
 <ul class="list-unstyled">
+<li style="margin-bottom: 10px;">
+<div class="title">
+<a href="gloomhavenStaminaGuide.html">Stamina guide</a>
+</div>
+</li>
 <li style="margin-bottom: 10px;">
 <div class="title">
 <a href="gloomhavenStaminaCalculator.html">Stamina calculator</a>
