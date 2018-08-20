@@ -74,8 +74,8 @@ image::staminaPlayLostCardLate.png[Play lost card late]
 Each lost card you play early on in the scenario costs you a lot of stamina.
 The stamina cost of the first lost card reduces by 1 round for:
 
-* every even rest for characters that start with an even number of cards.
-* every odd rest for characters that start with an odd number of cards.
+* every even rest, for characters that start with an even number of cards.
+* every odd rest, for characters that start with an odd number of cards.
 
 Round cost of playing the first lost card:
 
@@ -93,7 +93,8 @@ Round cost of playing the first lost card:
 So if you're a Scoundrel or a Cragheart,
 you might wait until after the 1th or 3th rest to play a lost card.
 On the other hand, if you're a Brute, Mindthief, Tinkerer or Spellweaver,
-there's no point in waiting until after the 1th rest to play a lost card.
+there's no point in waiting until after the 1th rest to play a lost card:
+you need to wait an even number of rests.
 
 Again, the Spellweaver is a bit special.
 In her case, that higher than normal cost, occurs twice:
@@ -121,7 +122,7 @@ image::staminaBleedHandCardEarly.png[Bleed hand card early]
 
 That's awful lot. *If you can survive a heavy attack in the early game,
 take the damage, instead of losing a hand card.*
-You an use the rounds that you don't lose to ignore attack damage 3-4 times more in the late game instead.
+You can use the rounds that you don't lose to ignore attack damage 3-4 times in the late game instead.
 
 Instead of losing 1 hand card, you can also choose to loose 2 discard cards to nullify an incoming attack.
 That's even worse. For example, if our Brute needs to avoid an attack and has no hand cards left,
@@ -140,7 +141,7 @@ If the Tinkerer bleeds 2 pairs of discard cards (so 4 cards),
 she loses 18 rounds and has a maximum of 18 rounds, which is still acceptable.
 Ironically, the Spellweaver in the same situation only loses 10 rounds
 and because her Reviving Ether works like a reset button,
-she also has a maximum of 18 rounds left:
+she's also left with a maximum of 18 rounds:
 
 image::staminaBleedDiscardPairEarlySpellweaver.png[Bleed a pair of discard cards early Spellweaver]
 
@@ -151,7 +152,7 @@ That effectively gives you only one extra round.
 It doesn't return any lost cards, so it's no excuse to play a lost card or bleed early,
 because those actions cost you far more rounds (usually 4 or 5).
 
-The real advantage of this item is that you can pick up your _best_ 2 cards
+The real advantage of this stamina potion is that you can pick up your _best_ 2 cards
 and play them an extra time.
 
 == Try it yourself
