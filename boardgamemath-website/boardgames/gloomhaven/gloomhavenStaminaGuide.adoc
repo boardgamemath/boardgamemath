@@ -81,7 +81,7 @@ Round cost of playing the first lost card:
 
 |===
 .2+|Character 8+|Lost card before Xth rest, costs Y rounds
-|1th |2th |3th |4th |5th |6th |7th |8th
+|1st |2nd |3th |4th |5th |6th |7th |8th
 
 |Scoundrel |4 2+|3 2+|2 2+|1 |0
 |Brute/Mindthief 2+|4 2+|3 2+|2 2+|1
