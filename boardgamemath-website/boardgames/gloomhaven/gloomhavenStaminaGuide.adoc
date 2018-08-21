@@ -81,7 +81,7 @@ Round cost of playing the first lost card:
 
 |===
 .2+|Character 8+|Lost card before Xth rest, costs Y rounds
-|1st |2nd |3th |4th |5th |6th |7th |8th
+|1st |2nd |3rd |4th |5th |6th |7th |8th
 
 |Scoundrel |4 2+|3 2+|2 2+|1 |0
 |Brute/Mindthief 2+|4 2+|3 2+|2 2+|1
@@ -91,9 +91,9 @@ Round cost of playing the first lost card:
 |===
 
 So if you're a Scoundrel or a Cragheart,
-you might wait until after the 1th or 3th rest to play a lost card.
+you might wait until after the first or third rest to play a lost card.
 On the other hand, if you're a Brute, Mindthief, Tinkerer or Spellweaver,
-there's no point in waiting until after the 1th rest to play a lost card:
+there's no point in waiting until after the first rest to play a lost card:
 you need to wait an even number of rests.
 
 Again, the Spellweaver is a bit special.

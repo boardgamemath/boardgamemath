@@ -224,14 +224,32 @@ function initAttacks() {
     ];
 }
 
+function calculateAverageMultiplier() {
+    var multiplierSum = 0.0;
+    var totalCardCount = 0;
+    for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        if (!card.rolling) {
+            multiplierSum += card.count * card.multiplierModifier;
+            totalCardCount += card.count;
+        }
+    }
+    if (totalCardCount === 0) {
+        return 1.0;
+    }
+    return multiplierSum / totalCardCount;
+}
+
 function updateAttacks() {
+    var averageMultiplier = calculateAverageMultiplier();
     for (var i = 0; i < attacks.length; i++) {
         var attack = attacks[i];
         attack.averageDamage = 0.0;
         for (var j = 0; j < cards.length; j++) {
             var card = cards[j];
             if (card.rolling) {
-                attack.averageDamage += card.additionModifier * card.probability;
+                // Multipliers affect rolling card additions too
+                attack.averageDamage += card.additionModifier * card.probability * averageMultiplier;
             } else {
                 var damage = (attack.baseDamage + card.additionModifier) * card.multiplierModifier;
                 if (damage < 0) {
