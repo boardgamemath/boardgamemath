@@ -1,11 +1,17 @@
+var urlSearchParams = new URLSearchParams(window.location.search);
+
 var cards;
+var cardCountTotal;
 var nonRollingCountTotal;
 var attacks;
+var reliabilities;
 
 initCards();
 initAttacks();
+initReliabilities();
 initCardsChart();
 initAttacksChart();
+initReliabilitiesChart();
 updateProbabilities();
 
 function Card(name, additionModifier, multiplierModifier, rolling, initialCount) {
@@ -19,6 +25,7 @@ function Card(name, additionModifier, multiplierModifier, rolling, initialCount)
 }
 
 function initCards() {
+    // Keep in sync with updateReliabilities()
     cards = [
         new Card("×0", 0, 0, false, 1),
         new Card("-2", -2, 1, false, 1),
@@ -32,6 +39,15 @@ function initCards() {
         new Card("r+1", 1, 0, true, 0),
         new Card("r+2", 2, 0, true, 0)
     ];
+    if (urlSearchParams.get("character") === "custom") {
+        var cardCountsString = urlSearchParams.get("cardCounts");
+        if (cardCountsString[0] === '[' && cardCountsString[cardCountsString.length - 1] === ']') {
+            var cardCounts = cardCountsString.substring(1, cardCountsString.length - 1).split(",");
+            for (var i = 0; i < cards.length && i < cardCounts.length; i++) {
+                cards[i].count = parseInt(cardCounts[i]);
+            }
+        }
+    }
 }
 
 function resetDeck() {
@@ -39,16 +55,34 @@ function resetDeck() {
         var card = cards[i];
         card.count = card.initialCount;
     }
+    urlSearchParams.delete("character");
+    urlSearchParams.delete("cardCounts");
+    updateProbabilities();
+}
+
+function updateUrlAndProbabilities() {
+    urlSearchParams.set("character", "custom");
+    var cardCountsString = "[";
+    for (var i = 0; i < cards.length; i++) {
+        if (i !== 0) {
+            cardCountsString += ",";
+        }
+        cardCountsString += cards[i].count;
+    }
+    cardCountsString += "]";
+    urlSearchParams.set("cardCounts", cardCountsString);
     updateProbabilities();
 }
 
 function updateProbabilities() {
+    cardCountTotal = 0;
     nonRollingCountTotal = 0;
     for (var i = 0; i < cards.length; i++) {
         var card = cards[i];
         if (!card.rolling) {
             nonRollingCountTotal += card.count;
         }
+        cardCountTotal += card.count;
     }
     for (var i = 0; i < cards.length; i++) {
         var card = cards[i];
@@ -70,6 +104,7 @@ function updateProbabilities() {
     }
     updateCardsChart();
     updateAttacks();
+    updateReliabilities();
 }
 
 function initCardsChart() {
@@ -86,26 +121,26 @@ function initCardsChart() {
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    xRange = d3.scaleBand()
+    cardsX = d3.scaleBand()
             .domain(cards.map(function(card) { return card.name; }))
             .range([0, innerSize.width])
             .padding(0.1);
     cardsChart.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + innerSize.height + ")")
-            .call(d3.axisBottom().scale(xRange));
+            .call(d3.axisBottom().scale(cardsX));
     cardsChart.append("text")
             .attr("transform",
                     "translate(" + (innerSize.width / 2) + " ," + (innerSize.height + margin.top + 15) + ")")
             .style("text-anchor", "middle")
             .text("Card");
 
-    yRange = d3.scaleLinear()
+    cardsY = d3.scaleLinear()
             .domain([0, 1])
             .range([innerSize.height, 0]);
     cardsChart.append("g")
             .attr("class", "y axis")
-            .call(d3.axisLeft().scale(yRange));
+            .call(d3.axisLeft().scale(cardsY));
     cardsChart.append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
@@ -122,13 +157,13 @@ function initCardsChart() {
     drawProbabilityBar = cardBar.append("rect")
             .attr("class", "drawProbability")
             .attr("x", function (card) {
-                return xRange(card.name);
+                return cardsX(card.name);
             })
-            .attr("width", xRange.bandwidth());
+            .attr("width", cardsX.bandwidth());
     drawProbabilityText = cardBar.append("text")
             .attr("class", "drawProbability")
             .attr("x", function (card) {
-                return xRange(card.name) + xRange.bandwidth() / 2;
+                return cardsX(card.name) + cardsX.bandwidth() / 2;
             })
             .attr("dy", "1em")
             .style("text-anchor", "middle")
@@ -136,19 +171,19 @@ function initCardsChart() {
     cardCountUp = createButton(cardBar, "../../website/custom/upChevron.svg",
             "Add a card",
             function (card) {
-                return xRange(card.name);
+                return cardsX(card.name);
             }, function (card) {
                 return innerSize.height + margin.bottom;
             }, function(card) {
                 if (card.count < 20) {
                     card.count++;
                 }
-                updateProbabilities();
+                updateUrlAndProbabilities();
             });
     cardCountText = cardBar.append("text")
             .attr("class", "barButton")
             .attr("x", function (card) {
-                return xRange(card.name) + xRange.bandwidth() / 2;
+                return cardsX(card.name) + cardsX.bandwidth() / 2;
             })
             .attr("y", function (card) {
                 return innerSize.height + margin.bottom + barButtonSize.height;
@@ -159,13 +194,13 @@ function initCardsChart() {
     cardCountDown = createButton(cardBar, "../../website/custom/downChevron.svg",
             "Remove a card",
             function (card) {
-                return xRange(card.name);
+                return cardsX(card.name);
             }, function (card) {
                 return innerSize.height + margin.bottom + (2 * barButtonSize.height);
             }, function(card) {
                 if (card.count > 0) {
                     card.count--;
-                    updateProbabilities();
+                    updateUrlAndProbabilities();
                 }
             });
 }
@@ -173,14 +208,14 @@ function initCardsChart() {
 function updateCardsChart() {
     drawProbabilityBar
             .attr("y", function (card) {
-                return yRange(card.probability);
+                return cardsY(card.probability);
             })
             .attr("height", function (card) {
-                return innerSize.height - yRange(card.probability);
+                return innerSize.height - cardsY(card.probability);
             });
     drawProbabilityText
             .attr("y", function (card) {
-                return yRange(card.probability) - 20;
+                return cardsY(card.probability) - 20;
             })
             .text(function (card) {
                 return Math.round(card.probability * 100.0) + "%";
@@ -196,12 +231,172 @@ function createButton(cardBar, svgFile, toolTip, xFunction, yFunction, clickFunc
             .attr("xlink:href", svgFile)
             .attr("class", "barButton")
             .attr("x", xFunction)
-            .attr("width", xRange.bandwidth())
+            .attr("width", cardsX.bandwidth())
             .attr("y", yFunction)
             .attr("height", barButtonSize.height)
             .on("click", clickFunction)
             .append("title").text(toolTip);
     return button;
+}
+
+function Reliability(name, minimumAddition, maximumAddition) {
+    this.name = name;
+    this.minimumAddition = minimumAddition;
+    this.maximumAddition = maximumAddition;
+    this.probability = 0.0;
+}
+
+function initReliabilities() {
+    reliabilities = [
+        new Reliability("≤ -1", Number.MIN_SAFE_INTEGER, -1),
+        new Reliability("= 0", 0, 0),
+        new Reliability("≥ +1", 1, Number.MAX_SAFE_INTEGER)
+    ];
+}
+
+function updateReliabilities() {
+    var reliabilityNegative = reliabilities[0];
+    var reliabilityNeutral = reliabilities[1];
+    var reliabilityPositive = reliabilities[2];
+    var rollingOneCard = cards[9];
+    var rollingTwoCard = cards[10];
+
+    reliabilityNegative.probability = 0.0;
+    reliabilityNeutral.probability = 0.0;
+    reliabilityPositive.probability = 0.0;
+
+    for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        if (!card.rolling && card.count > 0) {
+            if (card.multiplierModifier !== 1) {
+                if (card.multiplierModifier < 1) {
+                    reliabilityNegative.probability += card.probability;
+                } else {
+                    reliabilityPositive.probability += card.probability;
+                }
+            } else {
+                // Using rollingCard.probability here would be wrong because it is a sum per attack
+                var rollingOneOrHigherProbability
+                        = (rollingOneCard.count + rollingTwoCard.count) / cardCountTotal;
+                var rollingTwoOrHigherProbability
+                        // First card is rolling two
+                        = (rollingTwoCard.count / cardCountTotal)
+                        // First card is rolling one
+                        + (rollingOneCard.count / cardCountTotal)
+                                // Second card is rolling one or two
+                                * ((Math.max(0, rollingOneCard.count - 1) + rollingTwoCard.count) / Math.max(1, cardCountTotal - 1));
+                var rollingThreeOrHigherProbability
+                        // First card is rolling two
+                        = (rollingTwoCard.count / cardCountTotal)
+                            // Second card is rolling one or two
+                            * ((rollingOneCard.count + Math.max(0, rollingTwoCard.count - 1)) / Math.max(1, cardCountTotal - 1))
+                        // First card is rolling one
+                        + (rollingOneCard.count / cardCountTotal)
+                            // Second card is rolling two
+                            * (rollingTwoCard.count / Math.max(1, cardCountTotal - 1))
+                        // First card is rolling one
+                        + (rollingOneCard.count / cardCountTotal)
+                            // Second card is rolling one
+                            * (Math.max(0, rollingOneCard.count - 1) / Math.max(1, cardCountTotal - 1))
+                            // Third card is rolling one or two
+                            * ((Math.max(0, rollingOneCard.count - 2) + rollingTwoCard.count) / Math.max(1, cardCountTotal - 2));
+                if (card.additionModifier > 0) {
+                    reliabilityPositive.probability += card.probability;
+                } else if (card.additionModifier === 0) {
+                    reliabilityNeutral.probability += card.probability * (1.0 - rollingOneOrHigherProbability);
+                    reliabilityPositive.probability += card.probability * rollingOneOrHigherProbability;
+                } else if (card.additionModifier === -1) {
+                    reliabilityNegative.probability += card.probability * (1.0 - rollingOneOrHigherProbability);
+                    reliabilityNeutral.probability += card.probability * (rollingOneOrHigherProbability - rollingTwoOrHigherProbability);
+                    reliabilityPositive.probability += card.probability * rollingTwoOrHigherProbability;
+                } else if (card.additionModifier === -2) {
+                    reliabilityNegative.probability += card.probability * (1.0 - rollingTwoOrHigherProbability);
+                    reliabilityNeutral.probability += card.probability * (rollingTwoOrHigherProbability - rollingThreeOrHigherProbability);
+                    reliabilityPositive.probability += card.probability * rollingThreeOrHigherProbability;
+                }
+            }
+        }
+    }
+    updateReliabilitiesChart();
+}
+
+function initReliabilitiesChart() {
+    reliabilitiesOutersize = {width: 200, height: 300};
+    reliabilitiesMargin = {top: 20, right: 30, bottom: 40, left: 50};
+    reliabilitiesInnerSize = {width: reliabilitiesOutersize.width - reliabilitiesMargin.left - reliabilitiesMargin.right,
+        height: reliabilitiesOutersize.height - reliabilitiesMargin.top - reliabilitiesMargin.bottom};
+
+    reliabilitiesChart = d3.select(".reliabilitiesChart")
+            .attr("width", reliabilitiesOutersize.width)
+            .attr("height", reliabilitiesOutersize.height)
+            .append("g")
+            .attr("transform", "translate(" + reliabilitiesMargin.left + "," + reliabilitiesMargin.top + ")");
+
+    reliabilitiesX = d3.scaleBand()
+            .domain(reliabilities.map(function(reliability) { return reliability.name; }))
+            .range([0, reliabilitiesInnerSize.width])
+            .padding(0.1);
+    reliabilitiesChart.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + reliabilitiesInnerSize.height + ")")
+            .call(d3.axisBottom().scale(reliabilitiesX));
+    reliabilitiesChart.append("text")
+            .attr("transform",
+                    "translate(" + (reliabilitiesInnerSize.width / 2) + " ," + (reliabilitiesInnerSize.height + reliabilitiesMargin.top + 15) + ")")
+            .style("text-anchor", "middle")
+            .text("Modification");
+
+    reliabilitiesY = d3.scaleLinear()
+            .domain([0, 1])
+            .range([reliabilitiesInnerSize.height, 0]);
+    reliabilitiesChart.append("g")
+            .attr("class", "y axis")
+            .call(d3.axisLeft().scale(reliabilitiesY));
+    reliabilitiesChart.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - reliabilitiesMargin.left)
+            .attr("x",0 - (reliabilitiesInnerSize.height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Reliability");
+
+    var reliabilityBar = reliabilitiesChart.selectAll(".reliabilityBar")
+            .data(reliabilities)
+            .enter().append("g")
+            .attr("class", "reliabilityBar");
+
+    reliabilityProbabilityBar = reliabilityBar.append("rect")
+            .attr("class", "reliabilityProbability")
+            .attr("x", function (reliability) {
+                return reliabilitiesX(reliability.name);
+            })
+            .attr("width", reliabilitiesX.bandwidth());
+    reliabilityProbabilityText = reliabilityBar.append("text")
+            .attr("class", "reliabilityProbability")
+            .attr("x", function (reliability) {
+                return reliabilitiesX(reliability.name) + reliabilitiesX.bandwidth() / 2;
+            })
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("%");
+}
+
+function updateReliabilitiesChart() {
+    reliabilityProbabilityBar
+            .attr("y", function (reliability) {
+                return reliabilitiesY(reliability.probability);
+            })
+            .attr("height", function (reliability) {
+                return reliabilitiesInnerSize.height - reliabilitiesY(reliability.probability);
+            });
+    reliabilityProbabilityText
+            .attr("y", function (reliability) {
+                return reliabilitiesY(reliability.probability) - 20;
+            })
+            .text(function (reliability) {
+                return Math.round(reliability.probability * 100.0) + "%";
+            });
+
 }
 
 function Attack(baseDamage) {
@@ -225,14 +420,13 @@ function initAttacks() {
 }
 
 function updateAttacks() {
+    var averageRollingAddition = calculateAverageRollingAddition();
     for (var i = 0; i < attacks.length; i++) {
         var attack = attacks[i];
-        attack.averageDamage = 0.0;
+        attack.averageDamage = averageRollingAddition;
         for (var j = 0; j < cards.length; j++) {
             var card = cards[j];
-            if (card.rolling) {
-                attack.averageDamage += card.additionModifier * card.probability;
-            } else {
+            if (!card.rolling) {
                 var damage = (attack.baseDamage + card.additionModifier) * card.multiplierModifier;
                 if (damage < 0) {
                     damage = 0;
@@ -242,6 +436,34 @@ function updateAttacks() {
         }
     }
     updateAttacksChart();
+}
+
+function calculateAverageRollingAddition() {
+    var averageRollingAddition = 0.0;
+    for (var j = 0; j < cards.length; j++) {
+        var card = cards[j];
+        if (card.rolling) {
+            averageRollingAddition += card.additionModifier * card.probability;
+        }
+    }
+    // Multipliers (miss, critical hit) affect rolling card additions too
+    return averageRollingAddition * calculateAverageMultiplier();
+}
+
+function calculateAverageMultiplier() {
+    var multiplierSum = 0.0;
+    var totalCardCount = 0;
+    for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        if (!card.rolling) {
+            multiplierSum += card.count * card.multiplierModifier;
+            totalCardCount += card.count;
+        }
+    }
+    if (totalCardCount === 0) {
+        return 1.0;
+    }
+    return multiplierSum / totalCardCount;
 }
 
 function initAttacksChart() {
