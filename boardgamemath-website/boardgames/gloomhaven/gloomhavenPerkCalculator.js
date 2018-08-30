@@ -240,7 +240,7 @@ function updateReliabilities() {
 
     for (var i = 0; i < cards.length; i++) {
         var card = cards[i];
-        if (!card.rolling) {
+        if (!card.rolling && card.count > 0) {
             if (card.multiplierModifier !== 1) {
                 if (card.multiplierModifier < 1) {
                     reliabilityNegative.probability += card.probability;
@@ -249,29 +249,42 @@ function updateReliabilities() {
                 }
             } else {
                 // Using rollingCard.probability here would be wrong because it is a sum per attack
+                var rollingOneOrHigherProbability
+                        = (rollingOneCard.count + rollingTwoCard.count) / cardCountTotal;
+                var rollingTwoOrHigherProbability
+                        // First card is rolling two
+                        = (rollingTwoCard.count / cardCountTotal)
+                        // First card is rolling one
+                        + (rollingOneCard.count / cardCountTotal)
+                                // Second card is rolling one or two
+                                * ((Math.max(0, rollingOneCard.count - 1) + rollingTwoCard.count) / Math.max(1, cardCountTotal - 1));
+                var rollingThreeOrHigherProbability
+                        // First card is rolling two
+                        = (rollingTwoCard.count / cardCountTotal)
+                            // Second card is rolling one or two
+                            * ((rollingOneCard.count + Math.max(0, rollingTwoCard.count - 1)) / Math.max(1, cardCountTotal - 1))
+                        // First card is rolling one
+                        + (rollingOneCard.count / cardCountTotal)
+                            // Second card is rolling two
+                            * (rollingTwoCard.count / Math.max(1, cardCountTotal - 1))
+                        // First card is rolling one
+                        + (rollingOneCard.count / cardCountTotal)
+                            // Second card is rolling one
+                            * (Math.max(0, rollingOneCard.count - 1) / Math.max(1, cardCountTotal - 1))
+                            // Third card is rolling one or two
+                            * ((Math.max(0, rollingOneCard.count - 2) + rollingTwoCard.count) / Math.max(1, cardCountTotal - 2));
                 if (card.additionModifier > 0) {
                     reliabilityPositive.probability += card.probability;
                 } else if (card.additionModifier === 0) {
-                    var rollingOneOrHigherProbability = (rollingOneCard.count + rollingTwoCard.count) / cardCountTotal;
                     reliabilityNeutral.probability += card.probability * (1.0 - rollingOneOrHigherProbability);
                     reliabilityPositive.probability += card.probability * rollingOneOrHigherProbability;
                 } else if (card.additionModifier === -1) {
-                    var rollingOneOrHigherProbability = (rollingOneCard.count + rollingTwoCard.count) / cardCountTotal;
-                    var rollingTwoOrHigherProbability
-                            = (rollingTwoCard.count / cardCountTotal)
-                            + (rollingOneCard.count / cardCountTotal * ((rollingOneCard.count - 1) / cardCountTotal));
                     reliabilityNegative.probability += card.probability * (1.0 - rollingOneOrHigherProbability);
-                    reliabilityNeutral.probability += card.probability * rollingOneOrHigherProbability - rollingTwoOrHigherProbability;
+                    reliabilityNeutral.probability += card.probability * (rollingOneOrHigherProbability - rollingTwoOrHigherProbability);
                     reliabilityPositive.probability += card.probability * rollingTwoOrHigherProbability;
                 } else if (card.additionModifier === -2) {
-                    var rollingTwoOrHigherProbability
-                            = (rollingTwoCard.count / cardCountTotal)
-                            + (rollingOneCard.count / cardCountTotal * ((rollingOneCard.count - 1) / cardCountTotal));
-                    var rollingThreeOrHigherProbability
-                            = (rollingTwoCard.count / cardCountTotal) * ((rollingOneCard.count + rollingTwoCard.count - 1) / cardCountTotal)
-                            + (rollingOneCard.count / cardCountTotal) * ((rollingOneCard.count - 1) / cardCountTotal) * ((rollingOneCard.count - 2) / cardCountTotal);
                     reliabilityNegative.probability += card.probability * (1.0 - rollingTwoOrHigherProbability);
-                    reliabilityNeutral.probability += card.probability * rollingTwoOrHigherProbability - rollingThreeOrHigherProbability;
+                    reliabilityNeutral.probability += card.probability * (rollingTwoOrHigherProbability - rollingThreeOrHigherProbability);
                     reliabilityPositive.probability += card.probability * rollingThreeOrHigherProbability;
                 }
             }
@@ -281,7 +294,7 @@ function updateReliabilities() {
 }
 
 function initReliabilitiesChart() {
-    reliabilitiesOutersize = {width: 400, height: 300};
+    reliabilitiesOutersize = {width: 200, height: 300};
     reliabilitiesMargin = {top: 20, right: 30, bottom: 40, left: 50};
     reliabilitiesInnerSize = {width: reliabilitiesOutersize.width - reliabilitiesMargin.left - reliabilitiesMargin.right,
         height: reliabilitiesOutersize.height - reliabilitiesMargin.top - reliabilitiesMargin.bottom};
@@ -304,7 +317,7 @@ function initReliabilitiesChart() {
             .attr("transform",
                     "translate(" + (reliabilitiesInnerSize.width / 2) + " ," + (reliabilitiesInnerSize.height + reliabilitiesMargin.top + 15) + ")")
             .style("text-anchor", "middle")
-            .text("Modification result");
+            .text("Modification");
 
     reliabilitiesY = d3.scaleLinear()
             .domain([0, 1])

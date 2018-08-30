@@ -116,7 +116,7 @@ image::staminaTinkererPlay2LostCardsEarly.png[Tinkerer play 2 lost cards early]
 To avoid damage from a monster attack, you can choose to lose 1 hand card instead.
 Losing a hard card actually costs more rounds than playing a lost card.
 For example, a Brute loses 4 rounds if you play a lost card before the first rest.
-But if you bleed a hand card before the first rest, you loose 5 rounds:
+But if you bleed a hand card before the first rest, you lose 5 rounds:
 
 image::staminaBleedHandCardEarly.png[Bleed hand card early]
 
@@ -124,9 +124,9 @@ That's awful lot. *If you can survive a heavy attack in the early game,
 take the damage, instead of losing a hand card.*
 You can use the rounds that you don't lose to ignore attack damage 3-4 times in the late game instead.
 
-Instead of losing 1 hand card, you can also choose to loose 2 discard cards to nullify an incoming attack.
+Instead of losing 1 hand card, you can also choose to lose 2 discard cards to nullify an incoming attack.
 That's even worse. For example, if our Brute needs to avoid an attack and has no hand cards left,
-he'll loose 8 rounds by bleeding a pair of discard cards:
+he'll lose 8 rounds by bleeding a pair of discard cards:
 
 image::staminaBleedDiscardPairEarly.png[Bleed a pair of discard cards early]
 
