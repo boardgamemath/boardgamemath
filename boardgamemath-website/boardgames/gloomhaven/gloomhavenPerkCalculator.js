@@ -41,11 +41,9 @@ function initCards() {
     ];
     if (urlSearchParams.get("character") === "custom") {
         var cardCountsString = urlSearchParams.get("cardCounts");
-        if (cardCountsString[0] === '[' && cardCountsString[cardCountsString.length - 1] === ']') {
-            var cardCounts = cardCountsString.substring(1, cardCountsString.length - 1).split(",");
-            for (var i = 0; i < cards.length && i < cardCounts.length; i++) {
-                cards[i].count = parseInt(cardCounts[i]);
-            }
+        var cardCounts = cardCountsString.split("_");
+        for (var i = 0; i < cards.length && i < cardCounts.length; i++) {
+            cards[i].count = parseInt(cardCounts[i]);
         }
     }
 }
@@ -57,20 +55,21 @@ function resetDeck() {
     }
     urlSearchParams.delete("character");
     urlSearchParams.delete("cardCounts");
+    window.history.pushState('', '', "?" + urlSearchParams.toString());
     updateProbabilities();
 }
 
 function updateUrlAndProbabilities() {
     urlSearchParams.set("character", "custom");
-    var cardCountsString = "[";
+    var cardCountsString = "";
     for (var i = 0; i < cards.length; i++) {
         if (i !== 0) {
-            cardCountsString += ",";
+            cardCountsString += "_";
         }
         cardCountsString += cards[i].count;
     }
-    cardCountsString += "]";
     urlSearchParams.set("cardCounts", cardCountsString);
+    window.history.pushState('', '', "?" + urlSearchParams.toString());
     updateProbabilities();
 }
 
