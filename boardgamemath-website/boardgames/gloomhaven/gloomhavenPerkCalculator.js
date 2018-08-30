@@ -1,3 +1,5 @@
+var urlSearchParams = new URLSearchParams(window.location.search);
+
 var cards;
 var cardCountTotal;
 var nonRollingCountTotal;
@@ -37,6 +39,15 @@ function initCards() {
         new Card("r+1", 1, 0, true, 0),
         new Card("r+2", 2, 0, true, 0)
     ];
+    if (urlSearchParams.get("character") === "custom") {
+        var cardCountsString = urlSearchParams.get("cardCounts");
+        if (cardCountsString[0] === '[' && cardCountsString[cardCountsString.length - 1] === ']') {
+            var cardCounts = cardCountsString.substring(1, cardCountsString.length - 1).split(",");
+            for (var i = 0; i < cards.length && i < cardCounts.length; i++) {
+                cards[i].count = parseInt(cardCounts[i]);
+            }
+        }
+    }
 }
 
 function resetDeck() {
@@ -44,6 +55,22 @@ function resetDeck() {
         var card = cards[i];
         card.count = card.initialCount;
     }
+    urlSearchParams.delete("character");
+    urlSearchParams.delete("cardCounts");
+    updateProbabilities();
+}
+
+function updateUrlAndProbabilities() {
+    urlSearchParams.set("character", "custom");
+    var cardCountsString = "[";
+    for (var i = 0; i < cards.length; i++) {
+        if (i !== 0) {
+            cardCountsString += ",";
+        }
+        cardCountsString += cards[i].count;
+    }
+    cardCountsString += "]";
+    urlSearchParams.set("cardCounts", cardCountsString);
     updateProbabilities();
 }
 
@@ -151,7 +178,7 @@ function initCardsChart() {
                 if (card.count < 20) {
                     card.count++;
                 }
-                updateProbabilities();
+                updateUrlAndProbabilities();
             });
     cardCountText = cardBar.append("text")
             .attr("class", "barButton")
@@ -173,7 +200,7 @@ function initCardsChart() {
             }, function(card) {
                 if (card.count > 0) {
                     card.count--;
-                    updateProbabilities();
+                    updateUrlAndProbabilities();
                 }
             });
 }
