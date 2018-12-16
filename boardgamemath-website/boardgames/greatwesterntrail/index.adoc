@@ -8,11 +8,14 @@ Generally speaking, we can play 3 macro strategies, based on the workers we buy 
 * craftsmen
 * engineers
 
-Regardless of our main strategy - and which workers we invest in - we need to:
+image::workerTypes.png[Worker types]
+
+Regardless of our main strategy - and which type(s) of workers we invest in - we always need to:
 
 * Buy some cattle to increase our Kansas income and disc abilities.
 * Build some houses to do more/better actions per turn and derail other players.
-* Advance our train somewhat to decreases taxes on our Kansas income and acquire permantent bonuses.
+* Advance our train somewhat to decreases taxes on our Kansas income
+and acquire permanent bonuses.
 
 The cowboy-cattle strategy is the easiest to start with.
 But the craftsmen-houses strategy is - by far - the most rewarding to play.
@@ -116,5 +119,6 @@ unless the rest of our deck is stuff with high value cattle,
 so we won't need them next time we're in Kansas.
 
 
-== Get more/better actions by building houses
+== How to build houses to get more actions per turn
 
+Info coming soon
