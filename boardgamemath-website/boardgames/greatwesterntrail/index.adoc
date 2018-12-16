@@ -1,0 +1,120 @@
+= How to win Great Western Trail
+:awestruct-game_id: greatwesterntrail
+:awestruct-layout: boardGameBase
+
+Generally speaking, we can play 3 macro strategies, based on the workers we buy in:
+
+* cowboys
+* craftsmen
+* engineers
+
+Regardless of our main strategy - and which workers we invest in - we need to:
+
+* Buy some cattle to increase our Kansas income and disc abilities.
+* Build some houses to do more/better actions per turn and derail other players.
+* Advance our train somewhat to decreases taxes on our Kansas income and acquire permantent bonuses.
+
+The cowboy-cattle strategy is the easiest to start with.
+But the craftsmen-houses strategy is - by far - the most rewarding to play.
+
+That being said, let's start with the basics:
+increase our Kansas income enough to unlock black disc abilities.
+
+
+== How to increase our Kansas income
+
+In Kansas, we sell our distinct hand cards for the sum of their breeding value.
+It's vital to increase this income as soon as possible, because it gives us several advantages:
+
+* More income allows us to hire 2 workers a once, buy better cattle or buy bigger houses.
+* Deliver to higher cities:
+** Unlock black disc squares. These are vital to get our engine running, to _snow ball_.
+** Gain victory points (instead of losing them).
+
+We start with 14 cattle cards (5 gray, 3 green, 3 black and 3 white) and only 4 hand cards.
+*If we arrive in Kansas with a perfect hand, we have an income of only 7:*
+
+image::perfectStartingHand.png[Perfect starting hand]
+
+*Yet, we need an income of at least 10 to unlock the first black disc square, so we're 3 income short!*
+To increase income, we can sell better cattle, increase our hand card limit or acquire certificates.
+Certificates are mostly a temporarily gain, so let's focus on improving our delivery hand first:
+
+image::handCardCombinations.png[Perfect hand combinations]
+
+*To significantly increase our income permanently,
+we want to buy at least 2 cattle cards and increase our hand limit by 1 early in the game,
+even if cattle isn't our main strategy.*
+But because we start out with only 4 different card types,
+it is useless to first increase our hand limit (to 5 hand cards)
+before buying our first cattle card. So buy cattle first.
+
+
+=== Always buy some cattle early on
+
+Buying cattle is expensive and _that new cattle card ends up in our discard pile_.
+We want to buy cattle before we reshuffle our deck the first time,
+ideally even just before we reshuffle it.
+And we want to go through our deck quickly too,
+so that level 3/4/5 cattle card is in our hand when we arrive in Kansas.
+
+Buy a cattle card color that you haven't bought yet,
+to combine them more easily when selling them in Kansas.
+The cattle cards have victory points too, so buy the ones with more victory points first.
+
+
+=== Increase our hand limit
+
+Increasing our hand limit is a great investment,
+which is definitely worth the additional 5 dollar cost,
+because of 2 advantages:
+
+* In Kansas, 1 extra card can sell for 1-5 extra dollars,
+which increases not just our Kansas income, but also our victory point income
+and the likelihood of placing a black disc square.
+
+* *On the road, it increases the likelihood of selling a green/black/white/gray card
+and going through our deck quickly.*
+** With 5 hand cards, we have roughly 25% more chance to hold at least one white card than with 4 hand cards.
+*** The same 25% roughly applies to other card types (gray/green/black).
+*** The chance to hold a specific card type does affect that chance (gray cards have a higher chance),
+but not enough to take it into account.
+** So we're 25% more likely to be able to sell that white card for 2 dollars before buying a worker.
+*** And we're going through our deck faster, so we're more likely to arrive with the expensive cattle in Kansas.
+
+To increase our hand limit, we need to reach a delivery city with a black disc square and pay 5 dollars.
+The first one requires an income of 10, the second an income 12.
+
+If we have an income of 10, but our train hasn't reached the first red X yet
+but the lack of train progress will cost us an extra 5 dollars, on top of the 5 dollars ability cost,
+leaving us flat broke for the next trail. This could waste 3 rounds easily.
+It's a good idea to stockpile dollars beforehand to avoid this situation,
+including take the 6 dollars for a loss of 6 victory points during your first delivery.
+
+The alternative, using the 10 income delivery for the ability to walk faster, is dangerous:
+without that 5th hand card, it is very difficult to reach 12 income later on.
+However if we're playing an engineer strategy, we can deliver a black disc to the train track too.
+
+
+=== Acquire certificates
+
+To bridge the gap between our hand's income and the required 10 income threshold,
+certificates are extremely useful.
+
+==== Permanent certificates
+
+From the train track, it's possible to gain up to 3 permanent certificates.
+These are worth fighting for, especially if we're playing an engineer strategy.
+
+==== Temporarily certificates
+
+In the beginning of the game, it's worth investing in increasing the certificate marker.
+We only spend those one-time-use certificates in Kansas
+if it helps reach the 10 income limit to increase our hand limit.
+They aren't worth spending to reach 8 income and avoid victory point loss,
+unless the rest of our deck is stuff with high value cattle,
+so we won't need them next time we're in Kansas.
+
+
+== Get more/better actions by building houses
+

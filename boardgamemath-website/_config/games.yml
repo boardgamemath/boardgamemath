@@ -17,6 +17,11 @@
     - title: Perk calculator
       urlPath: gloomhavenPerkCalculator.html
 
+- gameId: greatwesterntrail
+  name: "Great western trail"
+  boardGameGeekUrl: https://boardgamegeek.com/boardgame/193738/great-western-trail
+  visible: true
+
 - gameId: axisAndAllies1940
   name: "Allies and Axis 1940"
   boardGameGeekUrl: https://boardgamegeek.com/boardgame/61692/axis-allies-europe-1940
