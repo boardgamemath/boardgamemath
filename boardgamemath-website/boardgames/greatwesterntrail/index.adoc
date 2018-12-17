@@ -2,34 +2,38 @@
 :awestruct-game_id: greatwesterntrail
 :awestruct-layout: boardGameBase
 
-Generally speaking, we can play 3 macro strategies, based on the workers we buy in:
+Generally speaking, we can play 3 macro strategies, based on the workers we buy:
 
-* cowboys
-* craftsmen
-* engineers
+* cowboys (cattle): an easy strategy, great for a first game
+* craftsmen (buildings): the most rewarding and most challenging strategy
+* engineers (train progress): a flexible strategy that combines well with the others
 
 image::workerTypes.png[Worker types]
 
 Regardless of our main strategy - and which type(s) of workers we invest in - we always need to:
 
 * Buy some cattle to increase our Kansas income and disc abilities.
-* Build some houses to do more/better actions per turn and derail other players.
+** Even if we won't buy cowboys
+* Build some buildings to do more/better actions per turn and derail other players.
+** Even if we won't buy craftsmen
 * Advance our train somewhat to decreases taxes on our Kansas income
 and acquire permanent bonuses.
+** Even if we won't buy engineers.
 
-The cowboy-cattle strategy is the easiest to start with.
-But the craftsmen-houses strategy is - by far - the most rewarding to play.
+The cowboys (cattle) strategy is the easiest to start with.
+The engineers (train progress) strategy is a bit more challenging.
+But the craftsmen (buildings) strategy is - by far - the most rewarding and most challenging to play.
 
 That being said, let's start with the basics:
 increase our Kansas income enough to unlock black disc abilities.
 
 
-== How to increase our Kansas income
+== Basics 1: Increase our Kansas income
 
 In Kansas, we sell our distinct hand cards for the sum of their breeding value.
 It's vital to increase this income as soon as possible, because it gives us several advantages:
 
-* More income allows us to hire 2 workers a once, buy better cattle or buy bigger houses.
+* More income allows us to hire 2 workers a once, buy more/better cattle or buy bigger buildings.
 * Deliver to higher cities:
 ** Unlock black disc squares. These are vital to get our engine running, to _snow ball_.
 ** Gain victory points (instead of losing them).
@@ -40,7 +44,7 @@ We start with 14 cattle cards (5 gray, 3 green, 3 black and 3 white) and only 4 
 image::perfectStartingHand.png[Perfect starting hand]
 
 *Yet, we need an income of at least 10 to unlock the first black disc square, so we're 3 income short!*
-To increase income, we can sell better cattle, increase our hand card limit or acquire certificates.
+To increase income, we can buy better cattle, increase our hand card limit or acquire certificates.
 Certificates are mostly a temporarily gain, so let's focus on improving our delivery hand first:
 
 image::handCardCombinations.png[Perfect hand combinations]
@@ -119,6 +123,68 @@ unless the rest of our deck is stuff with high value cattle,
 so we won't need them next time we're in Kansas.
 
 
-== How to build houses to get more actions per turn
+== Basics 2: Catch the train convoy
 
-Info coming soon
+TODO
+
+
+== Basics 3: Must have cheap buildings
+
+=== Super charge your favorite action
+
+The buildings that let us move forward too are especially powerful.
+Let's call these leapfrog buildings.
+They increase our actions per turn and get us to Kansas sooner.
+A couple of examples:
+
+* Place building 3b right before Kansas and use to maximize your hand before selling it.
++
+image::building3bBeforeKansas.png[Building 3b before Kansas]
+
+* Place building 3a right before an expensive neutral action.
++
+image::building3a.png[Building 3a]
+
+There is a finesse to doing this right:
+
+* First identify a location to land on every trail.
+** Great candidates are the hire employees building, the construct building and Kansas.
+* Then place your leapfrog building the number of steps it jumps before it.
+** Count empty spaces as if they're filled up already, because that will happen soon enough.
+
+
+=== Tax the safe road
+
+Most players believe in building the tax building 1a or 1b as soon as possible.
+
+TODO
+
+=== Clear hazard tiles to avoid taxation
+
+TODO
+
+== Strategies
+
+
+=== The cost of not playing a strategy
+
+TODO
+
+== Strategy 1: cowboys
+
+TODO
+
+
+== Strategy 2: engineers
+
+TODO
+
+
+== Strategy 3: craftsmen
+
+TODO
+
+
+== Hybrid strategies
+
+TODO
