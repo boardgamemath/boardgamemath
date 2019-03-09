@@ -125,8 +125,13 @@ so we won't need them next time we're in Kansas.
 
 == Basics 2: Catch the train convoy
 
-TODO
+When taking train movement actions, try to jump over other player's trains,
+as these are extra free movements.
+Avoid departing first, unless you can break free of the pack so they can't benefit from jumping over you.
 
+Don't let the pack leave without you: they'll constantly jump over each other
+and you'll need to spend up to twice as many train movement actions later to reach a city.
+And sooner or later you'll want to reach city's with your train to reduce the red X costs.
 
 == Basics 3: Must have cheap buildings
 
@@ -153,38 +158,14 @@ There is a finesse to doing this right:
 ** Count empty spaces as if they're filled up already, because that will happen soon enough.
 
 
-=== Tax the safe road
+=== Tax the safe road or clear hazard tiles to avoid taxation
 
-Most players believe in building the tax building 1a or 1b as soon as possible.
+Most players believe in building the tax building 1a or 1b as soon as possible,
+typically on the alternative road from one with obstacles.
+This works well in the beginning.
 
-TODO
-
-=== Clear hazard tiles to avoid taxation
-
-TODO
-
-== Strategies
-
-
-=== The cost of not playing a strategy
-
-TODO
-
-== Strategy 1: cowboys
-
-TODO
-
-
-== Strategy 2: engineers
-
-TODO
-
-
-== Strategy 3: craftsmen
-
-TODO
-
-
-== Hybrid strategies
-
-TODO
+But you can take advantage of this, if you can muster the funding:
+on the alternative road, build after after the hazard tiles
+(those building locations give extra bonuses)
+and clear the hazard tiles.
+Their tax houses become useless and your building(s) have a bonus.
