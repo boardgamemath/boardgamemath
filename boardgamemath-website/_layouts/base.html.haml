@@ -74,8 +74,11 @@ change_frequency: monthly
                 = precede 'Board games ' do
                   %b.caret>
               %ul.dropdown-menu
-                %li<
-                  %a{:href => relative("/boardgames/gloomhaven/index.html")} Gloomhaven
+                - for game in site.games
+                  - if game.visible
+                    %li<
+                      %a{:href => relative("/boardgames/#{game.gameId}/index.html", page)}<
+                        #{game.name}
           %ul.nav.navbar-nav.navbar-right
             %li<
               %a(href="https://www.facebook.com/BoardGameMath" target="_blank" title="News stream via Facebook")<

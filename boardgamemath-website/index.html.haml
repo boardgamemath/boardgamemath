@@ -6,16 +6,12 @@ change_frequency: weekly
 ---
 
 .row
-  .col-md-7
-    %div(style="margin-bottom: 10px")
-      :asciidoc
-        = What is BoardGameMath?
+  %div(style="margin-bottom: 10px")
+    :asciidoc
+      = What is BoardGameMath?
 
-        BoardGameMath explains and visualizes the mathematics behind strategic board games
-        to help you *improve your game performance* and win them more often.
-
-  .col-md-5
+      BoardGameMath explains and visualizes the mathematics behind strategic board games
+      to help you *improve your game performance* and win them more often.
 
 .row
-  .col-md-12
-    = partial('latestArticles.html.haml', :outputPage => page)
+  = partial('allGames.html.haml', :outputPage => page, :includingSubPages => true)

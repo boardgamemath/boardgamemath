@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading How to win...
+  .panel-body
+    %ul.list-unstyled
+      - for game in site.games
+        - if game.visible
+          %li(style="margin-bottom: 10px;")
+            .title
+              %a{:href => relative("/boardgames/#{game.gameId}/index.html", page.outputPage)}<
+                #{game.name}
+            - if page.includingSubPages
+              %ul.list-unstyled(style="margin-left:20px")
+                - for subPage in game.subPages
+                  %li(style="margin-top: 10px;")
+                    .title
+                      %a{:href => relative("/boardgames/#{game.gameId}/#{subPage.urlPath}", page.outputPage)}<
+                        #{subPage.title}

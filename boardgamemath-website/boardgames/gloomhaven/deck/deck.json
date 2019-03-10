@@ -1,0 +1,28 @@
+{
+  "characters": [
+    {
+      "characterId":"CH",
+      "characterName":"Cragheart",
+      "cards": [
+        {
+          "cardId":"146"
+        },
+        {
+          "cardId":"147"
+        }
+      ]
+    },
+    {
+      "characterId":"MT",
+      "characterName":"Mindthief",
+      "cards": [
+        {
+          "cardId":"116"
+        },
+        {
+          "cardId":"117"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+---
+game_id: gloomhaven
+title: Gloomhaven deck builder
+description: Build the perfect deck for your Gloomhaven character
+layout: boardGameCalculatorBase
+priority: 1.0
+---
+
+%link(rel="stylesheet" href="gloomhavenDeckBuilder.css")
+
+%section(style="display:block;")
+  Character:
+  %select(onchange="changeCharacter(this)")
+
+:asciidoc
+  == Calculation details
+
+  * No calculations yet
+
+  == Known issues
+
+  * None yet
+
+%script{:src => relative("/website/d3/d3.min.js")}
+%script{:src => "gloomhavenDeckBuilder.js"}
