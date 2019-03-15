@@ -1,26 +1,190 @@
 {
   "characters": [
     {
-      "characterId":"CH",
-      "characterName":"Cragheart",
+      "characterId": "CH",
+      "characterName": "Cragheart",
       "cards": [
         {
-          "cardId":"146"
+          "cardId": 145,
+          "level": 1,
+          "initiative": 46,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
         },
         {
-          "cardId":"147"
+          "cardId": 146,
+          "level": 1,
+          "initiative": 35,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 147,
+          "level": 1,
+          "initiative": 75,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 148,
+          "level": 1,
+          "initiative": 29,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 149,
+          "level": 1,
+          "initiative": 87,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 150,
+          "level": 1,
+          "initiative": 77,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 151,
+          "level": 1,
+          "initiative": 41,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 152,
+          "level": 1,
+          "initiative": 13,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 153,
+          "level": 1,
+          "initiative": 61,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 154,
+          "level": 1,
+          "initiative": 82,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 155,
+          "level": 1,
+          "initiative": 38,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 156,
+          "level": 1,
+          "initiative": 57,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 157,
+          "level": 1,
+          "initiative": 53,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 158,
+          "level": 1,
+          "initiative": 64,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
         }
       ]
     },
     {
-      "characterId":"MT",
-      "characterName":"Mindthief",
+      "characterId": "MT",
+      "characterName": "Mindthief",
       "cards": [
         {
-          "cardId":"116"
+          "cardId": "116",
+          "level": 1,
+          "initiative": 0,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
         },
         {
-          "cardId":"117"
+          "cardId": "117",
+          "level": 1,
+          "initiative": 0,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
         }
       ]
     }
