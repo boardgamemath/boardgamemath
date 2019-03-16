@@ -8,17 +8,19 @@ priority: 1.0
 
 %link(rel="stylesheet" href="gloomhavenDeckBuilder.css")
 
-%section(style="display:block;")
+%section
   Character:
   %select(onchange="changeCharacter(this)")
 
-%section(style="display:block;")
+%section
   %h2 Available cards:
   .availableCards
+  %div(style="clear: both;")
 
-%section(style="display:block;")
+%section
   %h2 Selected cards:
   .selectedCards
+  %div(style="clear: both;")
 
 :asciidoc
   == Calculation details

@@ -1,3 +1,7 @@
+section {
+    display: block;
+}
+
 .availableCard {
     float: left;
     margin: 2px;
@@ -9,4 +13,11 @@
     background: gold;
     border: 1px solid black;
     padding: 9px;
+}
+
+
+.selectedCard {
+    float: left;
+    margin: 2px;
+    padding: 10px;
 }
