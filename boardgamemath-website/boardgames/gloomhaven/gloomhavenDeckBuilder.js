@@ -65,18 +65,41 @@ function updateCards() {
         return availableCard.selected
     });
     d3.select("#cardCount").text(selectedCards.length);
+    var requiredLevel = 1;
     var topLostCardCount = 0;
     var bottomLostCardCount = 0;
-    for (var j = 0; j < selectedCards.length; j++) {
-        var selectedCard = selectedCards[j];
+    var initiatives = [];
+    for (var i = 0; i < selectedCards.length; i++) {
+        var selectedCard = selectedCards[i];
         if (selectedCard.topAction.lost) {
             topLostCardCount++;
         }
         if (selectedCard.bottomAction.lost) {
             bottomLostCardCount++;
         }
+        if (selectedCard.level > requiredLevel) {
+            requiredLevel = selectedCard.level;
+        }
+        initiatives.push(selectedCard.initiative);
     }
+    initiatives.sort();
+    var initiativesHalfLength = Math.floor((initiatives.length + 1) / 2);
+    var lowerHalfAvgInitiative = 0;
+    for (var j = 0; j < initiativesHalfLength; j++) {
+        lowerHalfAvgInitiative += initiatives[j];
+    }
+    lowerHalfAvgInitiative /= initiativesHalfLength;
+    var higherHalfAvgInitiative = 0;
+    for (var k = Math.floor(initiatives.length / 2); k < initiatives.length; k++) {
+        higherHalfAvgInitiative += initiatives[k];
+    }
+    higherHalfAvgInitiative /= initiativesHalfLength;
+
+
+    d3.select("#requiredLevel").text(requiredLevel);
     d3.select("#topLostCardCount").text(topLostCardCount);
     d3.select("#bottomLostCardCount").text(bottomLostCardCount);
+    d3.select("#lowerHalfAvgInitiative").text(lowerHalfAvgInitiative);
+    d3.select("#higherHalfAvgInitiative").text(higherHalfAvgInitiative);
 }
 
