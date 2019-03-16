@@ -12,6 +12,30 @@ priority: 1.0
   Character:
   %select(onchange="changeCharacter(this)")
 
+.statistics
+  .row
+    .col-md-4
+      Cards:
+      %span#cardCount 0
+    .col-md-4
+      %b
+        Lost cards
+      %br
+      Top:
+      %span#topLostCardCount 0
+      %br
+      Bottom:
+      %span#bottomLostCardCount 0
+    .col-md-4
+      %b
+        Avg initiative
+      %br
+      Lower half:
+      %span 0
+      %br
+      Higher half:
+      %span 0
+
 %section
   %h2 Available cards:
   .availableCards

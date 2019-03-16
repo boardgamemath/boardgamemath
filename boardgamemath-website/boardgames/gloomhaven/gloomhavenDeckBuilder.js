@@ -31,7 +31,6 @@ function initCharacters() {
                         availableCard.selected = false;
                         var index = selectedCards.indexOf(availableCard);
                         selectedCards.splice(index, 1);
-                        selectedCards.push(availableCard);
                     } else {
                         availableCard.selected = true;
                         selectedCards.push(availableCard);
@@ -64,6 +63,20 @@ function changeCharacter(t) {
 function updateCards() {
     availableCardDiv.classed("selectedAvailableCard", function (availableCard) {
         return availableCard.selected
-    })
+    });
+    d3.select("#cardCount").text(selectedCards.length);
+    var topLostCardCount = 0;
+    var bottomLostCardCount = 0;
+    for (var j = 0; j < selectedCards.length; j++) {
+        var selectedCard = selectedCards[j];
+        if (selectedCard.topAction.lost) {
+            topLostCardCount++;
+        }
+        if (selectedCard.bottomAction.lost) {
+            bottomLostCardCount++;
+        }
+    }
+    d3.select("#topLostCardCount").text(topLostCardCount);
+    d3.select("#bottomLostCardCount").text(bottomLostCardCount);
 }
 

@@ -2,6 +2,15 @@ section {
     display: block;
 }
 
+.statistics {
+    margin-top: 20px;
+    position: sticky;
+    top: 50px;
+    border: 2px solid black;
+    padding: 10px;
+    background: steelblue;
+}
+
 .availableCard {
     float: left;
     margin: 2px;
