@@ -8,6 +8,10 @@ priority: 1.0
 
 %link(rel="stylesheet" href="gloomhavenDeckBuilder.css")
 
+%p
+  Click on a card to add it to your deck.
+  Copy the url to share your deck with your friends.
+
 %section
   Character:
   %select(onchange="changeCharacter(this)")
@@ -44,10 +48,10 @@ priority: 1.0
   .availableCards
   %div(style="clear: both;")
 
-%section
-  %h2 Selected cards:
-  .selectedCards
-  %div(style="clear: both;")
+-#%section
+-#  %h2 Selected cards:
+-#  .selectedCards
+-#  %div(style="clear: both;")
 
 :asciidoc
   == Calculation details

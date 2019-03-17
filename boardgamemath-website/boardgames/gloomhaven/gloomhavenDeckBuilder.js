@@ -42,15 +42,15 @@ function initCharacters() {
                     return "deck/" + selectedCharacter.characterId + "/"
                     + selectedCharacter.characterId + "-" + availableCard.cardId + ".png"
                 });
-        d3.select(".selectedCards").selectAll(".selectedCard")
-                .data(selectedCards)
-                .enter().append("div")
-                .attr("class", "selectedCard")
-                .append("img")
-                .attr("src",  function (selectedCard) {
-                    return "deck/" + selectedCharacter.characterId + "/"
-                            + selectedCharacter.characterId + "-" + selectedCard.cardId + ".png"
-                });
+        // d3.select(".selectedCards").selectAll(".selectedCard")
+        //         .data(selectedCards)
+        //         .enter().append("div")
+        //         .attr("class", "selectedCard")
+        //         .append("img")
+        //         .attr("src",  function (selectedCard) {
+        //             return "deck/" + selectedCharacter.characterId + "/"
+        //                     + selectedCharacter.characterId + "-" + selectedCard.cardId + ".png"
+        //         });
         var characterQueryParam = urlSearchParams.get("character");
         for (var i = 0; i < characters.length; i++) {
             if (characterQueryParam === characters[i].characterId) {

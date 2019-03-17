@@ -11,7 +11,7 @@ They followed the licence restrictions as described here:
 For example, the CH cards start from card number `146`:
 
 ----
-convert CH\ Cards.pdf CH.png
+convert -density 150 CH\ Cards.pdf -resize 300x420 -quality 100 CH.png
 rm *1.png *3.png *5.png *7.png *9.png
 i=145; for file in `ls *.png | sort -V`; do mv $file CH-$i.png; i=$((i+1)); done
 ----
