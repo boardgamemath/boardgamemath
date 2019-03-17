@@ -448,7 +448,7 @@ They followed the licence restrictions as described here:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>convert CH\ Cards.pdf CH.png
+<pre>convert -density 150 CH\ Cards.pdf -resize 300x420 -quality 100 CH.png
 rm *1.png *3.png *5.png *7.png *9.png
 i=145; for file in `ls *.png | sort -V`; do mv $file CH-$i.png; i=$((i+1)); done</pre>
 </div>
@@ -458,7 +458,7 @@ i=145; for file in `ls *.png | sort -V`; do mv $file CH-$i.png; i=$((i+1)); done
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-11 12:28:06 CET
+Last updated 2019-03-17 21:39:19 CET
 </div>
 </div>
 </body>
