@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123593562-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123593562-1');
+</script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6008098724306399",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>BoardGameMath - Gloomhaven deck builder</title>
+<meta content="Build the perfect deck for your Gloomhaven character" name="description">
+<link href="http://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenDeckBuilder.html" rel="canonical">
+<meta content="Gloomhaven deck builder" property="og:title">
+<meta content="Build the perfect deck for your Gloomhaven character" property="og:description">
+<meta content="http://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenDeckBuilder.html" property="og:url">
+<meta content="BoardGameMath" property="og:site_name">
+<meta content="article" property="og:type">
+<meta content="http://www.boardgamemath.com/headerFooter/boardGameMathIcon.png" property="og:image">
+<meta content="summary" name="twitter:card">
+<meta content="@BoardGameMath" name="twitter:site">
+<link href="../../website/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../website/boardgamemathWebsite.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link href="../../favicon.ico" rel="shortcut icon">
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+<header class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container">
+<div class="navbar-header">
+<a class="button navbar-toggle" data-target="#baseNavigation" data-toggle="collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</a>
+<a class="navbar-brand" href="../../" style="padding: 10px;">
+<img alt="BoardGameMath logo" src="../../headerFooter/boardGameMathLogo200px.png">
+</a>
+</div>
+<div class="collapse navbar-collapse" id="baseNavigation">
+<ul class="nav navbar-nav">
+<li><a href="../../">Home</a></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Board games <b class="caret"></b></a>
+<ul class="dropdown-menu">
+<li><a href="index.html">Gloomhaven</a></li>
+<li><a href="../greatwesterntrail/index.html">Great western trail</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li><a href="https://www.facebook.com/BoardGameMath" target="_blank" title="News stream via Facebook"><img alt="Fb" src="../../headerFooter/facebookLogo.png">&nbsp;Facebook</img></a></li>
+</ul>
+</div>
+</div>
+</header>
+<div class="body-without-header-footer">
+<div class="container" style="padding-top: 20px;">
+<div class="row">
+<div class="col-md-9">
+<h1>
+Gloomhaven deck builder
+</h1>
+<link href="gloomhavenDeckBuilder.css" rel="stylesheet">
+<section>
+Character:
+<select onchange="changeCharacter(this)"></select>
+</section>
+<div class="statistics">
+<div class="row">
+<div class="col-md-4">
+Cards:
+<span id="cardCount">0</span>
+<br>
+Required level:
+<span id="requiredLevel">1</span>
+</div>
+<div class="col-md-4">
+<b>
+Lost cards
+</b>
+<br>
+Top:
+<span id="topLostCardCount">0</span>
+-
+Bottom:
+<span id="bottomLostCardCount">0</span>
+</div>
+<div class="col-md-4">
+<b>
+Avg initiative
+</b>
+<br>
+Lower half:
+<span id="lowerHalfAvgInitiative">0</span>
+-
+Higher half:
+<span id="higherHalfAvgInitiative">0</span>
+</div>
+</div>
+</div>
+<section>
+<h2>Available cards:</h2>
+<div class="availableCards"></div>
+<div style="clear: both;"></div>
+</section>
+<section>
+<h2>Selected cards:</h2>
+<div class="selectedCards"></div>
+<div style="clear: both;"></div>
+</section>
+<div class="sect1">
+<h2 id="_calculation_details">Calculation details</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>No calculations yet</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_known_issues">Known issues</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>None yet</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<script src="../../website/d3/d3.min.js"></script>
+<script src="gloomhavenDeckBuilder.js"></script>
+
+<h2>Reuse</h2>
+<ul>
+<li>
+Feel free to reuse screenshots of this calculator in any of your content,
+with a link to this webpage nearby.
+</li>
+<li>
+For the brave, the source code of this calculator is on
+<a href="https://github.com/boardgamemath/boardgamemath">GitHub</a>
+under the open source AGPL license.
+</li>
+</ul>
+<div class="comments">
+<a name="comments"></a>
+<h2>Comments</h2>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+            var disqus_shortname = 'boardgamemath';
+            var disqus_url = "https://www.boardgamemath.com/boardgames/gloomhaven/gloomhavenDeckBuilder.html";
+            var disqus_developer = null;
+            var disqus_identifier = "/boardgames/gloomhaven/gloomhavenDeckBuilder.html";
+            (function() {
+              var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=boardgamemath">comments powered by Disqus.</a></noscript>
+          
+</div>
+
+</div>
+<div class="col-md-3">
+<div class="panel panel-default">
+<div class="panel-heading">How to win...</div>
+<div class="panel-body">
+<ul class="list-unstyled">
+<li style="margin-bottom: 10px;">
+<div class="title">
+<a href="index.html">Gloomhaven</a>
+</div>
+</li>
+<li style="margin-bottom: 10px;">
+<div class="title">
+<a href="../greatwesterntrail/index.html">Great western trail</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<a href="index.html">Gloomhaven</a>
+</div>
+<div class="panel-body">
+<ul class="list-unstyled">
+<li style="margin-bottom: 10px;">
+<div class="title">
+<a href="gloomhavenStaminaGuide.html">Stamina guide</a>
+</div>
+</li>
+<li style="margin-bottom: 10px;">
+<div class="title">
+<a href="gloomhavenStaminaCalculator.html">Stamina calculator</a>
+</div>
+</li>
+<li style="margin-bottom: 10px;">
+<div class="title">
+<a href="gloomhavenDeckBuilder.html">Deck builder</a>
+</div>
+</li>
+<li style="margin-bottom: 10px;">
+<div class="title">
+<a href="gloomhavenPerkCalculator.html">Perk calculator</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+<footer>
+<div class="container">
+© Copyright 2017-2019
+</div>
+</footer>
+<script src="../../website/jquery/jquery.min.js"></script>
+<script src="../../website/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../website/boardgamemathWebsite.js"></script>
+</body>
+</html>

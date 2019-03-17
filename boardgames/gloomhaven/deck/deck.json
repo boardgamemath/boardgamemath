@@ -1,0 +1,368 @@
+{
+  "characters": [
+    {
+      "characterId": "CH",
+      "characterName": "Cragheart",
+      "cards": [
+        {
+          "cardId": 145,
+          "level": 1,
+          "initiative": 46,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 146,
+          "level": 1,
+          "initiative": 35,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 147,
+          "level": 1,
+          "initiative": 75,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 148,
+          "level": 1,
+          "initiative": 29,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 149,
+          "level": 1,
+          "initiative": 87,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 150,
+          "level": 1,
+          "initiative": 77,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 151,
+          "level": 1,
+          "initiative": 41,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 152,
+          "level": 1,
+          "initiative": 13,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 153,
+          "level": 1,
+          "initiative": 61,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 154,
+          "level": 1,
+          "initiative": 82,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 155,
+          "level": 1,
+          "initiative": 38,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 156,
+          "level": 1,
+          "initiative": 57,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 157,
+          "level": 1,
+          "initiative": 53,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 158,
+          "level": 1,
+          "initiative": 64,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 159,
+          "level": 2,
+          "initiative": 28,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 160,
+          "level": 2,
+          "initiative": 78,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 161,
+          "level": 3,
+          "initiative": 43,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 162,
+          "level": 3,
+          "initiative": 21,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 163,
+          "level": 4,
+          "initiative": 81,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 164,
+          "level": 4,
+          "initiative": 19,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 165,
+          "level": 5,
+          "initiative": 47,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 166,
+          "level": 5,
+          "initiative": 32,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 167,
+          "level": 6,
+          "initiative": 78,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 168,
+          "level": 6,
+          "initiative": 26,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 169,
+          "level": 7,
+          "initiative": 23,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 170,
+          "level": 7,
+          "initiative": 52,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 171,
+          "level": 8,
+          "initiative": 37,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 172,
+          "level": 8,
+          "initiative": 85,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        },
+        {
+          "cardId": 173,
+          "level": 9,
+          "initiative": 74,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": 174,
+          "level": 9,
+          "initiative": 31,
+          "topAction": {
+            "lost": true
+          },
+          "bottomAction": {
+            "lost": true
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "MT",
+      "characterName": "Coming soon...",
+      "cards": [
+        {
+          "cardId": "116",
+          "level": 1,
+          "initiative": 0,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        },
+        {
+          "cardId": "117",
+          "level": 1,
+          "initiative": 0,
+          "topAction": {
+            "lost": false
+          },
+          "bottomAction": {
+            "lost": false
+          }
+        }
+      ]
+    }
+  ]
+}
