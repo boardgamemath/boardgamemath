@@ -111,7 +111,7 @@ function updateCards() {
     d3.select("#requiredLevel").text(requiredLevel);
     d3.select("#topLostCardCount").text(topLostCardCount);
     d3.select("#bottomLostCardCount").text(bottomLostCardCount);
-    d3.select("#lowerHalfAvgInitiative").text(lowerHalfAvgInitiative);
-    d3.select("#higherHalfAvgInitiative").text(higherHalfAvgInitiative);
+    d3.select("#lowerHalfAvgInitiative").text(lowerHalfAvgInitiative.toFixed(1));
+    d3.select("#higherHalfAvgInitiative").text(higherHalfAvgInitiative.toFixed(1));
 }
 
