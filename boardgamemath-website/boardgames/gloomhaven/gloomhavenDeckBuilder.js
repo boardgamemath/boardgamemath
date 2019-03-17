@@ -65,35 +65,47 @@ function updateCards() {
         return availableCard.selected
     });
     d3.select("#cardCount").text(selectedCards.length);
-    var requiredLevel = 1;
     var topLostCardCount = 0;
     var bottomLostCardCount = 0;
+    var noneOneLevels = [];
     var initiatives = [];
     for (var i = 0; i < selectedCards.length; i++) {
         var selectedCard = selectedCards[i];
+        if (selectedCard.level > 1) {
+            noneOneLevels.push(selectedCard.level);
+        }
         if (selectedCard.topAction.lost) {
             topLostCardCount++;
         }
         if (selectedCard.bottomAction.lost) {
             bottomLostCardCount++;
         }
-        if (selectedCard.level > requiredLevel) {
-            requiredLevel = selectedCard.level;
-        }
         initiatives.push(selectedCard.initiative);
+    }
+    noneOneLevels.sort();
+    var requiredLevel = 1;
+    for (var j = 0; j < noneOneLevels.length; j++) {
+        var level = noneOneLevels[j];
+        if (level > requiredLevel) {
+            requiredLevel = level;
+        } else {
+            requiredLevel++;
+        }
     }
     initiatives.sort();
     var initiativesHalfLength = Math.floor((initiatives.length + 1) / 2);
     var lowerHalfAvgInitiative = 0;
-    for (var j = 0; j < initiativesHalfLength; j++) {
-        lowerHalfAvgInitiative += initiatives[j];
-    }
-    lowerHalfAvgInitiative /= initiativesHalfLength;
     var higherHalfAvgInitiative = 0;
-    for (var k = Math.floor(initiatives.length / 2); k < initiatives.length; k++) {
-        higherHalfAvgInitiative += initiatives[k];
+    for (var k = 0; k < initiativesHalfLength; k++) {
+        lowerHalfAvgInitiative += initiatives[k];
     }
-    higherHalfAvgInitiative /= initiativesHalfLength;
+    for (var l = Math.floor(initiatives.length / 2); l < initiatives.length; l++) {
+        higherHalfAvgInitiative += initiatives[l];
+    }
+    if (selectedCards.length > 0) {
+        lowerHalfAvgInitiative /= initiativesHalfLength;
+        higherHalfAvgInitiative /= initiativesHalfLength;
+    }
 
 
     d3.select("#requiredLevel").text(requiredLevel);
