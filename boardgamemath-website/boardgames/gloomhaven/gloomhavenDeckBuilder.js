@@ -51,6 +51,21 @@ function initCharacters() {
                     return "deck/" + selectedCharacter.characterId + "/"
                             + selectedCharacter.characterId + "-" + selectedCard.cardId + ".png"
                 });
+        var characterQueryParam = urlSearchParams.get("character");
+        for (var i = 0; i < characters.length; i++) {
+            if (characterQueryParam === characters[i].characterId) {
+                var cardsQueryParams = urlSearchParams.get("cards").split("_");
+                for (var j = 0; j < cardsQueryParams.length; j++) {
+                    var cardId = parseInt(cardsQueryParams[j]);
+                    var availableCard = availableCards.find(function (card) {
+                        return card.cardId === cardId;
+                    });
+                    availableCard.selected = true;
+                    selectedCards.push(availableCard);
+                }
+                break;
+            }
+        }
         updateCards();
     });
 }
@@ -61,6 +76,17 @@ function changeCharacter(t) {
 }
 
 function updateCards() {
+    urlSearchParams.set("character", selectedCharacter.characterId);
+    var cardsQueryParam = "";
+    for (var i = 0; i < selectedCards.length; i++) {
+        if (i !== 0) {
+            cardsQueryParam += "_";
+        }
+        cardsQueryParam += selectedCards[i].cardId;
+    }
+    urlSearchParams.set("cards", cardsQueryParam);
+
+    window.history.pushState('', '', "?" + urlSearchParams.toString());
     availableCardDiv.classed("selectedAvailableCard", function (availableCard) {
         return availableCard.selected
     });
@@ -96,11 +122,11 @@ function updateCards() {
     var initiativesHalfLength = Math.floor((initiatives.length + 1) / 2);
     var lowerHalfAvgInitiative = 0;
     var higherHalfAvgInitiative = 0;
-    for (var k = 0; k < initiativesHalfLength; k++) {
-        lowerHalfAvgInitiative += initiatives[k];
+    for (var i = 0; i < initiativesHalfLength; i++) {
+        lowerHalfAvgInitiative += initiatives[i];
     }
-    for (var l = Math.floor(initiatives.length / 2); l < initiatives.length; l++) {
-        higherHalfAvgInitiative += initiatives[l];
+    for (var i = Math.floor(initiatives.length / 2); i < initiatives.length; i++) {
+        higherHalfAvgInitiative += initiatives[i];
     }
     if (selectedCards.length > 0) {
         lowerHalfAvgInitiative /= initiativesHalfLength;
