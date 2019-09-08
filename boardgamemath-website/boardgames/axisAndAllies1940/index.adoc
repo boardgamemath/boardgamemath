@@ -1,5 +1,36 @@
-= How to win Allies and Axis 1940
+= How to win Axis and Allies 1940
 :awestruct-game_id: axisAndAllies1940
 :awestruct-layout: boardGameBase
 
-Guide coming soon...
+Let's take a look how you can win Axis and Allies (Europe, Pacific, Global) 2th edition.
+
+
+== Attack with a larger army
+
+Attack with an overwhelming army, not just to win the battle,
+but to minimize your IPC loss.
+For example let's presume your 8 tanks are attacking 4 tanks:
+
+image::battle8TanksVs4Tanks.png[8 tanks versus 4 tanks]
+
+Your 8 tanks cause on average 4 hits in the first round,
+killing all 4 tanks of the opposition.
+But those 4 tanks only have 2 hits on average.
+So in the end, you loose 2 tanks less than the opponent.
+Given that each tank costs 6 IPC to build,
+this gives you a profit of 12 IPC,
+near the frontline (right where you want them).
+
+So always attack with a larger army.
+Don't pass up the opportunity to attack
+a large force with a much larger force,
+unless a counterattack is immanent.
+
+
+== Bring cannon fodder
+
+TODO
+
+image::battle3Infantry7TanksVs4Tanks.png[3 infantry and 7 tanks versus 4 tanks]
+
+TODO

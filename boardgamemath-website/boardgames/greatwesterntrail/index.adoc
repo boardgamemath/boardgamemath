@@ -12,7 +12,7 @@ image::workerTypes.png[Worker types]
 
 Regardless of our main strategy - and which type(s) of workers we invest in - we always need to:
 
-* Buy some cattle to increase our Kansas income and disc abilities.
+* Buy at least 2 cattle to increase our Kansas income and disc abilities.
 ** Even if we won't buy cowboys
 * Build some buildings to do more/better actions per turn and derail other players.
 ** Even if we won't buy craftsmen
@@ -57,7 +57,7 @@ it is useless to first increase our hand limit (to 5 hand cards)
 before buying our first cattle card. So buy cattle first.
 
 
-=== Always buy some cattle early on
+=== Always buy at least 2 cattle early on
 
 Buying cattle is expensive and _that new cattle card ends up in our discard pile_.
 We want to buy cattle before we reshuffle our deck the first time,
