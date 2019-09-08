@@ -27,7 +27,7 @@
 - gameId: axisAndAllies1940
   name: "Allies and Axis 1940"
   boardGameGeekUrl: https://boardgamegeek.com/boardgame/61692/axis-allies-europe-1940
-  visible: false
+  visible: true
 
 - gameId: tzolkin
   name: "Tzolk'in"
