@@ -13,12 +13,8 @@ Let's take a look at the impact of your actions on your stamina and exhaustion:
 * link:gloomhavenStaminaGuide.html[Read the stamina guide]
 * link:gloomhavenStaminaCalculator.html[Try the stamina calculator]
 
-== Know your initiative
-
-Guide coming soon...
+//== Know your initiative
 
 == Pick your perks well
-
-Guide coming soon...
 
 * link:gloomhavenPerkCalculator.html[Try the perk calculator]

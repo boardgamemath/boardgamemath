@@ -4,6 +4,11 @@
 #  boardGameGeekLink: BGG link
 #  howToPlayVideoUrl: YouTube link
 
+- gameId: axisAndAllies1940
+  name: "Allies and Axis 1940"
+  boardGameGeekUrl: https://boardgamegeek.com/boardgame/61692/axis-allies-europe-1940
+  visible: true
+
 - gameId: gloomhaven
   name: "Gloomhaven"
   boardGameGeekUrl: https://boardgamegeek.com/boardgame/174430/gloomhaven
@@ -22,11 +27,6 @@
 - gameId: greatwesterntrail
   name: "Great western trail"
   boardGameGeekUrl: https://boardgamegeek.com/boardgame/193738/great-western-trail
-  visible: true
-
-- gameId: axisAndAllies1940
-  name: "Allies and Axis 1940"
-  boardGameGeekUrl: https://boardgamegeek.com/boardgame/61692/axis-allies-europe-1940
   visible: true
 
 - gameId: tzolkin
