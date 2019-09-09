@@ -1,4 +1,4 @@
-= How to win Axis and Allies 1940
+= How to win Axis and Allies 1940 (2th edition)
 :awestruct-game_id: axisAndAllies1940
 :awestruct-layout: boardGameBase
 
@@ -29,14 +29,35 @@ unless a counterattack is immanent.
 
 == Bring cannon fodder
 
-TODO
+Cannon fodder are cheap units that are used to take hits,
+so the more powerful, expensive units live longer.
+There are 4 units that are considered cannon fodder:
+
+* Infantry (3 IPC): the best on land
+* Mechanized infantry (4 IPC): to resupply your army faster
+* Submarine (6 IPC): the best on sea
+* Destroyer (8 IPC): in case the enemy has airplanes and no destroyers, he can't hit the submarines
+
+Always bring cannon fodder to minimize your IPC loss.
+For example, let's presume your 3 infantry and 7 tanks attack 4 tanks:
 
 image::battle3Infantry7TanksVs4Tanks.png[3 infantry and 7 tanks versus 4 tanks]
 
-TODO
+Notice that for a mere loss of 6 IPC, the enemy lost 24 IPC,
+which is a profit of 18 IPC, worth 75% of the enemy's entire army.
 
 
-== Work out your supply lines
+=== Supply lines matter: keep producing and sending cannon fodder
+
+If you play it right, your expensive units won't die:
+either you avoid conflict or you win battles and only/mainly your cannon fodder dies.
+In the latter case, you'll need to replace those units.
+
+Make sure the replacements arrive in time,
+especially if the frontline is far away from your major production facilities.
+
+
+== It's a long way from Berlin to Moscow
 
 TODO
 
@@ -51,12 +72,12 @@ TODO
 TODO
 
 
-== Convoys
+=== Capture those islands
 
 TODO
 
 
-== It's a long way to Moscow
+== Convoys
 
 TODO
 
@@ -64,4 +85,5 @@ TODO
 == Secure the income of pro-enemy neutrals
 
 TODO
+
 
