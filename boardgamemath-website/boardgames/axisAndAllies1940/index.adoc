@@ -90,7 +90,7 @@ Well, your capture of Moscow is doomed:
 * In round 1, you produces or gather your army in Berlin.
 * Yet, Russia can wait until round 3 to act upon it:
 simply by producing only infantry in Moscow (presuming its IPC's allow it).
- By the time your Germany army reaches Moscow, the Russian defense outnumbers it.
+* By the time your Germany army reaches Moscow, the Russian defense outnumbers it.
 
 This is an ideal situation for the allies: Germany is heavily invested in the Russian front,
 at the expense of the Atlantic wall, without being able to capture Moscow.
