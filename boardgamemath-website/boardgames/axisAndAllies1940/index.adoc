@@ -4,6 +4,16 @@
 
 Let's take a look how you can win Axis and Allies (Europe, Pacific, Global) 2th edition.
 
+== Don't loose your capital
+
+Without your capital, you can't produce units nor collect income.
+So never loose your capital.
+Even just losing it for 1 round, means you haven't just lost your IPC,
+the enemy has gained it too. It hurts twice.
+
+Now that we have the most obvious of guidelines out of the way,
+let's take a look at some more devious game mechanics:
+
 
 == Attack with a larger army
 
@@ -59,12 +69,56 @@ especially if the frontline is far away from your major production facilities.
 
 == It's a long way from Berlin to Moscow
 
-TODO
+Starting from your major production facilities,
+it can be a long route to reach the enemy capital.
+For example, Berlin can reach Moscow without transports,
+but at infantry speed, it takes 5 rounds:
+
+image::berlinToMoscow.png[Berlin to Moscow]
+
+A lot can happen in 5 rounds.
+Plenty of time to mount a defense.
+For example, the German _bowling ball_ strategy invests in a large force to move from Berlin straight into Moscow.
+Let's see what happens if you send 30 artillery (or 15 artillery and 15 infantry)
+from Berlin to Moscow, with only 10 infantry there.
+Surely, 30 artillery will beat 10 infantry?
+
+image::30ArtilleryBerlinVs10InfantryMoscow.png[30 artillery Berlin versus 10 infantry Moscow]
+
+Well, your capture of Moscow is doomed:
+
+* In round 1, you produces or gather your army in Berlin.
+* Yet, Russia can wait until round 3 to act upon it:
+simply by producing only infantry in Moscow (presuming its IPC's allow it).
+ By the time your Germany army reaches Moscow, the Russian defense outnumbers it.
+
+This is an ideal situation for the allies: Germany is heavily invested in the Russian front,
+at the expense of the Atlantic wall, without being able to capture Moscow.
 
 
-== Don't get attacked by a larger army
+=== Retreat towards the capital (by default)
 
-TODO
+When Germany sends a bowling ball towards Moscow,
+Russia's armies must never end a turn next to it.
+However, they must also still be able to make it back to Moscow if that's under attack.
+A typical pitfall is to retreat armies to Leningrad,
+allow the German army to bypass those and reach Moscow sooner.
+
+UK's pacific armies and Japan's armada are also susceptible to this.
+
+
+=== Leapfrog into Berlin or Rome
+
+The Allies (usually US and UK) can leapfrog into Berlin or Rome by surprise, because US plays before UK:
+
+* First, US conquers Denmark and Norway to open up the Danish Straight (or Gibraltar to open up that straight).
+* Next, UK's transports do an amphibious attack on Berlin (or Rome), passing through the straight.
+
+If the Axis don't realize they don't get to play between these 2 turns,
+they can false assume it's ok to leave Berlin (or Rome) defenceless.
+
+This being said, it's usually ok to leave Berlin and Rome defenceless,
+as long as no UK transports are in range.
 
 
 == Protect your transports
@@ -72,12 +126,18 @@ TODO
 TODO
 
 
+== Don't get surprise attacked by a larger army
+
+Ok, this advise might seem the inverse of our second rule _Attack with a larger army*,
+but there a number of surprise tactics to be aware of.
+
+
 === Capture those islands
 
 TODO
 
 
-== Convoys
+== Disrupt those convoys
 
 TODO
 
