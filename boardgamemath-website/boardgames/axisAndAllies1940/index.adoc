@@ -102,7 +102,7 @@ When Germany sends a bowling ball towards Moscow,
 Russia's armies must never end a turn next to it.
 However, they must also still be able to make it back to Moscow if that's under attack.
 A typical pitfall is to retreat armies to Leningrad,
-allow the German army to bypass those and reach Moscow sooner.
+which allows the German army to bypass those and reach Moscow without those reinforcements.
 
 UK's pacific armies and Japan's armada are also susceptible to this.
 
@@ -128,8 +128,10 @@ TODO
 
 == Don't get surprise attacked by a larger army
 
-Ok, this advise might seem the inverse of our second rule _Attack with a larger army*,
-but there a number of surprise tactics to be aware of.
+Ok, this advise might seem the inverse of our second guideline _Attack with a larger army_,
+but there a number of surprise tactics to be aware of:
+
+* TODO
 
 
 === Capture those islands
