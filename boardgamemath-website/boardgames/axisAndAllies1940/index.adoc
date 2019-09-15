@@ -87,22 +87,30 @@ image::30ArtilleryBerlinVs10InfantryMoscow.png[30 artillery Berlin versus 10 inf
 
 Well, your capture of Moscow is doomed:
 
-* In round 1, you produces or gather your army in Berlin.
-* Yet, Russia can wait until round 3 to act upon it:
-simply by producing only infantry in Moscow (presuming its IPC's allow it).
+* In round 1, you produce or gather your army in Berlin.
+* In round 2, you start moving your army straight towards Moscow, to attack it in round 6.
+* Russia can wait until round 3 to act upon it:
+it producing up to 10 infantry per turn in Moscow.
 * By the time your Germany army reaches Moscow, the Russian defense outnumbers it.
 
 This is an ideal situation for the allies: Germany is heavily invested in the Russian front,
 at the expense of the Atlantic wall, without being able to capture Moscow.
 
 
-=== Retreat towards the capital (by default)
+== Retreat towards the capital (by default)
 
 When Germany sends a bowling ball towards Moscow,
 Russia's armies must never end a turn next to it.
 However, they must also still be able to make it back to Moscow if that's under attack.
 A typical pitfall is to retreat armies to Leningrad,
 which allows the German army to bypass those and reach Moscow without those reinforcements.
+
+image::protectLeningradLooseMoscow.png[Protect Leningrad, loose Moscow]
+
+Amputate a limb to save the body:
+If Russia had instead send its 40 infantry towards Moscow,
+it would have lost Leningrad, but Moscow would survive at least 4 turns longer,
+even if US/UK don't open a Western front.
 
 UK's pacific armies and Japan's armada are also susceptible to this.
 
@@ -121,17 +129,17 @@ This being said, it's usually ok to leave Berlin and Rome defenceless,
 as long as no UK transports are in range.
 
 
-== Protect your transports
-
-TODO
-
-
 == Don't get surprise attacked by a larger army
 
 Ok, this advise might seem the inverse of our second guideline _Attack with a larger army_,
 but there a number of surprise tactics to be aware of:
 
-* TODO
+* Airplanes deliver
+
+
+== Protect your transports
+
+TODO
 
 
 === Capture those islands
@@ -139,13 +147,26 @@ but there a number of surprise tactics to be aware of:
 TODO
 
 
-== Disrupt those convoys
+== Disrupt the convoys
 
 TODO
+
+* Great locations for an Allied submarine:
+** Sea zone 6, between Japan and Korea
+** Sea zone 105, left of Normandy
+** Sea zone 125, left of Norway
+* Great locations for an Axis submarine:
+** Sea zone 39, below India
+** Sea zone 109, left of United Kingdom
+** Sea zones 54, 62 and 63, between Australia and New Zealand
+
 
 
 == Secure the income of pro-enemy neutrals
 
 TODO
+
+
+
 
 
