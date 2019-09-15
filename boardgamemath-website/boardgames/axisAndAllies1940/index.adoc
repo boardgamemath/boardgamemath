@@ -60,10 +60,10 @@ which is a profit of 18 IPC, worth 75% of the enemy's entire army.
 === Supply lines matter: keep producing and sending cannon fodder
 
 If you play it right, your expensive units won't die:
-avoid loosing battles and in winning battles the cannon fodder absorb the hits.
-But you'll need to replace those units.
+avoid loosing battles and do winning battles with cannon fodder to absorb the hits.
+But you'll need to replace that cannon fodder.
 
-Make sure the reinforcements arrive in time,
+Make sure their reinforcements arrive in time,
 especially if the frontline is far away from your major production facilities.
 
 
@@ -71,8 +71,7 @@ especially if the frontline is far away from your major production facilities.
 
 Starting from your major production facilities,
 it can be a long route to reach the enemy capital.
-For example, Berlin can reach Moscow without transports,
-but at infantry speed, it takes 5 rounds:
+For example, from Berlin to Moscow at infantry speed (without transports) takes 5 rounds:
 
 image::berlinToMoscow.png[Berlin to Moscow]
 
