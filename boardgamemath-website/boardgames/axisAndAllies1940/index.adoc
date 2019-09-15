@@ -60,10 +60,10 @@ which is a profit of 18 IPC, worth 75% of the enemy's entire army.
 === Supply lines matter: keep producing and sending cannon fodder
 
 If you play it right, your expensive units won't die:
-either you avoid conflict or you win battles and only/mainly your cannon fodder dies.
-In the latter case, you'll need to replace those units.
+avoid loosing battles and in winning battles the cannon fodder absorb the hits.
+But you'll need to replace those units.
 
-Make sure the replacements arrive in time,
+Make sure the reinforcements arrive in time,
 especially if the frontline is far away from your major production facilities.
 
 
@@ -110,7 +110,7 @@ image::protectLeningradLooseMoscow.png[Protect Leningrad, loose Moscow]
 Amputate a limb to save the body:
 If Russia had instead send its 40 infantry towards Moscow,
 it would have lost Leningrad, but Moscow would survive at least 4 turns longer,
-even if US/UK don't open a Western front.
+and much more if US/UK open a western front.
 
 UK's pacific armies and Japan's armada are also susceptible to this.
 
@@ -132,24 +132,43 @@ as long as no UK transports are in range.
 == Don't get surprise attacked by a larger army
 
 Ok, this advise might seem the inverse of our second guideline _Attack with a larger army_,
-but there a number of surprise tactics to be aware of:
+but airplanes can come from far to increase an attacking army's size.
 
-* Airplanes deliver
+Keep an eye on enemy airplanes.
 
 
 == Protect your transports
 
-TODO
+Transports are precious units:
+they cost 7 IPC, yet they can't attack nor defend.
+But there are is no other way to conquer oversees territories.
+Transports are essential.
 
+A fully loaded transport with 1 artillery and 1 infantry costs 14 IPC,
+carrying 4 attack and 2 hitpoints. That's not much.
+You need a lot of them to have any chance to invade Normandy
+and not be kicked out immediately.
+So you might be tempted not to protect your transports decently.
 
-=== Capture those islands
+Any transport without naval units to protect it,
+is an ideal target for strategic bombers.
+Guam and the Solomon Islands can make good landing spots to extend your range.
 
-TODO
+But even protected transports have a target painted on their back.
+For example,  3 destroyers (24 IPC) with 3 loaded transports (32 IPC) are worth 56 IPC.
+They won't survive your attack of 3 strategic bombers (36 IPC).
+On average, at least 1 strategic bomber will survive, leading to a cost of 24 IPC on your side.
+So a profit of 32 IPC. That's well worth it.
+
+Recycle your transports.
+Send them back to ferry additional units.
 
 
 == Disrupt the convoys
 
-TODO
+A great way to disrupt the enemy economy is convoy disruption.
+Especially a single submarine can wreck a lot of economical damage,
+because it rolls two dices.
 
 * Great locations for an Allied submarine:
 ** Sea zone 6, between Japan and Korea
@@ -160,13 +179,28 @@ TODO
 ** Sea zone 109, left of United Kingdom
 ** Sea zones 54, 62 and 63, between Australia and New Zealand
 
+If London or Tokyo can't protect their adjacent sea area's,
+then convoy disruptions can hurt their income a lot.
 
 
-== Secure the income of pro-enemy neutrals
+== Secure the income of friendly and pro-enemy neutrals
 
-TODO
+It's normally a good idea to leave the true neutrals alone.
+but don't wait to conquer pro-enemy neutrals and recruit friendly neutrals:
+
+* Finland and Bulgaria
+* Yugoslavia and Greece
+* Iraq, Persia
+* Brazil
+
+Even the cost of attacking pro-enemy neutrals is well worth it.
+Their income will pay it back in no time.
+And those armies won't be able to pile up with enemy forces.
 
 
+== Capture all islands in the long run
 
-
-
+In the pacific, it's tempting to not tak the time to conquer all islands.
+However, those islands greatly increase the range of the enemy airforce.
+Especially if the enemy has a weak navy (but a strong airforce),
+it's unlikely that those islands ever change to the other side again.
