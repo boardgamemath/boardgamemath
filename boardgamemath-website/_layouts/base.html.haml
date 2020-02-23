@@ -15,16 +15,9 @@ change_frequency: monthly
 
         gtag('config', '#{site.googleAnalyticsId}');
       </script>
-
     -# Google AdSense
     :plain
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-6008098724306399",
-          enable_page_level_ads: true
-        });
-      </script>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     %meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
     %meta(name="viewport" content="width=device-width, initial-scale=1")
@@ -97,3 +90,8 @@ change_frequency: monthly
     %script{:src => relative("/website/jquery/jquery.min.js")}
     %script{:src => relative("/website/bootstrap/js/bootstrap.min.js")}
     %script{:src => relative("/website/boardgamemathWebsite.js")}
+    -# Google AdSense
+    :plain
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
