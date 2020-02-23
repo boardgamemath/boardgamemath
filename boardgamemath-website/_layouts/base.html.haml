@@ -5,7 +5,7 @@ change_frequency: monthly
 !!! 5
 %html{:lang => page.lang ? page.lang : site.lang}
   %head
-    -# Google Analytics for kie team: Global site tag (gtag.js)
+    -# Google Analytics
     :plain
       <script async src="https://www.googletagmanager.com/gtag/js?id=#{site.googleAnalyticsId}"></script>
       <script>
@@ -16,6 +16,8 @@ change_frequency: monthly
         gtag('config', '#{site.googleAnalyticsId}');
       </script>
 
+    -# Google AdSense
+    :plain
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({
