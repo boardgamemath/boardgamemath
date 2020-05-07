@@ -3,6 +3,7 @@ var urlSearchParams = new URLSearchParams(window.location.search);
 var cards;
 var cardCountTotal;
 var nonRollingCountTotal;
+var shuffleTotal;
 var attacks;
 var reliabilities;
 
@@ -14,11 +15,12 @@ initAttacksChart();
 initReliabilitiesChart();
 updateProbabilities();
 
-function Card(name, additionModifier, multiplierModifier, rolling, initialCount) {
+function Card(name, additionModifier, multiplierModifier, rolling, shuffle, initialCount) {
     this.name = name;
     this.additionModifier = additionModifier;
     this.multiplierModifier = multiplierModifier;
     this.rolling = rolling;
+    this.shuffle = shuffle;
     this.initialCount = initialCount;
     this.count = initialCount;
     this.probability = 0.0;
@@ -27,17 +29,17 @@ function Card(name, additionModifier, multiplierModifier, rolling, initialCount)
 function initCards() {
     // Keep in sync with updateReliabilities()
     cards = [
-        new Card("×0", 0, 0, false, 1),
-        new Card("-2", -2, 1, false, 1),
-        new Card("-1", -1, 1, false, 5),
-        new Card("0", 0, 1, false, 6),
-        new Card("+1", 1, 1, false, 5),
-        new Card("+2", 2, 1, false, 1),
-        new Card("+3", 3, 1, false, 0),
-        new Card("+4", 4, 1, false, 0),
-        new Card("×2", 0, 2, false, 1),
-        new Card("r+1", 1, 0, true, 0),
-        new Card("r+2", 2, 0, true, 0)
+        new Card("×0", 0, 0, false, true, 1),
+        new Card("-2", -2, 1, false, false, 1),
+        new Card("-1", -1, 1, false, false, 5),
+        new Card("0", 0, 1, false, false, 6),
+        new Card("+1", 1, 1, false, false, 5),
+        new Card("+2", 2, 1, false, false, 1),
+        new Card("+3", 3, 1, false, false, 0),
+        new Card("+4", 4, 1, false, false, 0),
+        new Card("×2", 0, 2, false, true, 1),
+        new Card("r+1", 1, 0, true, false, 0),
+        new Card("r+2", 2, 0, true, false, 0)
     ];
     if (urlSearchParams.get("character") === "custom") {
         var cardCountsString = urlSearchParams.get("cardCounts");
@@ -76,10 +78,14 @@ function updateUrlAndProbabilities() {
 function updateProbabilities() {
     cardCountTotal = 0;
     nonRollingCountTotal = 0;
+    shuffleTotal = 0;
     for (var i = 0; i < cards.length; i++) {
         var card = cards[i];
         if (!card.rolling) {
             nonRollingCountTotal += card.count;
+        }
+        if (card.shuffle) {
+            shuffleTotal += card.count;
         }
         cardCountTotal += card.count;
     }
@@ -87,7 +93,18 @@ function updateProbabilities() {
         var card = cards[i];
         if (!card.rolling) {
             // When drawing a rolling, keep drawing until we draw a non-rolling
-            card.probability = card.count / nonRollingCountTotal;
+            if (card.shuffle) {
+            // Cards that trigger a shuffle have a higher probability
+            // given N = total number of shuffle cards,
+            // n = specific card count,
+            // M = total number of non-rolling cards in deck,
+            // p(shuffle card) = (n + n/N) / (M+1)
+            card.probability = (card.count + (card.count / shuffleTotal)) / (nonRollingCountTotal + 1)
+            } else {
+                // for all other cards, probability is n/(M+1)
+                // Trivial to show that sum of probabilities is 1
+                card.probability = card.count / (nonRollingCountTotal + 1);
+            }
         } else {
             // For every single rolling card, when drawing another rolling card of the same type, keep drawing.
             // So each single card has probability: 1 / (nonRollingCountTotal + 1)
