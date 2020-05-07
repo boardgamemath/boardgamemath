@@ -50,6 +50,8 @@ function Round(number) {
     this.playLostCardCount = 0;
     this.bleedHandCardCount = 0;
     this.bleedDiscardPairCount = 0;
+    this.minorStaminaPot = false;
+    this.majorStaminaPot = false;
 }
 
 function initRounds() {
@@ -66,6 +68,8 @@ function resetRounds() {
         round.playLostCardCount = 0;
         round.bleedHandCardCount = 0;
         round.bleedDiscardPairCount = 0;
+        round.minorStaminaPot = false;
+        round.majorStaminaPot = false;
     }
 }
 
@@ -86,11 +90,15 @@ function updateRounds() {
             round.playLostCardCount = 0;
             round.bleedHandCardCount = 0;
             round.bleedDiscardPairCount = 0;
+            round.minorStaminaPot = false;
+            round.majorStaminaPot = false;
             continue;
         }
         if (round.longRest && discardCardSize < 1) {
             // Illegal to do a long rest
             round.longRest = false;
+            round.minorStaminaPot = false;
+            round.majorStaminaPot = false;
         }
         var playCardSize;
         if (round.longRest) {
@@ -111,6 +119,8 @@ function updateRounds() {
                 round.playLostCardCount = 0;
                 round.bleedHandCardCount = 0;
                 round.bleedDiscardPairCount = 0;
+                round.minorStaminaPot = false;
+                round.majorStaminaPot = false;
                 continue;
             } else {
                 // Automatic short rest
@@ -151,6 +161,16 @@ function updateRounds() {
                 handCardSize += (selectedCharacter.handLimit - handCardSize - discardCardSize) - 1;
                 revivingEtherAvailable = false;
             }
+            if (round.discardCardSize + round.handCardSize > 0 && round.minorStaminaPot) {
+                recoverCount = Math.min(2, discardCardSize)
+                handCardSize += recoverCount
+                discardCardSize -= recoverCount
+            }
+            if (round.discardCardSize + round.handCardSize > 0 && round.majorStaminaPot) {
+                recoverCount = Math.min(3, discardCardSize)
+                handCardSize += recoverCount
+                discardCardSize -= recoverCount
+            }
         }
     }
     if (!exhausted) {
@@ -162,7 +182,7 @@ function updateRounds() {
 function initChart() {
     outerSize = {width: 800, height: 400};
     margin = {top: 20, right: 30, bottom: 40, left: 40};
-    barButtonCount = 7;
+    barButtonCount = 9;
     barButtonSize = {width: 20, height: 20};
     innerSize = {width: outerSize.width - margin.left - margin.right,
         height: outerSize.height - margin.top - margin.bottom - (barButtonCount * barButtonSize.height)};
@@ -378,6 +398,26 @@ function initChart() {
                 }
                 updateRounds();
             });
+    minorStaminaButton = createBooleanButton(roundBar, "minorStaminaGloomhaven.svg",
+            "Use a minor stamina potion",
+            function (round) {
+                return xRange(round.number);
+            }, function (round) {
+                return innerSize.height + (9 * barButtonSize.height);
+            }, function(round) {
+                round.minorStaminaPot = !round.minorStaminaPot;
+                updateRounds();
+            });
+    majorStaminaButton = createBooleanButton(roundBar, "majorStaminaGloomhaven.svg",
+            "Use a major stamina potion",
+            function (round) {
+                return xRange(round.number);
+            }, function (round) {
+                return innerSize.height + (10 * barButtonSize.height);
+            }, function(round) {
+                round.majorStaminaPot = !round.majorStaminaPot;
+                updateRounds();
+            });
     roundCountText = chart.append("text")
             .attr("class", "roundCount")
             .attr("transform",
@@ -479,6 +519,14 @@ function updateChart() {
     bleedDiscardPair2Button
             .attr("visibility", function (round) {
                 return round.bleedDiscardPairCount >= 2 ? "hidden" : "visible";
+            });
+    minorStaminaButton
+            .attr("visibility", function (round) {
+                return round.minorStaminaPot ? "hidden" : "visible";
+            });
+    majorStaminaButton
+            .attr("visibility", function (round) {
+                return round.majorStaminaPot ? "hidden" : "visible";
             });
     roundCountText.text(roundCount + " rounds before exhaustion");
 }
